@@ -6,7 +6,7 @@ Sound::Sound()
 {
 	SDL_Init(SDL_INIT_AUDIO);
 
-	int audio_rate = 22050;
+	int audio_rate = 44100;
 	Uint16 audio_format = AUDIO_S16LSB;
 	int audio_channels = 2;
 	int audio_buffers = 4096;
