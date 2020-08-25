@@ -97,7 +97,7 @@ char** MapMaker::getMapArray()
 int MapMaker::getEntityCount()
 {
 	int count = 0;
-	/*for (int row = 0; row < no_of_rows; row++) {
+	for (int row = 0; row < no_of_rows; row++) {
 		for (int col = 0; col < no_of_col; col++) {
 			switch (getFromCoord(col, row)) {
 			case 'P':
@@ -114,7 +114,7 @@ int MapMaker::getEntityCount()
 				break;
 			}
 		}
-	}*/
+	}
 	return count;
 }
 
