@@ -40,13 +40,19 @@ Level::Level(string filename)
 	ifstream f(filename);
 	if (f.good()) {
 		filepath = filename;
+		Build();
 	}
 	else {
 		filepath = ".Txt/Map Template.txt";
+		entity_list = NULL;
 	}
+
 }
 
 Level::~Level()
 {
+	for (int i = 0; i < this_map.getEntityCount(); ++i) {
+		delete entity_list[i];
+	}
 	delete[] entity_list;
 }

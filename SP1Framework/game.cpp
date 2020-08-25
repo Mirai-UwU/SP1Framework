@@ -45,7 +45,7 @@ Guard guard(3, 67, &map1);
 void init(void)
 {
 
-    srand(time(NULL));
+    srand(static_cast<unsigned int>(time(NULL)));
     // Set precision for floating point output
     g_dElapsedTime = 0.0;
 
@@ -434,7 +434,7 @@ void renderCharacter()
     g_Console.writeToBuffer(guard.get_pos(), guard.get_display(), 0xFC);
 
     //HARDCODED EXIT
-    g_Console.writeToBuffer(94, 15, 233, 0x03);
+    g_Console.writeToBuffer(94,15, static_cast<char>(233), 0x03);
     
 }
 

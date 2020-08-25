@@ -29,7 +29,7 @@ void MapMaker::Load(string filepath)
 		{
 			no_of_col = static_cast<int>(Map.length());
 			
-			no_of_rows++;
+			no_of_rows += 1;
 		}
 		file_.close();
 	}
@@ -42,10 +42,10 @@ void MapMaker::Load(string filepath)
 		int row = 0;
 		while (getline(file2_, Map))
 		{
-			for (int col = 0; col < no_of_col; col++) {
+			for (int col = 0; col < no_of_col; col = + 1) {
 				MapArray[row][col] = Map[col];
 			}
-			row++;
+			row += 1;
 
 		}
 
