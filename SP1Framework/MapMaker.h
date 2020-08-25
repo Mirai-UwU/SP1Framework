@@ -32,6 +32,8 @@ public:
 	
 	char** getMapArray();
 	int getEntityCount();
+	int get_row();
+	int get_col();
 
 };
 

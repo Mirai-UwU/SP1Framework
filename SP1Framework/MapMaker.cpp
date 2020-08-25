@@ -118,6 +118,16 @@ int MapMaker::getEntityCount()
 	return count;
 }
 
+int MapMaker::get_row()
+{
+	return no_of_rows;
+}
+
+int MapMaker::get_col()
+{
+	return no_of_col;
+}
+
 
 
 
