@@ -1,5 +1,4 @@
 #pragma once
-#include <filesystem>
 #include "Entity.h"
 #include "Player.h"
 #include "guard.h"
@@ -10,8 +9,9 @@ class Level
 private:
 	string filepath;
 
-
+	//Loads everything up
 	void Build();
+	//Finds and Puts Entities into entity_list
 	void FindEntities();
 protected:
 	
@@ -21,7 +21,11 @@ public:
 	Level();
 	Level(string filename);
 	~Level();
-	
+
+	//use if cannot initialise at start
+	void Load(string filename); 
+
+	void Render(Console &gConsole);
 
 };
 

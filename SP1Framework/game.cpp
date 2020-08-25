@@ -17,6 +17,7 @@
 #include <Windows.h>
 
 double  g_dElapsedTime;
+double g_SomethingTime;
 double  g_dDeltaTime;
 SKeyEvent g_skKeyEvent[K_COUNT];
 SMouseEvent g_mouseEvent;
@@ -218,16 +219,16 @@ void gameplayMouseHandler(const MOUSE_EVENT_RECORD& mouseEvent)
 
 int getPlayerInput()
 {
-    if (g_skKeyEvent[K_UP].keyReleased) {
+    if (g_skKeyEvent[K_UP].keyDown) {
         return K_UP;
     }
-    if (g_skKeyEvent[K_DOWN].keyReleased) {
+    if (g_skKeyEvent[K_DOWN].keyDown) {
         return K_DOWN;
     }
-    if (g_skKeyEvent[K_LEFT].keyReleased) {
+    if (g_skKeyEvent[K_LEFT].keyDown) {
         return K_LEFT;
     }
-    if (g_skKeyEvent[K_RIGHT].keyReleased) {
+    if (g_skKeyEvent[K_RIGHT].keyDown) {
         return K_RIGHT;
     }
     return K_COUNT;
@@ -263,7 +264,7 @@ void update(double dt)
     // get the delta time
     g_dElapsedTime += dt;
     g_dDeltaTime = dt;
-
+    g_SomethingTime += dt;
 
     // *-- PUT LEVELS HERE --*   //
     switch (g_eGameState)
@@ -289,8 +290,9 @@ void updateGame()       // gameplay logic
     processUserInput(); // checks if you should change states or do something else with the game, e.g. pause, exit
 
     player.move(getPlayerInput());
-    if (static_cast<int>(g_dElapsedTime) % 6 == 0) {
-        guard.move(rand() % K_COUNT);
+    if (g_SomethingTime > 0.05) {
+            guard.move(rand() % K_COUNT);
+            g_SomethingTime = 0;
     }
 
     //HARDCODED
@@ -392,7 +394,7 @@ void renderGame()
     map1.Render(0, 0, 100, 20, g_Console);// renders the map to the buffer first
     
     renderCharacter();  // renders the character into the buffer
-    renderFOG();
+    //renderFOG();
     hud.Render(0,20,100,30,g_Console);
 }
 

@@ -42,7 +42,7 @@ void MapMaker::Load(string filepath)
 		int row = 0;
 		while (getline(file2_, Map))
 		{
-			for (int col = 0; col < no_of_col; col = + 1) {
+			for (int col = 0; col < no_of_col; col = col + 1) {
 				MapArray[row][col] = Map[col];
 			}
 			row += 1;
@@ -108,6 +108,8 @@ int MapMaker::getEntityCount()
 			//case '%':
 			//case '$':
 				count++;
+				break;
+			default:
 				break;
 			}
 		}

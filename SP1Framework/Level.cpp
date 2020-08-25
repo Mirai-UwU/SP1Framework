@@ -23,7 +23,8 @@ void Level::FindEntities()
 			case 'G':
 				entity_list[count++] = new Guard(coord, &this_map);
 				break;
-
+			default:
+				break;
 			}
 		}
 	}
@@ -55,4 +56,25 @@ Level::~Level()
 		delete entity_list[i];
 	}
 	delete[] entity_list;
+}
+
+void Level::Load(string filename)
+{
+	ifstream f(filename);
+	if (f.good()) {
+		filepath = filename;
+		Build();
+	}
+	else {
+		filepath = ".Txt/Map Template.txt";
+		entity_list = NULL;
+	}
+}
+
+void Level::Render(Console &gConsole)
+{
+	this_map.Render(0, 0, 100, 20, gConsole);
+	for (int i = 0; i < this_map.getEntityCount(); ++i) {
+		gConsole.writeToBuffer(entity_list[i]->get_pos(), entity_list[i]->get_display(), 0x0c);
+	}
 }
