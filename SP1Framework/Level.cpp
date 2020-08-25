@@ -9,6 +9,24 @@ void Level::Build()
 
 void Level::FindEntities()
 {
+	COORD coord;
+	int count = 0;
+	for (int row = 0; row < this_map.get_row(); row++) {
+		coord.Y = row;
+		for (int col = 0; col < this_map.get_col(); col++) {
+			coord.X = col;
+			char entity = this_map.getFromCoord(coord);
+			switch (entity) {
+			case 'P':
+				entity_list[count++] = new Player(coord, &this_map);
+				break;
+			case 'G':
+				entity_list[count++] = new Guard(coord, &this_map);
+				break;
+
+			}
+		}
+	}
 }
 
 Level::Level()

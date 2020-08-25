@@ -1,6 +1,8 @@
 #pragma once
 #include <filesystem>
 #include "Entity.h"
+#include "Player.h"
+#include "guard.h"
 #include "MapMaker.h"
 
 class Level
