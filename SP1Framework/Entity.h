@@ -11,6 +11,7 @@ protected:
 	MapMaker* entity_map;
 	WORD colour;
 	char display;
+	double timer;
 public:
 
 
@@ -36,6 +37,10 @@ public:
 	//Get/Set Entity's colour
 	WORD get_colour();
 	void set_colour(WORD color);
+
+	//Get/Set Entity's timer
+	double get_timer();
+	void set_timer(double t);
 
 	//check if collision with COORD.
 	//does collision code.

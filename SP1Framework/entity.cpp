@@ -6,6 +6,8 @@ Entity::Entity()
 	c.Y = 0;
 	display = ' ';
 	entity_map = NULL;
+	colour = 0x00;
+	timer = 0;
 }
 
 Entity::Entity(COORD _c, char _display, MapMaker* map)
@@ -13,6 +15,8 @@ Entity::Entity(COORD _c, char _display, MapMaker* map)
 	c = _c;
 	display = _display;
 	entity_map = map;
+	colour = 0x00;
+	timer = 0;
 }
 
 Entity::Entity(int _y_pos, int _x_pos, char _display, MapMaker* map)
@@ -21,6 +25,8 @@ Entity::Entity(int _y_pos, int _x_pos, char _display, MapMaker* map)
 	c.X = _x_pos;
 	display = _display;
 	entity_map = map;
+	colour = 0x00;
+	timer = 0;
 }
 
 Entity::~Entity()
@@ -60,6 +66,16 @@ WORD Entity::get_colour()
 void Entity::set_colour(WORD color)
 {
 	colour = color;
+}
+
+double Entity::get_timer()
+{
+	return timer;
+}
+
+void Entity::set_timer(double t)
+{
+	timer = t;
 }
 
 

@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <Windows.h>
+#include "Level.h"
 
 double  g_dElapsedTime;
 double g_SomethingTime;
@@ -25,16 +26,16 @@ SMouseEvent g_mouseEvent;
 // Game specific variables here
 SGameChar   g_sChar;
 EGAMESTATES g_eGameState = S_SPLASHSCREEN; // initial state
-MapMaker map1;
+
 MapMaker hud;
 
-
+Level lvl;
 
 // Console object
 Console g_Console(100, 30, "SP1 Framework");
 
-Player player(1, 2, &map1);
-Guard guard(3, 67, &map1);
+//Player player(1, 2, &map1);
+//Guard guard(3, 67, &map1);
 
 //--------------------------------------------------------------
 // Purpose  : Initialisation function
@@ -59,7 +60,11 @@ void init(void)
     g_sChar.m_cLocation.Y = 11;
   
     
-    map1.Load(".Txt/D1.txt"); //Puts the Map Template.txt contents into map1's MapArray.
+
+
+    //map1.Load(".Txt/D1.txt"); 
+    lvl.Load(".Txt/D1.txt");
+
     hud.Load(".Txt/HUD Template.txt");
 
 
@@ -236,6 +241,7 @@ int getPlayerInput()
 
 void renderFOG()
 {
+    /*
     for (int x = 0; x < 100; x++) {
         for (int y = 0; y < 20; y++) {
             if (!(x >= player.get_x_pos() - 6 && x <= player.get_x_pos() + 6 && y >= player.get_y_pos() - 4 && y <= player.get_y_pos() + 4)) {
@@ -243,6 +249,7 @@ void renderFOG()
             }
         }
     }
+    */
 }
 
 //--------------------------------------------------------------
@@ -264,7 +271,7 @@ void update(double dt)
     // get the delta time
     g_dElapsedTime += dt;
     g_dDeltaTime = dt;
-    g_SomethingTime += dt;
+    lvl.SetTimers(dt);
 
     // *-- PUT LEVELS HERE --*   //
     switch (g_eGameState)
@@ -273,7 +280,7 @@ void update(double dt)
             splashScreenWait(); // game logic for the splash screen
             break;
         case S_GAME: 
-            updateGame(); // gameplay logic when we are in the game
+            lvl.Update(); // gameplay logic when we are in the game
             break;
     }
 }
@@ -288,21 +295,6 @@ void splashScreenWait()    // waits for time to pass in splash screen
 void updateGame()       // gameplay logic
 {
     processUserInput(); // checks if you should change states or do something else with the game, e.g. pause, exit
-
-    player.move(getPlayerInput());
-    if (g_SomethingTime > 0.05) {
-            guard.move(rand() % K_COUNT);
-            g_SomethingTime = 0;
-    }
-
-    //HARDCODED
-    if (guard.get_x_pos() == player.get_x_pos() && guard.get_y_pos() == player.get_y_pos()) {
-        g_bQuitGame = true;
-    }
-
-    if (player.get_x_pos() == 94 && player.get_y_pos() == 15) {
-        g_bQuitGame = true;
-    }
     //END OF HARDCODED
 
     moveCharacter();    // moves the character, collision detection, physics, etc
@@ -391,8 +383,8 @@ void renderSplashScreen()  // renders the splash screen
 void renderGame()
 {
     renderMap(); 
-    map1.Render(0, 0, 100, 20, g_Console);// renders the map to the buffer first
-    
+    //map1.Render(0, 0, 100, 20, g_Console);// renders the map to the buffer first
+    lvl.Render(g_Console);
     renderCharacter();  // renders the character into the buffer
     //renderFOG();
     hud.Render(0,20,100,30,g_Console);
@@ -432,8 +424,8 @@ void renderCharacter()
         charColor = 0x0A;
     }
     //g_Console.writeToBuffer(g_sChar.m_cLocation, player.get_display(), charColor);
-    g_Console.writeToBuffer(player.get_pos(), player.get_display(), 0x0D);
-    g_Console.writeToBuffer(guard.get_pos(), guard.get_display(), 0xFC);
+    //g_Console.writeToBuffer(player.get_pos(), player.get_display(), 0x0D);
+    //g_Console.writeToBuffer(guard.get_pos(), guard.get_display(), 0xFC);
 
     //HARDCODED EXIT
     g_Console.writeToBuffer(94,15, static_cast<char>(233), 0x03);

@@ -25,6 +25,9 @@ public:
 	//use if cannot initialise at start
 	void Load(string filename); 
 
+	void SetTimers(double t);
+
+	void Update();
 	void Render(Console &gConsole);
 
 };

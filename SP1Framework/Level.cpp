@@ -18,9 +18,11 @@ void Level::FindEntities()
 			char entity = this_map.getFromCoord(coord);
 			switch (entity) {
 			case 'P':
+				//this_map.setToCoord(coord, ' ');
 				entity_list[count++] = new Player(coord, &this_map);
 				break;
 			case 'G':
+				//this_map.setToCoord(coord, ' ');
 				entity_list[count++] = new Guard(coord, &this_map);
 				break;
 			default:
@@ -29,6 +31,7 @@ void Level::FindEntities()
 		}
 	}
 }
+
 
 Level::Level()
 {
@@ -71,10 +74,42 @@ void Level::Load(string filename)
 	}
 }
 
+void Level::SetTimers(double t)
+{
+	for (int i = 0; i < this_map.getEntityCount(); ++i) {
+		entity_list[i]->set_timer(t);
+	}
+}
+
+void Level::Update()
+{
+	processUserInput();
+	for (int i = 0; i < this_map.getEntityCount(); ++i) {
+		char theEntity = entity_list[i]->get_display();
+		switch (theEntity) {
+		case '@':
+			entity_list[i]->move(getPlayerInput());
+			break;
+		case (char)1:
+			if (entity_list[i]->get_timer() > 0.05) {
+				entity_list[i]->move(rand() % K_COUNT);
+				entity_list[i]->set_timer(0);
+			}
+			break;
+		default:
+			break;
+
+		}
+	}
+
+}
+
 void Level::Render(Console &gConsole)
 {
 	this_map.Render(0, 0, 100, 20, gConsole);
 	for (int i = 0; i < this_map.getEntityCount(); ++i) {
-		gConsole.writeToBuffer(entity_list[i]->get_pos(), entity_list[i]->get_display(), 0x0c);
+		Entity& ent = *entity_list[i];
+		gConsole.writeToBuffer(ent.get_pos(), ent.get_display(), ent.get_colour());
+		
 	}
 }

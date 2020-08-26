@@ -29,6 +29,10 @@ public:
 	//Gets character from Coordinate
 	char getFromCoord(COORD c);
 	char getFromCoord(SHORT x, SHORT y);
+	//Set at coord (Do not use unless for very specific purposes)
+	void setToCoord(COORD c, char display);
+	void setToCoord(SHORT x, SHORT y, char display);
+
 	
 	char** getMapArray();
 	int getEntityCount();

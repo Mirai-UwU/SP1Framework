@@ -89,6 +89,16 @@ char MapMaker::getFromCoord(SHORT x, SHORT y)
 
 }
 
+void MapMaker::setToCoord(COORD c, char display)
+{
+	setToCoord(c.X, c.Y, display);
+}
+
+void MapMaker::setToCoord(SHORT x, SHORT y, char display)
+{
+	MapArray[y][x] = display;
+}
+
 char** MapMaker::getMapArray()
 {
 	return MapArray;
