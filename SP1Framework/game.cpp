@@ -58,6 +58,8 @@ Guard guard(3, 67, &map1);
 void init(void)
 {
 
+    engine->play2D("background_music.mp3", true);
+
     srand(time(NULL));
     // Set precision for floating point output
     g_dElapsedTime = 0.0;
@@ -304,6 +306,7 @@ void splashScreenWait()    // waits for time to pass in splash screen
 void updateGame()       // gameplay logic
 {
     processUserInput(); // checks if you should change states or do something else with the game, e.g. pause, exit
+    
 
     player.move(getPlayerInput());
     if (static_cast<int>(g_dElapsedTime) % 6 == 0) {
