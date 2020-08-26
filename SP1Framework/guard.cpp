@@ -6,6 +6,7 @@ Guard::Guard(COORD c_pos, MapMaker* map)
 	set_pos(c_pos);
 	set_display((char)2);
     entity_map = map;
+    colour = 0xfc;
 }
 
 
@@ -15,6 +16,7 @@ Guard::Guard(int y_pos, int x_pos, MapMaker* map)
 	set_ypos(y_pos);
 	set_display((char)2);
     entity_map = map;
+    colour = 0xfc;
 }
 
 Guard::~Guard()

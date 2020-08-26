@@ -9,6 +9,7 @@ class Entity
 protected:
 	COORD c;
 	MapMaker* entity_map;
+	WORD colour;
 	char display;
 public:
 
@@ -16,7 +17,7 @@ public:
 	Entity();
 	Entity(COORD _c, char _display, MapMaker* map);
 	Entity(int _y_pos, int _x_pos, char _display, MapMaker* map);
-	
+	~Entity();
 	
 	//Get COORD or X and Y pos separately
 	COORD get_pos();
@@ -31,6 +32,10 @@ public:
 	//Get/Set Entity's symbol
 	char get_display();
 	void set_display(char _display);
+
+	//Get/Set Entity's colour
+	WORD get_colour();
+	void set_colour(WORD color);
 
 	//check if collision with COORD.
 	//does collision code.

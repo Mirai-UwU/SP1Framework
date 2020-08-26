@@ -9,6 +9,7 @@ Player::Player(COORD c_pos, MapMaker* map)
 	set_pos(c_pos);
 	set_display('@');
     entity_map = map;
+    colour = 0x0d;
 }
 
 Player::Player(int y_pos, int x_pos, MapMaker* map)
@@ -18,6 +19,7 @@ Player::Player(int y_pos, int x_pos, MapMaker* map)
 	set_ypos(y_pos);
 	set_display('@');
     entity_map = map;
+    colour = 0x0d;
 }
 
 Player::~Player()

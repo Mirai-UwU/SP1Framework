@@ -23,6 +23,10 @@ Entity::Entity(int _y_pos, int _x_pos, char _display, MapMaker* map)
 	entity_map = map;
 }
 
+Entity::~Entity()
+{
+}
+
 int Entity::get_y_pos()
 {
 	return c.Y;
@@ -46,6 +50,16 @@ char Entity::get_display()
 void Entity::set_display(char _display)
 {
 	display = _display;
+}
+
+WORD Entity::get_colour()
+{
+	return colour;
+}
+
+void Entity::set_colour(WORD color)
+{
+	colour = color;
 }
 
 
