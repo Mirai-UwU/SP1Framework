@@ -15,6 +15,16 @@
 #include <stdlib.h>
 #include <time.h>
 #include <Windows.h>
+#include <irrKlang.h>
+#include <stdio.h>
+#include <conio.h>
+#include "Dependencies/irrKlang-1.6.0/include/irrKlang.h"
+
+// Irrklang linker
+using namespace irrklang;
+#pragma comment(lib, "irrKlang.lib")
+
+
 
 double  g_dElapsedTime;
 double  g_dDeltaTime;
@@ -27,6 +37,9 @@ EGAMESTATES g_eGameState = S_SPLASHSCREEN; // initial state
 MapMaker map1;
 MapMaker hud;
 
+
+// Start IrrKlang Sound Engine
+ISoundEngine* engine = createIrrKlangDevice();
 
 
 // Console object
@@ -60,7 +73,6 @@ void init(void)
     
     map1.Load(".Txt/D1.txt"); //Puts the Map Template.txt contents into map1's MapArray.
     hud.Load(".Txt/HUD Template.txt");
-
 
 
 
@@ -218,16 +230,21 @@ void gameplayMouseHandler(const MOUSE_EVENT_RECORD& mouseEvent)
 
 int getPlayerInput()
 {
+    
     if (g_skKeyEvent[K_UP].keyReleased) {
+        engine->play2D("walk_sound.wav");
         return K_UP;
     }
     if (g_skKeyEvent[K_DOWN].keyReleased) {
+        engine->play2D("walk_sound.wav");
         return K_DOWN;
     }
     if (g_skKeyEvent[K_LEFT].keyReleased) {
+        engine->play2D("walk_sound.wav");
         return K_LEFT;
     }
     if (g_skKeyEvent[K_RIGHT].keyReleased) {
+        engine->play2D("walk_sound.wav");
         return K_RIGHT;
     }
     return K_COUNT;
