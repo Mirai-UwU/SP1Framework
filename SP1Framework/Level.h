@@ -8,7 +8,7 @@ class Level
 {
 private:
 	string filepath;
-
+	
 	//Loads everything up
 	void Build();
 	//Finds and Puts Entities into entity_list
@@ -17,6 +17,7 @@ protected:
 	
 	MapMaker this_map;
 	Entity** entity_list;
+	int entitycount;
 public:
 	Level();
 	Level(string filename);

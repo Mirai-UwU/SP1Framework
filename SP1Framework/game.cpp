@@ -18,7 +18,6 @@
 #include "Level.h"
 
 double  g_dElapsedTime;
-double g_SomethingTime;
 double  g_dDeltaTime;
 SKeyEvent g_skKeyEvent[K_COUNT];
 SMouseEvent g_mouseEvent;
@@ -32,7 +31,7 @@ MapMaker hud;
 Level lvl;
 
 // Console object
-Console g_Console(100, 30, "SP1 Framework");
+Console g_Console(100, 30, "A Way Out");
 
 //Player player(1, 2, &map1);
 //Guard guard(3, 67, &map1);
@@ -271,7 +270,7 @@ void update(double dt)
     // get the delta time
     g_dElapsedTime += dt;
     g_dDeltaTime = dt;
-    lvl.SetTimers(dt);
+    lvl.SetTimers(g_dElapsedTime);
 
     // *-- PUT LEVELS HERE --*   //
     switch (g_eGameState)
