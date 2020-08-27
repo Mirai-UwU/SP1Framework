@@ -44,7 +44,7 @@ ISoundEngine* engine = createIrrKlangDevice();
 
 
 // Console object
-Console g_Console(100, 30, "SP1 Framework");
+Console g_Console(100, 25, "A Way Out");
 
 Player player(1, 2, &map1);
 Guard guard(3, 67, &map1);
