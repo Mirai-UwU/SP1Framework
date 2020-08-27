@@ -399,10 +399,10 @@ void renderSplashScreen()  // renders the splash screen
     c.X = c.X / 2 - 9;
     g_Console.writeToBuffer(c, "A Way Out", 0x03);
     c.Y += 1;
-    c.X = g_Console.getConsoleSize().X / 2 - 20;
-    g_Console.writeToBuffer(c, "Arrow Keys to Move. Look for the Blue Circle.", 0x09);
+    c.X = g_Console.getConsoleSize().X / 2 - 35;
+    g_Console.writeToBuffer(c, "Use Arrow Keys to Move. Look for the Blue Circle To Proceed.", 0x09);
     c.Y += 1;
-    c.X = g_Console.getConsoleSize().X / 2 - 9;
+    c.X = g_Console.getConsoleSize().X / 2 - 13;
     g_Console.writeToBuffer(c, "Press 'Esc' to quit", 0x09);
 }
 
