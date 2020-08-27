@@ -27,7 +27,7 @@ Player::~Player()
 
 int Player::get_lives()
 {
-
+    lives--;
     return lives;
 }
 
