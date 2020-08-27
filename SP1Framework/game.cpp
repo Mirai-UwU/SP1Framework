@@ -262,7 +262,9 @@ int getPlayerInput()
     }
     if (g_skKeyEvent[K_BOMB].keyReleased)
     {
-
+        int ren = 1;
+        ren++;
+        renderFOG();
 
     }
     if (g_skKeyEvent[K_TELEPORTER].keyReleased)
@@ -280,12 +282,20 @@ int getPlayerInput()
 
 void renderFOG()
 {
-    for (int x = 0; x < 100; x++) {
-        for (int y = 0; y < 20; y++) {
-            if (!(x >= p->get_x_pos() - 6 && x <= p->get_x_pos() + 6 && y >= p->get_y_pos() - 4 && y <= p->get_y_pos() + 4)) {
-                g_Console.writeToBuffer(x, y, ' ', 0x00);
+    if (ren = 1)
+    {
+        for (int x = 0; x < 100; x++) {
+            for (int y = 0; y < 20; y++) {
+                if (!(x >= p->get_x_pos() - 6 && x <= p->get_x_pos() + 6 && y >= p->get_y_pos() - 4 && y <= p->get_y_pos() + 4)) {
+                    g_Console.writeToBuffer(x, y, ' ', 0x00);
+                }
             }
         }
+
+    }
+    if (ren >= 2)
+    {
+
     }
 }
 
