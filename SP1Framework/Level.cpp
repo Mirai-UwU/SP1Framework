@@ -6,6 +6,9 @@ void Level::Build()
 	entitycount = this_map.getEntityCount();
 	entity_list = new Entity* [entitycount];
 	FindEntities();
+	for (int i = 0; i < entitycount; i++) {
+		this_map.setToCoord(entity_list[i]->get_pos(), ' ');
+	}
 }
 
 void Level::FindEntities()
@@ -34,11 +37,11 @@ void Level::FindEntities()
 
 			if (entity == 'P') {
 				entity_list[count++] = new Player(coord, &this_map);
-				this_map.setToCoord(coord, ' ');
+				//this_map.setToCoord(coord, ' ');
 			} 
 			if (entity == 'G') {
 				entity_list[count++] = new Guard(coord, &this_map);
-				this_map.setToCoord(coord, ' ');
+				//this_map.setToCoord(coord, ' ');
 			}
 		}
 	}
