@@ -7,6 +7,7 @@
 class Player : public Entity
 {
 private:
+	int lives = 3;
 
 public:
 
@@ -14,7 +15,7 @@ public:
 	Player(int y_pos, int x_pos, MapMaker* map);
 	~Player();
 	
-
+	int get_lives();
 	void move(int button_pressed);
 
 	bool collide(COORD entity_pos);

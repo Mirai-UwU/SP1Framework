@@ -25,6 +25,12 @@ Player::~Player()
 }
 
 
+int Player::get_lives()
+{
+    lives--;
+    return lives;
+}
+
 void Player::move(int button_pressed)
 {
     if (button_pressed == K_DOWN && !collide(c.X, c.Y + 1))
