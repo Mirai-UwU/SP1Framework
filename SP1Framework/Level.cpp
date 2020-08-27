@@ -87,18 +87,19 @@ void Level::Update()
 	for (int i = 0; i < this_map.getEntityCount(); ++i) {
 		char theEntity = entity_list[i]->get_display();
 		switch (theEntity) {
-		case '@':
-			entity_list[i]->move(getPlayerInput());
-			break;
-		case (char)1:
+		case (char)2:
 			if (entity_list[i]->get_timer() > 0.05) {
 				entity_list[i]->move(rand() % K_COUNT);
 				entity_list[i]->set_timer(0);
 			}
 			break;
+
+		case '@':
+			entity_list[i]->move(getPlayerInput());
+			break;
 		default:
 			break;
-
+			
 		}
 	}
 
