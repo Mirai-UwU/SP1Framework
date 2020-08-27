@@ -2,12 +2,14 @@
 #include <irrKlang.h>
 #include <iostream>
 #include <conio.h>
-#pragma comment(lib, "irrKlang.lib")
 
 using namespace irrklang;
 
+#pragma comment(lib, "irrKlang.lib")
+
 class Sound
 {
+public:
 	ISoundEngine* engine;
 	Sound();
 };

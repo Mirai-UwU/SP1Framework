@@ -3,5 +3,5 @@
 
 Sound::Sound()
 {
-	ISoundEngine* engine = createIrrKlangDevice();
+	engine = createIrrKlangDevice();
 }
