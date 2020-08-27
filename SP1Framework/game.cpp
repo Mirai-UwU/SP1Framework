@@ -40,11 +40,11 @@ MapMaker hud;
 
 
 // Start IrrKlang Sound Engine
-ISoundEngine* engine = createIrrKlangDevice();
+//ISoundEngine* engine = createIrrKlangDevice();
 
 
 // Console object
-Console g_Console(100, 25, "A Way Out");
+Console g_Console(102, 25, "A Way Out");
 
 
 Player* p=new Player(1, 2, &map1);
@@ -262,9 +262,6 @@ int getPlayerInput()
     }
     if (g_skKeyEvent[K_BOMB].keyReleased)
     {
-        int ren = 1;
-        ren++;
-        renderFOG();
 
     }
     if (g_skKeyEvent[K_TELEPORTER].keyReleased)
@@ -282,6 +279,8 @@ int getPlayerInput()
 
 void renderFOG()
 {
+    int ren = 1;
+
     if (ren == 1)
     {
         for (int x = 0; x < 100; x++) {
@@ -289,7 +288,12 @@ void renderFOG()
                 if (!(x >= p->get_x_pos() - 6 && x <= p->get_x_pos() + 6 && y >= p->get_y_pos() - 4 && y <= p->get_y_pos() + 4)) {
                     g_Console.writeToBuffer(x, y, ' ', 0x00);
                 }
-            }
+
+    for (int x = 0; x < 102; x++) {
+        for (int y = 0; y < 20; y++) {
+            if (!(x >= p->get_x_pos() - 6 && x <= p->get_x_pos() + 6 && y >= p->get_y_pos() - 4 && y <= p->get_y_pos() + 4)) {
+                g_Console.writeToBuffer(x, y, ' ', 0x00);
+
         }
     }
     if (ren == 2)
@@ -327,6 +331,7 @@ void update(double dt)
             splashScreenWait(); // game logic for the splash screen
             break;
         case S_GAME: 
+         //   sound.engine->play2D("background_music.mp3");
             updateGame(); // gameplay logic when we are in the game
             break;
     }
@@ -446,7 +451,7 @@ void renderSplashScreen()  // renders the splash screen
 void renderGame()
 {
     renderMap(); 
-    map1.Render(0, 0, 100, 20, g_Console);// renders the map to the buffer first
+    map1.Render(0, 0, 102, 20, g_Console);// renders the map to the buffer first
     
     renderCharacter();  // renders the character into the buffer
     renderFOG();
