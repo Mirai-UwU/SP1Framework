@@ -59,7 +59,7 @@ Guard* g=new Guard(3, 67, &map1);
 void init(void)
 {
 
-    engine->play2D("background_music.mp3", true);
+    /*engine->play2D("background_music.mp3", true);*/
 
     srand(time(NULL));
     // Set precision for floating point output
@@ -101,7 +101,8 @@ void shutdown( void )
 {
     // Reset to white text on black background
     colour(FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED);
-
+    delete p;
+    delete g;
     g_Console.clearBuffer();
 }
 
