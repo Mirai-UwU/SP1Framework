@@ -37,6 +37,7 @@ SMouseEvent g_mouseEvent;
 SGameChar   g_sChar;
 EGAMESTATES g_eGameState = S_SPLASHSCREEN; // initial state
 
+MapMaker map1;
 MapMaker hud;
 Level lvl;
 
