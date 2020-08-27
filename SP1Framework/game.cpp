@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <Windows.h>
+#include "Level.h"
 #include <irrKlang.h>
 #include <stdio.h>
 #include <conio.h>
@@ -35,9 +36,10 @@ SMouseEvent g_mouseEvent;
 // Game specific variables here
 SGameChar   g_sChar;
 EGAMESTATES g_eGameState = S_SPLASHSCREEN; // initial state
+
 MapMaker map1;
 MapMaker hud;
-
+Level lvl;
 
 // Start IrrKlang Sound Engine
 //ISoundEngine* engine = createIrrKlangDevice();
@@ -61,7 +63,7 @@ Guard* g=new Guard(3, 67, &map1);
 void init(void)
 {
 
-    srand(time(NULL));
+    srand(static_cast<unsigned int>(time(NULL)));
     // Set precision for floating point output
     g_dElapsedTime = 0.0;
 
@@ -74,7 +76,11 @@ void init(void)
     g_sChar.m_cLocation.Y = 11;
   
     
-    map1.Load(".Txt/D1.txt"); //Puts the Map Template.txt contents into map1's MapArray.
+
+
+    //map1.Load(".Txt/D1.txt"); 
+    lvl.Load(".Txt/D1.txt");
+
     hud.Load(".Txt/HUD Template.txt");
 
 
@@ -238,21 +244,16 @@ void gameplayMouseHandler(const MOUSE_EVENT_RECORD& mouseEvent)
 
 int getPlayerInput()
 {
-    
-    if (g_skKeyEvent[K_UP].keyReleased) {
-        
+    if (g_skKeyEvent[K_UP].keyDown) {
         return K_UP;
     }
-    if (g_skKeyEvent[K_DOWN].keyReleased) {
-        
+    if (g_skKeyEvent[K_DOWN].keyDown) {
         return K_DOWN;
     }
-    if (g_skKeyEvent[K_LEFT].keyReleased) {
-        
+    if (g_skKeyEvent[K_LEFT].keyDown) {
         return K_LEFT;
     }
-    if (g_skKeyEvent[K_RIGHT].keyReleased) {
-        
+    if (g_skKeyEvent[K_RIGHT].keyDown) {
         return K_RIGHT;
     }
     if (g_skKeyEvent[K_ROPE].keyReleased)
@@ -293,6 +294,7 @@ void renderFOG()
     }
     if (ren == 2)
     {
+
     }
 
    
@@ -317,7 +319,7 @@ void update(double dt)
     // get the delta time
     g_dElapsedTime += dt;
     g_dDeltaTime = dt;
-
+    lvl.SetTimers(g_dElapsedTime);
 
     // *-- PUT LEVELS HERE --*   //
     switch (g_eGameState)
@@ -326,8 +328,9 @@ void update(double dt)
             splashScreenWait(); // game logic for the splash screen
             break;
         case S_GAME: 
+            lvl.Update(); // gameplay logic when we are in the game
          //   sound.engine->play2D("background_music.mp3");
-            updateGame(); // gameplay logic when we are in the game
+         // updateGame(); // gameplay logic when we are in the game
             break;
     }
 }
@@ -446,7 +449,9 @@ void renderSplashScreen()  // renders the splash screen
 void renderGame()
 {
     renderMap(); 
-    map1.Render(0, 0, 102, 20, g_Console);// renders the map to the buffer first
+    //map1.Render(0, 0, 100, 20, g_Console);// renders the map to the buffer first
+    lvl.Render(g_Console);
+    //map1.Render(0, 0, 102, 20, g_Console);// renders the map to the buffer first
     
     renderCharacter();  // renders the character into the buffer
     renderFOG();
@@ -473,7 +478,7 @@ void renderMap()
         c.X = 5 * i;
         c.Y = i + 1;
         colour(colors[i]);
-        g_Console.writeToBuffer(c, "°", colors[i]);
+        g_Console.writeToBuffer(c, "Â°", colors[i]);
     }
 
 }
@@ -488,12 +493,13 @@ void renderCharacter()
     }
     //g_Console.writeToBuffer(g_sChar.m_cLocation, player.get_display(), charColor);
 
+
     g_Console.writeToBuffer(p->get_pos(), p->get_display(), 0x0D);
     g_Console.writeToBuffer(g->get_pos(), g->get_display(), 0xFC);
 
 
     //HARDCODED EXIT
-    g_Console.writeToBuffer(94, 15, 233, 0x03);
+    g_Console.writeToBuffer(94,15, static_cast<char>(233), 0x03);
     
 }
 

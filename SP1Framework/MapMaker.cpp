@@ -29,7 +29,7 @@ void MapMaker::Load(string filepath)
 		{
 			no_of_col = static_cast<int>(Map.length());
 			
-			no_of_rows++;
+			no_of_rows += 1;
 		}
 		file_.close();
 	}
@@ -42,10 +42,10 @@ void MapMaker::Load(string filepath)
 		int row = 0;
 		while (getline(file2_, Map))
 		{
-			for (int col = 0; col < no_of_col; col++) {
-				MapArray[row][col] = Map[col];
+			for (int col = 0; col < no_of_col; col = col + 1) {
+				setToCoord(col,row,Map[col]);
 			}
-			row++;
+			row += 1;
 
 		}
 
@@ -89,6 +89,16 @@ char MapMaker::getFromCoord(SHORT x, SHORT y)
 
 }
 
+void MapMaker::setToCoord(COORD c, char display)
+{
+	setToCoord(c.X, c.Y, display);
+}
+
+void MapMaker::setToCoord(SHORT x, SHORT y, char display)
+{
+	MapArray[y][x] = display;
+}
+
 char** MapMaker::getMapArray()
 {
 	return MapArray;
@@ -97,25 +107,34 @@ char** MapMaker::getMapArray()
 int MapMaker::getEntityCount()
 {
 	int count = 0;
-	/*for (int row = 0; row < no_of_rows; row++) {
+	for (int row = 0; row < no_of_rows; row++) {
 		for (int col = 0; col < no_of_col; col++) {
 			switch (getFromCoord(col, row)) {
 			case 'P':
 			case 'G':
-			case ']':
-			case '[':
-			case '&':
-			case '%':
-			case '$':
-
+			//case ']':
+			//case '[':
+			//case '&':
+			//case '%':
+			//case '$':
 				count++;
 				break;
 			default:
 				break;
 			}
 		}
-	}*/
+	}
 	return count;
+}
+
+int MapMaker::get_row()
+{
+	return no_of_rows;
+}
+
+int MapMaker::get_col()
+{
+	return no_of_col;
 }
 
 
