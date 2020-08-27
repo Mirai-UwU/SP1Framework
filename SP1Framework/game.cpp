@@ -307,15 +307,18 @@ void updateGame()       // gameplay logic
 {
     processUserInput(); // checks if you should change states or do something else with the game, e.g. pause, exit
     
-
     player.move(getPlayerInput());
-    if (static_cast<int>(g_dElapsedTime) % 6 == 0) {
+    if (static_cast<int>(g_dElapsedTime) % 6 == 0) 
+    {
         guard.move(rand() % K_COUNT);
     }
 
     //HARDCODED
-    if (guard.get_x_pos() == player.get_x_pos() && guard.get_y_pos() == player.get_y_pos()) {
-        g_bQuitGame = true;
+    if (guard.get_x_pos() == player.get_x_pos() && guard.get_y_pos() == player.get_y_pos()) 
+    {
+        
+        player.set_xpos(2);
+        player.set_ypos(1);
     }
 
     if (player.get_x_pos() == 94 && player.get_y_pos() == 15) {
@@ -324,7 +327,10 @@ void updateGame()       // gameplay logic
     //END OF HARDCODED
 
     moveCharacter();    // moves the character, collision detection, physics, etc
-                        // sound can be played here too.
+                        // sound can be played here too
+
+    
+    
     
 }
 
@@ -413,7 +419,7 @@ void renderGame()
     
     renderCharacter();  // renders the character into the buffer
     renderFOG();
-    hud.Render(0,20,100,30,g_Console);
+    hud.Render(0,20,100,26,g_Console);
 }
 
 
