@@ -19,6 +19,7 @@
 #include <stdio.h>
 #include <conio.h>
 #include "Dependencies/irrKlang-1.6.0/include/irrKlang.h"
+#include "Sound.h"
 
 // Irrklang linker
 using namespace irrklang;
@@ -43,10 +44,12 @@ ISoundEngine* engine = createIrrKlangDevice();
 
 
 // Console object
-Console g_Console(100, 30, "SP1 Framework");
+Console g_Console(100, 25, "A Way Out");
+
 
 Player* p=new Player(1, 2, &map1);
-Guard guard(3, 67, &map1);
+Guard* g=new Guard(3, 67, &map1);
+
 
 //--------------------------------------------------------------
 // Purpose  : Initialisation function
@@ -57,8 +60,6 @@ Guard guard(3, 67, &map1);
 //--------------------------------------------------------------
 void init(void)
 {
-
-    engine->play2D("background_music.mp3", true);
 
     srand(time(NULL));
     // Set precision for floating point output
@@ -100,7 +101,8 @@ void shutdown( void )
 {
     // Reset to white text on black background
     colour(FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED);
-
+    delete p;
+    delete g;
     g_Console.clearBuffer();
 }
 
@@ -199,6 +201,9 @@ void gameplayKBHandler(const KEY_EVENT_RECORD& keyboardEvent)
     case VK_RIGHT: key = K_RIGHT; break; 
     case VK_SPACE: key = K_SPACE; break;
     case VK_ESCAPE: key = K_ESCAPE; break; 
+    case VK_F1: key = K_BOMB; break;
+    case VK_F2: key = K_TELEPORTER; break;
+    case VK_F3: key = K_ROPE; break;
     }
     // a key pressed event would be one with bKeyDown == true
     // a key released event would be one with bKeyDown == false
@@ -209,6 +214,7 @@ void gameplayKBHandler(const KEY_EVENT_RECORD& keyboardEvent)
         g_skKeyEvent[key].keyDown = keyboardEvent.bKeyDown;
         g_skKeyEvent[key].keyReleased = !keyboardEvent.bKeyDown;
     }    
+
 }
 
 //--------------------------------------------------------------
@@ -234,32 +240,62 @@ int getPlayerInput()
 {
     
     if (g_skKeyEvent[K_UP].keyReleased) {
-        engine->play2D("footstep.mp3");
+        
         return K_UP;
     }
     if (g_skKeyEvent[K_DOWN].keyReleased) {
-        engine->play2D("footstep.mp3");
+        
         return K_DOWN;
     }
     if (g_skKeyEvent[K_LEFT].keyReleased) {
-        engine->play2D("footstep.mp3");
+        
         return K_LEFT;
     }
     if (g_skKeyEvent[K_RIGHT].keyReleased) {
-        engine->play2D("footstep.mp3");
+        
         return K_RIGHT;
+    }
+    if (g_skKeyEvent[K_ROPE].keyReleased)
+    {
+        p->set_xpos(2);
+        p->set_ypos(1);
+    }
+    if (g_skKeyEvent[K_BOMB].keyReleased)
+    {
+        int ren = 1;
+        ren++;
+        renderFOG();
+
+    }
+    if (g_skKeyEvent[K_TELEPORTER].keyReleased)
+    {
+        p->set_xpos(rand() % 100);
+        p->set_ypos(rand() % 20);
+        while (map1.getFromCoord(p->get_x_pos(),p->get_y_pos()) != ' ')
+        {
+            p->set_xpos(rand() % 100);
+            p->set_ypos(rand() % 20);
+        }
     }
     return K_COUNT;
 }
 
 void renderFOG()
 {
-    for (int x = 0; x < 100; x++) {
-        for (int y = 0; y < 20; y++) {
-            if (!(x >= p->get_x_pos() - 6 && x <= p->get_x_pos() + 6 && y >= p->get_y_pos() - 4 && y <= p->get_y_pos() + 4)) {
-                g_Console.writeToBuffer(x, y, ' ', 0x00);
+    if (ren = 1)
+    {
+        for (int x = 0; x < 100; x++) {
+            for (int y = 0; y < 20; y++) {
+                if (!(x >= p->get_x_pos() - 6 && x <= p->get_x_pos() + 6 && y >= p->get_y_pos() - 4 && y <= p->get_y_pos() + 4)) {
+                    g_Console.writeToBuffer(x, y, ' ', 0x00);
+                }
             }
         }
+
+    }
+    if (ren >= 2)
+    {
+
     }
 }
 
@@ -306,15 +342,14 @@ void splashScreenWait()    // waits for time to pass in splash screen
 void updateGame()       // gameplay logic
 {
     processUserInput(); // checks if you should change states or do something else with the game, e.g. pause, exit
-    
     p->move(getPlayerInput());
     if (static_cast<int>(g_dElapsedTime) % 6 == 0) 
     {
-        guard.move(rand() % K_COUNT);
+        g->move(rand() % K_COUNT);
     }
 
     //HARDCODED
-    if (guard.get_x_pos() == p->get_x_pos() && guard.get_y_pos() == p->get_y_pos()) 
+    if (g->get_x_pos() == p->get_x_pos() && g->get_y_pos() == p->get_y_pos()) 
     {
         p->get_lives();
         if (p->get_lives() <= 0)
@@ -331,10 +366,7 @@ void updateGame()       // gameplay logic
     //END OF HARDCODED
 
     moveCharacter();    // moves the character, collision detection, physics, etc
-                        // sound can be played here too
-
-    
-    
+                        // sound can be played here too.
     
 }
 
@@ -344,6 +376,14 @@ void moveCharacter()
 {    
     // Updating the location of the character based on the key release
     // providing a beep sound whenver we shift the character
+
+    /*Sound se;
+    se.addSoundEffect("C:/Users/user/Desktop/sound/Minecraft - stone1.mp3");
+    int effect = 0;
+    se.playSoundEffect(effect);*/
+
+    
+
    
 }
 
@@ -372,6 +412,7 @@ void render()
         renderSplashScreen();
         break;
     case S_GAME: 
+//        engine->play2D("backgroup_music.mp3", true);
         renderGame();
         break;
     }
@@ -399,13 +440,13 @@ void renderSplashScreen()  // renders the splash screen
     COORD c = g_Console.getConsoleSize();
     c.Y /= 3;
     c.X = c.X / 2 - 9;
-    g_Console.writeToBuffer(c, " A Way Out ", 0x03);
+    g_Console.writeToBuffer(c, "A Way Out", 0x03);
     c.Y += 1;
     c.X = g_Console.getConsoleSize().X / 2 - 20;
-    g_Console.writeToBuffer(c, " Arrow Keys to Move. Look for the Blue Circle. ", 0x09);
+    g_Console.writeToBuffer(c, "Arrow Keys to Move. Look for the Blue Circle.", 0x09);
     c.Y += 1;
     c.X = g_Console.getConsoleSize().X / 2 - 9;
-    g_Console.writeToBuffer(c, " Press 'Esc' to quit ", 0x09);
+    g_Console.writeToBuffer(c, "Press 'Esc' to quit", 0x09);
 }
 
 void renderGame()
@@ -452,8 +493,10 @@ void renderCharacter()
         charColor = 0x0A;
     }
     //g_Console.writeToBuffer(g_sChar.m_cLocation, player.get_display(), charColor);
+
     g_Console.writeToBuffer(p->get_pos(), p->get_display(), 0x0D);
-    g_Console.writeToBuffer(guard.get_pos(), guard.get_display(), 0xFC);
+    g_Console.writeToBuffer(g->get_pos(), g->get_display(), 0xFC);
+
 
     //HARDCODED EXIT
     g_Console.writeToBuffer(94, 15, 233, 0x03);

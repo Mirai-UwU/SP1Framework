@@ -1,7 +1,6 @@
 #include "Player.h"
-
+#include "Sound.h"
 #include "MapMaker.h"
-
 
 
 Player::Player(COORD c_pos, MapMaker* map)
@@ -35,21 +34,23 @@ void Player::move(int button_pressed)
 {
     if (button_pressed == K_DOWN && !collide(c.X, c.Y + 1))
     {
+        sound.engine->play2D("footstep.mp3");
         move_down(1);
 
     }
     if (button_pressed == K_LEFT && !collide(c.X - 1, c.Y))
     {
-
+        sound.engine->play2D("footstep.mp3");
         move_left(1);
     }
     if (button_pressed == K_UP && !collide(c.X, c.Y - 1))
     {
-
+        sound.engine->play2D("footstep.mp3");
         move_up(1);
     }
     if (button_pressed == K_RIGHT && !collide(c.X + 1, c.Y))
     {
+        sound.engine->play2D("footstep.mp3");
         move_right(1);
     }
 

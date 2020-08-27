@@ -166,9 +166,11 @@
     <ClCompile Include="Framework\timer.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="guard.cpp" />
+    <ClCompile Include="hud.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MapMaker.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Sound.cpp" />
     <ClCompile Include="rope.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -179,8 +181,10 @@
     <ClInclude Include="Framework\timer.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="guard.h" />
+    <ClInclude Include="HUD.h" />
     <ClInclude Include="MapMaker.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Sound.h" />
     <ClInclude Include="Rope.h" />
   </ItemGroup>
   <ItemGroup>
