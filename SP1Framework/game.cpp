@@ -317,7 +317,7 @@ void updateGame()       // gameplay logic
     if (guard.get_x_pos() == p->get_x_pos() && guard.get_y_pos() == p->get_y_pos()) 
     {
         p->get_lives();
-        if (p->get_lives() == 0)
+        if (p->get_lives() <= 0)
         {
             g_bQuitGame = true;
         }
@@ -344,14 +344,6 @@ void moveCharacter()
 {    
     // Updating the location of the character based on the key release
     // providing a beep sound whenver we shift the character
-
-    /*Sound se;
-    se.addSoundEffect("C:/Users/user/Desktop/sound/Minecraft - stone1.mp3");
-    int effect = 0;
-    se.playSoundEffect(effect);*/
-
-    
-
    
 }
 
@@ -423,7 +415,7 @@ void renderGame()
     
     renderCharacter();  // renders the character into the buffer
     renderFOG();
-    hud.Render(0,20,100,26,g_Console);
+    hud.Render(0,20,100,25,g_Console);
 }
 
 
