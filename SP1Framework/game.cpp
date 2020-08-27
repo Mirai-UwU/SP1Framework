@@ -22,8 +22,8 @@
 #include "Sound.h"
 
 // Irrklang linker
-//using namespace irrklang;
-//#pragma comment(lib, "irrKlang.lib")
+using namespace irrklang;
+#pragma comment(lib, "irrKlang.lib")
 
 
 
@@ -40,13 +40,13 @@ MapMaker hud;
 
 
 // Start IrrKlang Sound Engine
-//ISoundEngine* engine = createIrrKlangDevice();
+ISoundEngine* engine = createIrrKlangDevice();
 
 
 // Console object
 Console g_Console(100, 30, "SP1 Framework");
 
-Player* p=new Player(1, 2, &map1);
+Player player(1, 2, &map1);
 Guard guard(3, 67, &map1);
 
 //--------------------------------------------------------------
@@ -58,8 +58,6 @@ Guard guard(3, 67, &map1);
 //--------------------------------------------------------------
 void init(void)
 {
-
-    engine->play2D("background_music.mp3", true);
 
     srand(time(NULL));
     // Set precision for floating point output
@@ -257,7 +255,7 @@ void renderFOG()
 {
     for (int x = 0; x < 100; x++) {
         for (int y = 0; y < 20; y++) {
-            if (!(x >= p->get_x_pos() - 6 && x <= p->get_x_pos() + 6 && y >= p->get_y_pos() - 4 && y <= p->get_y_pos() + 4)) {
+            if (!(x >= player.get_x_pos() - 6 && x <= player.get_x_pos() + 6 && y >= player.get_y_pos() - 4 && y <= player.get_y_pos() + 4)) {
                 g_Console.writeToBuffer(x, y, ' ', 0x00);
             }
         }
@@ -307,35 +305,24 @@ void splashScreenWait()    // waits for time to pass in splash screen
 void updateGame()       // gameplay logic
 {
     processUserInput(); // checks if you should change states or do something else with the game, e.g. pause, exit
-    
-    p->move(getPlayerInput());
-    if (static_cast<int>(g_dElapsedTime) % 6 == 0) 
-    {
+
+    player.move(getPlayerInput());
+    if (static_cast<int>(g_dElapsedTime) % 6 == 0) {
         guard.move(rand() % K_COUNT);
     }
 
     //HARDCODED
-    if (guard.get_x_pos() == p->get_x_pos() && guard.get_y_pos() == p->get_y_pos()) 
-    {
-        p->get_lives();
-        if (p->get_lives() <= 0)
-        {
-            g_bQuitGame = true;
-        }
-        p->set_xpos(2);
-        p->set_ypos(1);
+    if (guard.get_x_pos() == player.get_x_pos() && guard.get_y_pos() == player.get_y_pos()) {
+        g_bQuitGame = true;
     }
 
-    if (p->get_x_pos() == 94 && p->get_y_pos() == 15) {
+    if (player.get_x_pos() == 94 && player.get_y_pos() == 15) {
         g_bQuitGame = true;
     }
     //END OF HARDCODED
 
     moveCharacter();    // moves the character, collision detection, physics, etc
-                        // sound can be played here too
-
-    
-    
+                        // sound can be played here too.
     
 }
 
@@ -345,6 +332,14 @@ void moveCharacter()
 {    
     // Updating the location of the character based on the key release
     // providing a beep sound whenver we shift the character
+
+    /*Sound se;
+    se.addSoundEffect("C:/Users/user/Desktop/sound/Minecraft - stone1.mp3");
+    int effect = 0;
+    se.playSoundEffect(effect);*/
+
+    
+
    
 }
 
@@ -373,6 +368,7 @@ void render()
         renderSplashScreen();
         break;
     case S_GAME: 
+//        engine->play2D("backgroup_music.mp3", true);
         renderGame();
         break;
     }
@@ -400,13 +396,13 @@ void renderSplashScreen()  // renders the splash screen
     COORD c = g_Console.getConsoleSize();
     c.Y /= 3;
     c.X = c.X / 2 - 9;
-    g_Console.writeToBuffer(c, " A Way Out ", 0x03);
+    g_Console.writeToBuffer(c, "A Way Out", 0x03);
     c.Y += 1;
     c.X = g_Console.getConsoleSize().X / 2 - 20;
-    g_Console.writeToBuffer(c, " Arrow Keys to Move. Look for the Blue Circle. ", 0x09);
+    g_Console.writeToBuffer(c, "Arrow Keys to Move. Look for the Blue Circle.", 0x09);
     c.Y += 1;
     c.X = g_Console.getConsoleSize().X / 2 - 9;
-    g_Console.writeToBuffer(c, " Press 'Esc' to quit ", 0x09);
+    g_Console.writeToBuffer(c, "Press 'Esc' to quit", 0x09);
 }
 
 void renderGame()
@@ -439,7 +435,7 @@ void renderMap()
         c.X = 5 * i;
         c.Y = i + 1;
         colour(colors[i]);
-        g_Console.writeToBuffer(c, "Â°", colors[i]);
+        g_Console.writeToBuffer(c, "°", colors[i]);
     }
 
 }
@@ -453,7 +449,7 @@ void renderCharacter()
         charColor = 0x0A;
     }
     //g_Console.writeToBuffer(g_sChar.m_cLocation, player.get_display(), charColor);
-    g_Console.writeToBuffer(p->get_pos(), p->get_display(), 0x0D);
+    g_Console.writeToBuffer(player.get_pos(), player.get_display(), 0x0D);
     g_Console.writeToBuffer(guard.get_pos(), guard.get_display(), 0xFC);
 
     //HARDCODED EXIT
