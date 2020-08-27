@@ -19,10 +19,11 @@
 #include <stdio.h>
 #include <conio.h>
 #include "Dependencies/irrKlang-1.6.0/include/irrKlang.h"
+#include "Sound.h"
 
 // Irrklang linker
-using namespace irrklang;
-#pragma comment(lib, "irrKlang.lib")
+//using namespace irrklang;
+//#pragma comment(lib, "irrKlang.lib")
 
 
 
@@ -39,7 +40,7 @@ MapMaker hud;
 
 
 // Start IrrKlang Sound Engine
-ISoundEngine* engine = createIrrKlangDevice();
+//ISoundEngine* engine = createIrrKlangDevice();
 
 
 // Console object
@@ -234,19 +235,19 @@ int getPlayerInput()
 {
     
     if (g_skKeyEvent[K_UP].keyReleased) {
-        engine->play2D("footstep.mp3");
+        
         return K_UP;
     }
     if (g_skKeyEvent[K_DOWN].keyReleased) {
-        engine->play2D("footstep.mp3");
+        
         return K_DOWN;
     }
     if (g_skKeyEvent[K_LEFT].keyReleased) {
-        engine->play2D("footstep.mp3");
+        
         return K_LEFT;
     }
     if (g_skKeyEvent[K_RIGHT].keyReleased) {
-        engine->play2D("footstep.mp3");
+        
         return K_RIGHT;
     }
     return K_COUNT;
@@ -438,7 +439,7 @@ void renderMap()
         c.X = 5 * i;
         c.Y = i + 1;
         colour(colors[i]);
-        g_Console.writeToBuffer(c, "°", colors[i]);
+        g_Console.writeToBuffer(c, "Â°", colors[i]);
     }
 
 }
