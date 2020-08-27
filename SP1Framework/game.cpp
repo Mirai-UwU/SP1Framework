@@ -262,7 +262,9 @@ int getPlayerInput()
     }
     if (g_skKeyEvent[K_BOMB].keyReleased)
     {
-
+        int ren = 1;
+        ren++;
+        renderFOG();
 
     }
     if (g_skKeyEvent[K_TELEPORTER].keyReleased)
@@ -287,6 +289,8 @@ void renderFOG()
             }
         }
     }
+
+   
 }
 
 //--------------------------------------------------------------
@@ -342,7 +346,6 @@ void updateGame()       // gameplay logic
     //HARDCODED
     if (g->get_x_pos() == p->get_x_pos() && g->get_y_pos() == p->get_y_pos()) 
     {
-        p->get_lives();
         if (p->get_lives() <= 0)
         {
             g_bQuitGame = true;
@@ -367,11 +370,6 @@ void moveCharacter()
 {    
     // Updating the location of the character based on the key release
     // providing a beep sound whenver we shift the character
-
-    /*Sound se;
-    se.addSoundEffect("C:/Users/user/Desktop/sound/Minecraft - stone1.mp3");
-    int effect = 0;
-    se.playSoundEffect(effect);*/
 
     
 
