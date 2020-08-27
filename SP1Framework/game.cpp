@@ -282,7 +282,7 @@ void renderFOG()
 {
     for (int x = 0; x < 100; x++) {
         for (int y = 0; y < 20; y++) {
-            if (!(x >= player.get_x_pos() - 6 && x <= player.get_x_pos() + 6 && y >= player.get_y_pos() - 4 && y <= player.get_y_pos() + 4)) {
+            if (!(x >= p->get_x_pos() - 6 && x <= p->get_x_pos() + 6 && y >= p->get_y_pos() - 4 && y <= p->get_y_pos() + 4)) {
                 g_Console.writeToBuffer(x, y, ' ', 0x00);
             }
         }
@@ -350,7 +350,7 @@ void updateGame()       // gameplay logic
         p->set_ypos(1);
     }
 
-    if (player.get_x_pos() == 94 && player.get_y_pos() == 15) {
+    if (p->get_x_pos() == 94 && p->get_y_pos() == 15) {
         g_bQuitGame = true;
     }
     //END OF HARDCODED
