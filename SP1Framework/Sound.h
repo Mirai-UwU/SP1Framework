@@ -1,16 +1,15 @@
-/*#pragma once
-#include <vector>
-#include <SDL_mixer.h>
+#pragma once
+#include <irrKlang.h>
+#include <iostream>
+#include <conio.h>
+
+using namespace irrklang;
+
+#pragma comment(lib, "irrKlang.lib")
 
 class Sound
 {
 public:
+	ISoundEngine* engine;
 	Sound();
-	~Sound();
-	void addSoundEffect(const char* path);
-	void playSoundEffect(const int which) const;
-
-private:
-	std::vector<Mix_Chunk*> mSoundEffectBank;
-
-};*/
+};

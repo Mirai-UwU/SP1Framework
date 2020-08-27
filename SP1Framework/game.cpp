@@ -16,6 +16,17 @@
 #include <time.h>
 #include <Windows.h>
 #include "Level.h"
+#include <irrKlang.h>
+#include <stdio.h>
+#include <conio.h>
+#include "Dependencies/irrKlang-1.6.0/include/irrKlang.h"
+#include "Sound.h"
+
+// Irrklang linker
+using namespace irrklang;
+#pragma comment(lib, "irrKlang.lib")
+
+
 
 double  g_dElapsedTime;
 double  g_dDeltaTime;
@@ -27,14 +38,19 @@ SGameChar   g_sChar;
 EGAMESTATES g_eGameState = S_SPLASHSCREEN; // initial state
 
 MapMaker hud;
-
 Level lvl;
 
-// Console object
-Console g_Console(100, 30, "A Way Out");
+// Start IrrKlang Sound Engine
+ISoundEngine* engine = createIrrKlangDevice();
 
-//Player player(1, 2, &map1);
-//Guard guard(3, 67, &map1);
+
+// Console object
+Console g_Console(100, 25, "A Way Out");
+
+
+Player* p=new Player(1, 2, &map1);
+Guard* g=new Guard(3, 67, &map1);
+
 
 //--------------------------------------------------------------
 // Purpose  : Initialisation function
@@ -68,7 +84,6 @@ void init(void)
 
 
 
-
     g_sChar.m_bActive = true;
 
 
@@ -91,7 +106,8 @@ void shutdown( void )
 {
     // Reset to white text on black background
     colour(FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED);
-
+    delete p;
+    delete g;
     g_Console.clearBuffer();
 }
 
@@ -190,6 +206,9 @@ void gameplayKBHandler(const KEY_EVENT_RECORD& keyboardEvent)
     case VK_RIGHT: key = K_RIGHT; break; 
     case VK_SPACE: key = K_SPACE; break;
     case VK_ESCAPE: key = K_ESCAPE; break; 
+    case VK_F1: key = K_BOMB; break;
+    case VK_F2: key = K_TELEPORTER; break;
+    case VK_F3: key = K_ROPE; break;
     }
     // a key pressed event would be one with bKeyDown == true
     // a key released event would be one with bKeyDown == false
@@ -200,6 +219,7 @@ void gameplayKBHandler(const KEY_EVENT_RECORD& keyboardEvent)
         g_skKeyEvent[key].keyDown = keyboardEvent.bKeyDown;
         g_skKeyEvent[key].keyReleased = !keyboardEvent.bKeyDown;
     }    
+
 }
 
 //--------------------------------------------------------------
@@ -235,6 +255,28 @@ int getPlayerInput()
     if (g_skKeyEvent[K_RIGHT].keyDown) {
         return K_RIGHT;
     }
+    if (g_skKeyEvent[K_ROPE].keyReleased)
+    {
+        p->set_xpos(2);
+        p->set_ypos(1);
+    }
+    if (g_skKeyEvent[K_BOMB].keyReleased)
+    {
+        int ren = 1;
+        ren++;
+        renderFOG();
+
+    }
+    if (g_skKeyEvent[K_TELEPORTER].keyReleased)
+    {
+        p->set_xpos(rand() % 100);
+        p->set_ypos(rand() % 20);
+        while (map1.getFromCoord(p->get_x_pos(),p->get_y_pos()) != ' ')
+        {
+            p->set_xpos(rand() % 100);
+            p->set_ypos(rand() % 20);
+        }
+    }
     return K_COUNT;
 }
 
@@ -243,12 +285,14 @@ void renderFOG()
     /*
     for (int x = 0; x < 100; x++) {
         for (int y = 0; y < 20; y++) {
-            if (!(x >= player.get_x_pos() - 6 && x <= player.get_x_pos() + 6 && y >= player.get_y_pos() - 4 && y <= player.get_y_pos() + 4)) {
+            if (!(x >= p->get_x_pos() - 6 && x <= p->get_x_pos() + 6 && y >= p->get_y_pos() - 4 && y <= p->get_y_pos() + 4)) {
                 g_Console.writeToBuffer(x, y, ' ', 0x00);
             }
         }
     }
     */
+
+   
 }
 
 //--------------------------------------------------------------
@@ -294,6 +338,26 @@ void splashScreenWait()    // waits for time to pass in splash screen
 void updateGame()       // gameplay logic
 {
     processUserInput(); // checks if you should change states or do something else with the game, e.g. pause, exit
+    p->move(getPlayerInput());
+    if (static_cast<int>(g_dElapsedTime) % 6 == 0) 
+    {
+        g->move(rand() % K_COUNT);
+    }
+
+    //HARDCODED
+    if (g->get_x_pos() == p->get_x_pos() && g->get_y_pos() == p->get_y_pos()) 
+    {
+        if (p->get_lives() <= 0)
+        {
+            g_bQuitGame = true;
+        }
+        p->set_xpos(2);
+        p->set_ypos(1);
+    }
+
+    if (p->get_x_pos() == 94 && p->get_y_pos() == 15) {
+        g_bQuitGame = true;
+    }
     //END OF HARDCODED
 
     moveCharacter();    // moves the character, collision detection, physics, etc
@@ -307,11 +371,6 @@ void moveCharacter()
 {    
     // Updating the location of the character based on the key release
     // providing a beep sound whenver we shift the character
-
-    /*Sound se;
-    se.addSoundEffect("C:/Users/user/Desktop/sound/Minecraft - stone1.mp3");
-    int effect = 0;
-    se.playSoundEffect(effect);*/
 
     
 
@@ -343,6 +402,7 @@ void render()
         renderSplashScreen();
         break;
     case S_GAME: 
+//        engine->play2D("backgroup_music.mp3", true);
         renderGame();
         break;
     }
@@ -385,8 +445,8 @@ void renderGame()
     //map1.Render(0, 0, 100, 20, g_Console);// renders the map to the buffer first
     lvl.Render(g_Console);
     renderCharacter();  // renders the character into the buffer
-    //renderFOG();
-    hud.Render(0,20,100,30,g_Console);
+    renderFOG();
+    hud.Render(0,20,100,25,g_Console);
 }
 
 
@@ -423,8 +483,11 @@ void renderCharacter()
         charColor = 0x0A;
     }
     //g_Console.writeToBuffer(g_sChar.m_cLocation, player.get_display(), charColor);
-    //g_Console.writeToBuffer(player.get_pos(), player.get_display(), 0x0D);
-    //g_Console.writeToBuffer(guard.get_pos(), guard.get_display(), 0xFC);
+
+
+    g_Console.writeToBuffer(p->get_pos(), p->get_display(), 0x0D);
+    g_Console.writeToBuffer(g->get_pos(), g->get_display(), 0xFC);
+
 
     //HARDCODED EXIT
     g_Console.writeToBuffer(94,15, static_cast<char>(233), 0x03);
