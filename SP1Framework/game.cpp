@@ -42,11 +42,11 @@ MapMaker hud;
 Level lvl;
 
 // Start IrrKlang Sound Engine
-ISoundEngine* engine = createIrrKlangDevice();
+//ISoundEngine* engine = createIrrKlangDevice();
 
 
 // Console object
-Console g_Console(100, 25, "A Way Out");
+Console g_Console(102, 25, "A Way Out");
 
 
 Player* p=new Player(1, 2, &map1);
@@ -283,8 +283,7 @@ int getPlayerInput()
 
 void renderFOG()
 {
-    /*
-    for (int x = 0; x < 100; x++) {
+    for (int x = 0; x < 102; x++) {
         for (int y = 0; y < 20; y++) {
             if (!(x >= p->get_x_pos() - 6 && x <= p->get_x_pos() + 6 && y >= p->get_y_pos() - 4 && y <= p->get_y_pos() + 4)) {
                 g_Console.writeToBuffer(x, y, ' ', 0x00);
@@ -325,6 +324,8 @@ void update(double dt)
             break;
         case S_GAME: 
             lvl.Update(); // gameplay logic when we are in the game
+         //   sound.engine->play2D("background_music.mp3");
+         // updateGame(); // gameplay logic when we are in the game
             break;
     }
 }
@@ -445,6 +446,8 @@ void renderGame()
     renderMap(); 
     //map1.Render(0, 0, 100, 20, g_Console);// renders the map to the buffer first
     lvl.Render(g_Console);
+    //map1.Render(0, 0, 102, 20, g_Console);// renders the map to the buffer first
+    
     renderCharacter();  // renders the character into the buffer
     renderFOG();
     hud.Render(0,20,100,25,g_Console);
@@ -470,7 +473,7 @@ void renderMap()
         c.X = 5 * i;
         c.Y = i + 1;
         colour(colors[i]);
-        g_Console.writeToBuffer(c, "°", colors[i]);
+        g_Console.writeToBuffer(c, "Â°", colors[i]);
     }
 
 }
