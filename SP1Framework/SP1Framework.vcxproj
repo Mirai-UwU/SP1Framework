@@ -167,6 +167,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MapMaker.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Sound.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.h" />
@@ -176,6 +177,7 @@
     <ClInclude Include="guard.h" />
     <ClInclude Include="MapMaker.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Sound.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\..\..\Desktop\HUD test.txt" />
