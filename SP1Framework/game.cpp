@@ -234,19 +234,19 @@ int getPlayerInput()
 {
     
     if (g_skKeyEvent[K_UP].keyReleased) {
-        engine->play2D("walk_sound.wav");
+        engine->play2D("footstep.mp3");
         return K_UP;
     }
     if (g_skKeyEvent[K_DOWN].keyReleased) {
-        engine->play2D("walk_sound.wav");
+        engine->play2D("footstep.mp3");
         return K_DOWN;
     }
     if (g_skKeyEvent[K_LEFT].keyReleased) {
-        engine->play2D("walk_sound.wav");
+        engine->play2D("footstep.mp3");
         return K_LEFT;
     }
     if (g_skKeyEvent[K_RIGHT].keyReleased) {
-        engine->play2D("walk_sound.wav");
+        engine->play2D("footstep.mp3");
         return K_RIGHT;
     }
     return K_COUNT;
