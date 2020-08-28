@@ -37,7 +37,7 @@ public:
 
 	//Important Functions
 	void Update();
-	void Render(Console &gConsole);
+	void Render();
 
 	//Level functions
 	void RenderFog();

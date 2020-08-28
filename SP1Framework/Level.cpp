@@ -161,7 +161,7 @@ void Level::Update()
 
 }
 
-void Level::Render(Console &gConsole)
+void Level::Render()
 {
 	this_map.Render(0, 0, 102, 20);
 	for (int i = 0; i < entitycount; ++i) {

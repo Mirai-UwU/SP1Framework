@@ -400,7 +400,7 @@ void renderSplashScreen()  // renders the splash screen
 
 void renderGame()
 {
-    lvl.Render(g_Console);
+    lvl.Render();
     hud.Render(0,20,102,25);
 }
 
