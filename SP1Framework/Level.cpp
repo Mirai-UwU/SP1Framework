@@ -19,7 +19,7 @@ void Level::FOG()
 		{
 			for (int x = 0; x < 102; x++) {
 				for (int y = 0; y < 20; y++) {
-					if (!(x >= FindPlayer()->get_x_pos() - 6 && x <= FindPlayer()->get_x_pos() + 6 && y >= FindPlayer()->get_y_pos() - 4 && y <= p->get_y_pos() + 4)) {
+					if (!(x >= FindPlayer()->get_x_pos() - 6 && x <= FindPlayer()->get_x_pos() + 6 && y >= FindPlayer()->get_y_pos() - 4 && y <= FindPlayer()->get_y_pos() + 4)) {
 						g_Console.writeToBuffer(x, y, ' ', 0x00);
 					}
 				}
@@ -34,7 +34,7 @@ void Level::FOG()
 		{
 			for (int x = 0; x < 102; x++) {
 				for (int y = 0; y < 20; y++) {
-					if (!(x >= p->get_x_pos() - 1 && x <= p->get_x_pos() + 1 && y >= p->get_y_pos() - 1 && y <= p->get_y_pos() + 1)) {
+					if (!(x >= FindPlayer()->get_x_pos() - 1 && x <= FindPlayer()->get_x_pos() + 1 && y >= FindPlayer()->get_y_pos() - 1 && y <= FindPlayer()->get_y_pos() + 1)) {
 						g_Console.writeToBuffer(x, y, ' ', 0x00);
 					}
 				}
