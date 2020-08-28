@@ -43,10 +43,6 @@ void Level::FOG()
 
 }
 
-void Level::Find_Player()
-{
-}
-
 
 
 void Level::FindEntities()
