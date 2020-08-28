@@ -1,4 +1,7 @@
 #include "guard.h"
+#include "Entity.h"
+#include "Player.h"
+#include "game.h"
 #include "MapMaker.h"
 
 Guard::Guard(COORD c_pos, MapMaker* map)
@@ -48,6 +51,12 @@ void Guard::move(int button_pressed)
     {
         move_right(1);
     }
+
+}
+
+void Guard::DoEntityTask()
+{
+     g_bQuitGame = true;
 
 }
 

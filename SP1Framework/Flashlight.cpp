@@ -7,3 +7,7 @@ Flashlight::Flashlight(int y_pos, int x_pos, MapMaker* map)
 	set_display('F');
 	entity_map = map;
 }
+
+void Flashlight::DoEntityTask()
+{
+}

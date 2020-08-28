@@ -18,6 +18,8 @@ MapMaker::~MapMaker()
 	MapArray = NULL;
 }
 
+
+
 void MapMaker::Load(string filepath)
 {
 	string Map;

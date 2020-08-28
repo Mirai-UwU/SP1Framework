@@ -3,12 +3,11 @@
 #include <iostream>
 #include "Sound.h"
 
-
-
-
 class Player : public Entity
-{
+{              
+
 private:
+	Player p;
 	int lives = 3;
 	Sound sound;
 public:
@@ -19,6 +18,7 @@ public:
 	
 	int get_lives();
 	void move(int button_pressed);
+	void DoEntityTask();
 
 	bool collide(COORD entity_pos);
 	bool collide(int entity_xpos, int entity_ypos);
