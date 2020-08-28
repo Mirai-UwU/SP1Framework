@@ -281,27 +281,6 @@ int getPlayerInput()
     return K_COUNT;
 }
 
-void renderFOG()
-{
-    int ren = 1;
-
-    if (ren == 1)
-    {
-        for (int x = 0; x < 102; x++) {
-            for (int y = 0; y < 20; y++) {
-                if (!(x >= p->get_x_pos() - 6 && x <= p->get_x_pos() + 6 && y >= p->get_y_pos() - 4 && y <= p->get_y_pos() + 4)) {
-                    g_Console.writeToBuffer(x, y, ' ', 0x00);
-                }
-            }
-        }
-    }
-    if (ren == 2)
-    {
-
-    }
-
-   
-}
 
 //--------------------------------------------------------------
 // Purpose  : Update function
@@ -332,7 +311,7 @@ void update(double dt)
         case S_SPLASHSCREEN : 
             splashScreenWait(); // game logic for the splash screen
             break;
-         //   sound.engine->play2D("background_music.mp3");
+
          // updateGame(); // gameplay logic when we are in the game
         default:
             lvl[g_eGameState]->Update(); //gameplay logic depending on gamestate
@@ -459,7 +438,6 @@ void renderGame()
     //map1.Render(0, 0, 102, 20, g_Console);// renders the map to the buffer first
     
     renderCharacter();  // renders the character into the buffer
-    renderFOG();
     hud.Render(0,20,100,25,g_Console);
 }
 
