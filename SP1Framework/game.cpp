@@ -278,27 +278,6 @@ int getPlayerInput()
     return K_COUNT;
 }
 
-void renderFOG()
-{
-    int ren = 1;
-
-    if (ren == 1)
-    {
-        for (int x = 0; x < 102; x++) {
-            for (int y = 0; y < 20; y++) {
-                if (!(x >= p->get_x_pos() - 6 && x <= p->get_x_pos() + 6 && y >= p->get_y_pos() - 4 && y <= p->get_y_pos() + 4)) {
-                    g_Console.writeToBuffer(x, y, ' ', 0x00);
-                }
-            }
-        }
-    }
-    if (ren == 2)
-    {
-
-    }
-
-   
-}
 
 //--------------------------------------------------------------
 // Purpose  : Update function
@@ -342,35 +321,7 @@ void splashScreenWait()    // waits for time to pass in splash screen
         g_eGameState = S_GAME;
 }
 
-void updateGame()       // gameplay logic
-{
-    processUserInput(); // checks if you should change states or do something else with the game, e.g. pause, exit
-    p->move(getPlayerInput());
-    if (static_cast<int>(g_dElapsedTime) % 6 == 0) 
-    {
-        g->move(rand() % K_COUNT);
-    }
 
-    //HARDCODED
-    if (g->get_x_pos() == p->get_x_pos() && g->get_y_pos() == p->get_y_pos()) 
-    {
-        if (p->get_lives() <= 0)
-        {
-            g_bQuitGame = true;
-        }
-        p->set_xpos(2);
-        p->set_ypos(1);
-    }
-
-    if (p->get_x_pos() == 94 && p->get_y_pos() == 15) {
-        g_bQuitGame = true;
-    }
-    //END OF HARDCODED
-
-    moveCharacter();    // moves the character, collision detection, physics, etc
-                        // sound can be played here too.
-    
-}
 
 
 
@@ -448,14 +399,8 @@ void renderSplashScreen()  // renders the splash screen
 
 void renderGame()
 {
-    renderMap(); 
-    //map1.Render(0, 0, 100, 20, g_Console);// renders the map to the buffer first
     lvl.Render(g_Console);
-    //map1.Render(0, 0, 102, 20, g_Console);// renders the map to the buffer first
-    
-    renderCharacter();  // renders the character into the buffer
-    renderFOG();
-    hud.Render(0,20,100,25);
+    hud.Render(0,20,102,25);
 }
 
 
@@ -464,44 +409,7 @@ void renderGame()
 //need to make a function to find where the fog of war is based on the player coords
 
 
-void renderMap()
-{
-    // Set up sample colours, and output shadings
-    const WORD colors[] = {
-        0x1A, 0x2B, 0x3C, 0x4D, 0x5E, 0x6F,
-        0xA1, 0xB2, 0xC3, 0xD4, 0xE5, 0xF6
-    };
 
-    COORD c;
-    for (int i = 0; i < 12; ++i)
-    {
-        c.X = 5 * i;
-        c.Y = i + 1;
-        colour(colors[i]);
-        g_Console.writeToBuffer(c, "°", colors[i]);
-    }
-
-}
-
-void renderCharacter()
-{
-    // Draw the location of the character
-    WORD charColor = 0x0C;
-    if (g_sChar.m_bActive)
-    {
-        charColor = 0x0A;
-    }
-    //g_Console.writeToBuffer(g_sChar.m_cLocation, player.get_display(), charColor);
-
-
-    g_Console.writeToBuffer(p->get_pos(), p->get_display(), 0x0D);
-    g_Console.writeToBuffer(g->get_pos(), g->get_display(), 0xFC);
-
-
-    //HARDCODED EXIT
-    g_Console.writeToBuffer(94,15, static_cast<char>(233), 0x03);
-    
-}
 
 void renderFramerate()
 {
