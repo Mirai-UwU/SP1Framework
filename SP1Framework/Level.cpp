@@ -104,6 +104,9 @@ Entity* Level::FindPlayer()
 		if (entity_list[i]->get_display() == '@') {
 			return entity_list[i];
 		}
+		else {
+			return NULL;
+		}
 	}
 }
 
@@ -158,11 +161,42 @@ void Level::Update()
 
 }
 
-void Level::Render(Console &gConsole)
+void Level::Render()
 {
 	this_map.Render(0, 0, 102, 20);
 	for (int i = 0; i < entitycount; ++i) {
 		Entity& ent = *entity_list[i];
 		g_Console.writeToBuffer(ent.get_pos(), ent.get_display(), ent.get_colour());	
+	}
+	RenderFog();
+}
+
+void Level::RenderFog()
+{
+	int ren = 1;
+	if (ren == 1)//Flashlight Fog
+	{
+		for (int x = 0; x < 102; x++) {
+			for (int y = 0; y < 20; y++) {
+				if (!(x >= FindPlayer()->get_x_pos() - 6 && x <= FindPlayer()->get_x_pos() + 6 && y >= FindPlayer()->get_y_pos() - 4 && y <= FindPlayer()->get_y_pos() + 4)) {
+					g_Console.writeToBuffer(x, y, ' ', 0x00);
+				}
+			}
+		}
+	}
+	if (ren == 2) //No Fog
+	{
+
+
+	}
+	if (ren == 3)//No Flashlight fog
+	{
+		for (int x = 0; x < 102; x++) {
+			for (int y = 0; y < 20; y++) {
+				if (!(x >= FindPlayer()->get_x_pos() - 1 && x <= FindPlayer()->get_x_pos() + 1 && y >= FindPlayer()->get_y_pos() - 1 && y <= FindPlayer()->get_y_pos() + 1)) {
+					g_Console.writeToBuffer(x, y, ' ', 0x00);
+				}
+			}
+		}
 	}
 }

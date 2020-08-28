@@ -50,6 +50,9 @@ public:
 	//Move based on enum EKEYS button pressed
 	virtual void move(int button_pressed) = 0;
 
+	//Runs any special entity specific event
+	virtual void DoEntityTask() = 0;
+
 	//Allow the entity to move
 	void move_up(int distance);
 	void move_down(int distance);

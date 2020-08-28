@@ -35,8 +35,12 @@ public:
 	Entity* FindGuard(); //Finds the first guard in the list
 	Entity* FindGuard(int which); //Finds the guard depending on number which
 
+	//Important Functions
 	void Update();
-	void Render(Console &gConsole);
+	void Render();
+
+	//Level functions
+	void RenderFog();
 
 };
 
