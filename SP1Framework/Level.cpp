@@ -30,7 +30,7 @@ void Level::FOG()
 
 
 		}
-		if (ren = 3);//No Flashlight fog
+		if (ren == 3)//No Flashlight fog
 		{
 			for (int x = 0; x < 102; x++) {
 				for (int y = 0; y < 20; y++) {
