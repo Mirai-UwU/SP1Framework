@@ -124,7 +124,7 @@ void Level::Update()
 
 void Level::Render(Console &gConsole)
 {
-	this_map.Render(0, 0, 100, 20, gConsole);
+	this_map.Render(0, 0, 102, 20, gConsole);
 	for (int i = 0; i < entitycount; ++i) {
 		Entity& ent = *entity_list[i];
 		gConsole.writeToBuffer(ent.get_pos(), ent.get_display(), ent.get_colour());	
