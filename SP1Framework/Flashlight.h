@@ -9,5 +9,5 @@ private:
 public:
 	Flashlight(int y_pos, int x_pos, MapMaker* map);
 
-	void DoEntityTask();
+	//void DoEntityTask();
 };
