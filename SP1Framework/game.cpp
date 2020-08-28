@@ -79,7 +79,7 @@ void init(void)
 
 
     //map1.Load(".Txt/D1.txt"); 
-    lvl.Load(".Txt/D1.txt");
+    lvl.Load(".Txt/D01.txt");
 
     hud.Load(".Txt/HUD Template.txt");
 
