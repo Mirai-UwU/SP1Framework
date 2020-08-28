@@ -22,27 +22,21 @@ void Level::FindEntities()
 			char entity = this_map.getFromCoord(coord);
 
 
-			/*switch (entity) {
+			switch (entity) {
 			case 'P':
-				entity_list[count] = new Player(coord, &this_map);
-				count += 1;
+				entity_list[count++] = new Player(coord, &this_map);
 				break;
 			case 'G':
-				entity_list[count] = new Guard(coord, &this_map);
-				count += 1;
+				entity_list[count++] = new Guard(coord, &this_map);
+				break;
+			case 'E':
+				entity_list[count++] = new Exit(coord, &this_map);
 				break;
 			default:
 				break;
-			}*/
-
-			if (entity == 'P') {
-				entity_list[count++] = new Player(coord, &this_map);
-				//this_map.setToCoord(coord, ' ');
-			} 
-			if (entity == 'G') {
-				entity_list[count++] = new Guard(coord, &this_map);
-				//this_map.setToCoord(coord, ' ');
 			}
+
+		
 		}
 	}
 	
@@ -129,6 +123,15 @@ Entity* Level::FindGuard(int which)
 
 	for (int i = which; i < entitycount; i++) {
 		if (entity_list[i]->get_display() == (char)2) {
+			return entity_list[i];
+		}
+	}
+}
+
+Entity* Level::FindExit()
+{
+	for (int i = 0; i < entitycount; i++) {
+		if (entity_list[i]->get_display() == 233) {
 			return entity_list[i];
 		}
 	}

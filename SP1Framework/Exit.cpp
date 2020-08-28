@@ -45,5 +45,5 @@ void Exit::move(int button_pressed)
 
 void Exit::DoEntityTask()
 {
-	g_bQuitGame = true;
+	g_eGameState = (EGAMESTATES)((int)(g_eGameState) + 1); //Increment Gamestate by 1
 }

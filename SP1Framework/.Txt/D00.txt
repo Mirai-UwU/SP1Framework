@@ -6,7 +6,7 @@
 |                     #                                         ###-Some-Doors-Are-Puzzle-Based-###|
 |                     #                                         #                                  |
 |                     #                                         #                                  |
-|                     #                                         #                                  |
+|                     #                                         #                              E   |
 |                     #                                         #                                  |
 |                     #                                         {                                  |
 |                     ##########-Some-Items-Are-Able-To-Open-Doors-########          ##############|
