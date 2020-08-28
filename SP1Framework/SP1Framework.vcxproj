@@ -173,6 +173,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="rope.cpp" />
+    <ClCompile Include="teleporter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bomb.h" />
@@ -182,15 +183,13 @@
     <ClInclude Include="Framework\timer.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="guard.h" />
-
     <ClInclude Include="Level.h" />
-
     <ClInclude Include="HUD.h" />
-
     <ClInclude Include="MapMaker.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="Rope.h" />
+    <ClInclude Include="Teleporter.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\..\..\Desktop\HUD test.txt" />

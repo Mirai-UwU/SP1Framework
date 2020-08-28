@@ -260,22 +260,16 @@ int getPlayerInput()
     }
     if (g_skKeyEvent[K_ROPE].keyReleased)
     {
-        p->set_xpos(2);
-        p->set_ypos(1);
+        return K_ROPE;
     }
     if (g_skKeyEvent[K_BOMB].keyReleased)
     {
-
+        return K_BOMB;
     }
     if (g_skKeyEvent[K_TELEPORTER].keyReleased)
     {
-        p->set_xpos(rand() % 100);
-        p->set_ypos(rand() % 20);
-        while (map1.getFromCoord(p->get_x_pos(),p->get_y_pos()) != ' ')
-        {
-            p->set_xpos(rand() % 100);
-            p->set_ypos(rand() % 20);
-        }
+        return K_TELEPORTER;
+    
     }
     return K_COUNT;
 }

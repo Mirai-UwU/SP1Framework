@@ -1,4 +1,7 @@
-	#include "Flashlight.h"
+#include "Flashlight.h"
+
+
+
 
 Flashlight::Flashlight(int y_pos, int x_pos, MapMaker* map)
 {
@@ -8,6 +11,7 @@ Flashlight::Flashlight(int y_pos, int x_pos, MapMaker* map)
 	entity_map = map;
 }
 
-void Flashlight::DoEntityTask()
+void Flashlight::DoEntityTask(char input)
 {
+	
 }

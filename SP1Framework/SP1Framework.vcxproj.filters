@@ -14,6 +14,8 @@
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="rope.cpp" />
     <ClCompile Include="hud.cpp" />
+    <ClCompile Include="Level.cpp" />
+    <ClCompile Include="teleporter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -40,40 +42,19 @@
     <ClCompile Include="guard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Level.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Framework\console.h">
-      <Filter>Header Files\Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\timer.h">
-      <Filter>Header Files\Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MapMaker.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Entity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="guard.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Level.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClInclude Include="Entity.h" />
+    <ClInclude Include="Framework\console.h" />
+    <ClInclude Include="Framework\timer.h" />
+    <ClInclude Include="game.h" />
+    <ClInclude Include="guard.h" />
+    <ClInclude Include="Level.h" />
+    <ClInclude Include="MapMaker.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Teleporter.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\..\..\..\Desktop\HUD test.txt">
-      <Filter>Source Files</Filter>
-    </Text>
     <ClInclude Include="bomb.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Flashlight.h" />
@@ -88,6 +69,7 @@
     <ClInclude Include="HUD.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="..\..\..\..\Desktop\HUD test.txt" />
     <Text Include="..\..\..\..\Desktop\HUD test.txt" />
   </ItemGroup>
 </Project>
