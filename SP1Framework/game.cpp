@@ -39,7 +39,7 @@ EGAMESTATES g_eGameState = S_SPLASHSCREEN; // initial state
 
 MapMaker map1;
 MapMaker hud;
-Level lvl;
+Level* lvl[S_COUNT];
 
 // Start IrrKlang Sound Engine
 //ISoundEngine* engine = createIrrKlangDevice();
@@ -76,10 +76,13 @@ void init(void)
     g_sChar.m_cLocation.Y = 11;
   
     
-
+    for (int i = 0; i < S_COUNT; i++) {
+        string file = ".Txt/D" + to_string(((i % 100) - (i % 10)) / 10) + to_string(i % 10) + ".txt";
+        lvl[i] = new Level(file);
+    }
 
     //map1.Load(".Txt/D1.txt"); 
-    lvl.Load(".Txt/D1.txt");
+    
 
     hud.Load(".Txt/HUD Template.txt");
 
@@ -319,7 +322,9 @@ void update(double dt)
     // get the delta time
     g_dElapsedTime += dt;
     g_dDeltaTime = dt;
-    lvl.SetTimers(g_dElapsedTime);
+    for (int gamestate = 0; gamestate < S_COUNT; gamestate++) {
+        lvl[gamestate]->SetTimers(g_dElapsedTime);
+    }
 
     // *-- PUT LEVELS HERE --*   //
     switch (g_eGameState)
@@ -327,11 +332,10 @@ void update(double dt)
         case S_SPLASHSCREEN : 
             splashScreenWait(); // game logic for the splash screen
             break;
-        case S_GAME: 
-            lvl.Update(); // gameplay logic when we are in the game
          //   sound.engine->play2D("background_music.mp3");
          // updateGame(); // gameplay logic when we are in the game
-            break;
+        default:
+            lvl[g_eGameState]->Update(); //gameplay logic depending on gamestate
     }
 }
 
@@ -408,9 +412,10 @@ void render()
     case S_SPLASHSCREEN: 
         renderSplashScreen();
         break;
-    case S_GAME: 
+    default: 
 //        engine->play2D("backgroup_music.mp3", true);
-        renderGame();
+        lvl[g_eGameState]->Render(g_Console);
+        hud.Render(0, 20, 100, 25, g_Console);
         break;
     }
     renderFramerate();      // renders debug information, frame rate, elapsed time, etc
@@ -450,7 +455,7 @@ void renderGame()
 {
     renderMap(); 
     //map1.Render(0, 0, 100, 20, g_Console);// renders the map to the buffer first
-    lvl.Render(g_Console);
+    //lvl.Render(g_Console);
     //map1.Render(0, 0, 102, 20, g_Console);// renders the map to the buffer first
     
     renderCharacter();  // renders the character into the buffer
