@@ -40,6 +40,7 @@ EGAMESTATES g_eGameState = S_SPLASHSCREEN; // initial state
 MapMaker map1;
 MapMaker hud;
 Level lvl;
+Sound sound;
 
 // Start IrrKlang Sound Engine
 //ISoundEngine* engine = createIrrKlangDevice();
@@ -329,7 +330,7 @@ void update(double dt)
             break;
         case S_GAME: 
             lvl.Update(); // gameplay logic when we are in the game
-         //   sound.engine->play2D("background_music.mp3");
+            sound.Engine()->play2D("background_music.mp3");
          // updateGame(); // gameplay logic when we are in the game
             break;
     }
@@ -409,11 +410,11 @@ void render()
         renderSplashScreen();
         break;
     case S_GAME: 
-//        engine->play2D("backgroup_music.mp3", true);
+        sound.Engine()->play2D("backgroup_music.mp3", true);
         renderGame();
         break;
     }
-    renderFramerate();      // renders debug information, frame rate, elapsed time, etc
+    //renderFramerate();      // renders debug information, frame rate, elapsed time, etc
     //renderInputEvents();    // renders status of input events
     renderToScreen();       // dump the contents of the buffer to the screen, one frame worth of game
 }
