@@ -42,8 +42,13 @@ enum EKEYS
 // Enumeration for the different screen states
 enum EGAMESTATES
 {
+    S_LEVEL00,
+    S_LEVEL01,
+    S_LEVEL02,
+    S_LEVEL03,
+    S_LEVEL04,
+    S_LEVEL05,
     S_SPLASHSCREEN,
-    S_GAME,
     S_COUNT
 };
 

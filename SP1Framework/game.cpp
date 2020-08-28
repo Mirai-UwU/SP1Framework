@@ -155,7 +155,7 @@ void keyboardHandler(const KEY_EVENT_RECORD& keyboardEvent)
     {
     case S_SPLASHSCREEN: // don't handle anything for the splash screen
         break;
-    case S_GAME: 
+    default: 
         gameplayKBHandler(keyboardEvent); // handle gameplay keyboard event 
         break;
     }
@@ -183,7 +183,7 @@ void mouseHandler(const MOUSE_EVENT_RECORD& mouseEvent)
     {
     case S_SPLASHSCREEN: // don't handle anything for the splash screen
         break;
-    case S_GAME: 
+    default: 
         gameplayMouseHandler(mouseEvent); // handle gameplay mouse event
         break;
     }
@@ -322,7 +322,7 @@ void update(double dt)
 void splashScreenWait()    // waits for time to pass in splash screen
 {
     if (g_dElapsedTime > 3.0) // wait for 3 seconds to switch to game mode, else do nothing
-        g_eGameState = S_GAME;
+        g_eGameState = S_LEVEL00;
 }
 
 void updateGame()       // gameplay logic

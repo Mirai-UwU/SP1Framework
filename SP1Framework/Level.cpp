@@ -46,7 +46,6 @@ void Level::FOG()
 
 
 
-
 void Level::FindEntities()
 {
 	COORD coord;
