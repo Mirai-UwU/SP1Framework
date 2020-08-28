@@ -1,4 +1,4 @@
-#include "Flashlight.h"
+	#include "Flashlight.h"
 
 Flashlight::Flashlight(int y_pos, int x_pos, MapMaker* map)
 {
