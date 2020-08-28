@@ -11,9 +11,11 @@ class Sound
 {
 private:
 	ISoundEngine* engine;
+	bool active;
 	
 public:
 	Sound();
+	void BackgroudMusic();
 	ISoundEngine* Engine();
 };
 

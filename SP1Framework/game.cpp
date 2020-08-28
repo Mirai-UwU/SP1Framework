@@ -32,6 +32,7 @@ double  g_dElapsedTime;
 double  g_dDeltaTime;
 SKeyEvent g_skKeyEvent[K_COUNT];
 SMouseEvent g_mouseEvent;
+Sound bg;
 
 // Game specific variables here
 SGameChar   g_sChar;
@@ -330,7 +331,7 @@ void update(double dt)
             break;
         case S_GAME: 
             lvl.Update(); // gameplay logic when we are in the game
-            sound.Engine()->play2D("background_music.mp3");
+            sound.BackgroudMusic();
          // updateGame(); // gameplay logic when we are in the game
             break;
     }
