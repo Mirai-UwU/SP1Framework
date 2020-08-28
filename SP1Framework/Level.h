@@ -27,6 +27,7 @@ public:
 
 	//use if cannot initialise at start
 	void Load(string filename); 
+	void DoEntityTask();
 
 	void SetTimers(double t);
 

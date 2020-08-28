@@ -51,6 +51,10 @@ void Guard::move(int button_pressed)
 
 }
 
+void Guard::DoEntityTask()
+{
+}
+
 bool Guard::collide(COORD entity_pos)
 {
 	return collide(entity_pos.X, entity_pos.Y);

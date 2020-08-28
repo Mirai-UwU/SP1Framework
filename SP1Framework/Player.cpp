@@ -60,6 +60,10 @@ void Player::move(int button_pressed)
 
 }
 
+void Player::DoEntityTask()
+{
+}
+
 bool Player::collide(COORD entity_pos)
 {
     return collide(entity_pos.X, entity_pos.Y);

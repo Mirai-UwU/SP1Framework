@@ -91,6 +91,10 @@ void Level::Load(string filename)
 	}
 }
 
+void Level::DoEntityTask()
+{
+}
+
 void Level::SetTimers(double t)
 {
 	for (int i = 0; i < entitycount; ++i) {
