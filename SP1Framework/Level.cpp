@@ -11,6 +11,38 @@ void Level::Build()
 	}
 }
 
+void Level::FOG()
+{
+	int ren = 2;
+		if (ren == 1)//Flashlight Fog
+		{
+			for (int x = 0; x < 102; x++) {
+				for (int y = 0; y < 20; y++) {
+					if (!(x >= p->get_x_pos() - 6 && x <= p->get_x_pos() + 6 && y >= p->get_y_pos() - 4 && y <= p->get_y_pos() + 4)) {
+						g_Console.writeToBuffer(x, y, ' ', 0x00);
+					}
+				}
+			}
+		}
+		if (ren == 2) //No Fog
+		{
+
+
+		}
+		if (ren = 3);//No Flashlight fog
+		{
+			for (int x = 0; x < 102; x++) {
+				for (int y = 0; y < 20; y++) {
+					if (!(x >= p->get_x_pos() - 1 && x <= p->get_x_pos() + 1 && y >= p->get_y_pos() - 1 && y <= p->get_y_pos() + 1)) {
+						g_Console.writeToBuffer(x, y, ' ', 0x00);
+					}
+				}
+			}
+		}
+
+
+}
+
 void Level::FindEntities()
 {
 	COORD coord;
@@ -129,4 +161,5 @@ void Level::Render(Console &gConsole)
 		Entity& ent = *entity_list[i];
 		gConsole.writeToBuffer(ent.get_pos(), ent.get_display(), ent.get_colour());	
 	}
+	FOG();
 }

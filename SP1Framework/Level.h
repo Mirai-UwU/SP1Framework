@@ -30,6 +30,7 @@ public:
 
 	void Update();
 	void Render(Console &gConsole);
+	void FOG();
 
 };
 
