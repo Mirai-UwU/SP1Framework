@@ -43,6 +43,12 @@ void Level::FOG()
 
 }
 
+void Level::Find_Player()
+{
+}
+
+
+
 void Level::FindEntities()
 {
 	COORD coord;
@@ -79,6 +85,7 @@ void Level::FindEntities()
 	}
 	
 }
+
 
 
 Level::Level()
@@ -163,3 +170,4 @@ void Level::Render(Console &gConsole)
 	}
 	FOG();
 }
+
