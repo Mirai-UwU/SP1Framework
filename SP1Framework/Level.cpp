@@ -137,6 +137,39 @@ void Level::SetTimers(double t)
 	}
 }
 
+Entity* Level::FindPlayer()
+{
+	for (int i = 0; i < entitycount; i++) {
+		if (entity_list[i]->get_display() == '@') {
+			return entity_list[i];
+		}
+	}
+}
+
+Entity* Level::FindGuard()
+{
+	for (int i = 0; i < entitycount; i++) {
+		if (entity_list[i]->get_display() == (char)2) {
+			return entity_list[i];
+		}
+	}
+}
+
+
+
+Entity* Level::FindGuard(int which)
+{
+	if (which < 0 || which >= entitycount) {
+		which = entitycount;
+	}
+
+	for (int i = which; i < entitycount; i++) {
+		if (entity_list[i]->get_display() == (char)2) {
+			return entity_list[i];
+		}
+	}
+}
+
 void Level::Update()
 {
 	processUserInput();
@@ -170,4 +203,5 @@ void Level::Render(Console &gConsole)
 	}
 	FOG();
 }
+
 
