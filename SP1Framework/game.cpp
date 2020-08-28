@@ -455,7 +455,7 @@ void renderGame()
     
     renderCharacter();  // renders the character into the buffer
     renderFOG();
-    hud.Render(0,20,100,25,g_Console);
+    hud.Render(0,20,100,25);
 }
 
 

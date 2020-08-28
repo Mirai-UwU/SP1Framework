@@ -7,6 +7,7 @@
 
 
 using namespace std;
+extern Console g_Console;
 
 class MapMaker
 {
@@ -23,8 +24,8 @@ public:
 	void Load(string filepath);
 
 	//Renders the Contents of the text file from origin point coord
-	void Render(COORD origin, COORD end, Console& g_Console);
-	void Render(SHORT origin_x, SHORT origin_y, SHORT end_x, SHORT end_y, Console& g_Console);
+	void Render(COORD origin, COORD end);
+	void Render(SHORT origin_x, SHORT origin_y, SHORT end_x, SHORT end_y);
 
 	//Gets character from Coordinate
 	char getFromCoord(COORD c);

@@ -98,6 +98,42 @@ void Level::SetTimers(double t)
 	}
 }
 
+Entity* Level::FindPlayer()
+{
+	for (int i = 0; i < entitycount; i++) {
+		if (entity_list[i]->get_display() == '@') {
+			return entity_list[i];
+		}
+	}
+}
+
+Entity* Level::FindGuard()
+{
+	for (int i = 0; i < entitycount; i++) {
+		if (entity_list[i]->get_display() == (char)2) {
+			return entity_list[i];
+		}
+	}
+}
+
+
+
+Entity* Level::FindGuard(int which)
+{
+	if (which < 0 || which >= entitycount) {
+		which = entitycount;
+	}
+
+	for (int i = which; i < entitycount; i++) {
+		if (entity_list[i]->get_display() == (char)2) {
+			return entity_list[i];
+		}
+	}
+}
+
+
+
+
 void Level::Update()
 {
 	processUserInput();
@@ -124,9 +160,9 @@ void Level::Update()
 
 void Level::Render(Console &gConsole)
 {
-	this_map.Render(0, 0, 102, 20, gConsole);
+	this_map.Render(0, 0, 102, 20);
 	for (int i = 0; i < entitycount; ++i) {
 		Entity& ent = *entity_list[i];
-		gConsole.writeToBuffer(ent.get_pos(), ent.get_display(), ent.get_colour());	
+		g_Console.writeToBuffer(ent.get_pos(), ent.get_display(), ent.get_colour());	
 	}
 }

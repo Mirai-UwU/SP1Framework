@@ -4,6 +4,8 @@
 #include "guard.h"
 #include "MapMaker.h"
 
+extern Console g_Console;
+
 class Level
 {
 private:
@@ -27,6 +29,11 @@ public:
 	void Load(string filename); 
 
 	void SetTimers(double t);
+
+	//Returns the Entity you are looking for
+	Entity* FindPlayer();
+	Entity* FindGuard(); //Finds the first guard in the list
+	Entity* FindGuard(int which); //Finds the guard depending on number which
 
 	void Update();
 	void Render(Console &gConsole);

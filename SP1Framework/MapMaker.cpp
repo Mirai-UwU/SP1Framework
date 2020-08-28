@@ -53,7 +53,7 @@ void MapMaker::Load(string filepath)
 	}
 }
 
-void MapMaker::Render(COORD origin, COORD end, Console& g_Console)
+void MapMaker::Render(COORD origin, COORD end)
 {
 	COORD c;
 
@@ -66,7 +66,7 @@ void MapMaker::Render(COORD origin, COORD end, Console& g_Console)
 	}
 }
 
-void MapMaker::Render(SHORT origin_x, SHORT origin_y, SHORT end_x, SHORT end_y, Console& g_Console)
+void MapMaker::Render(SHORT origin_x, SHORT origin_y, SHORT end_x, SHORT end_y)
 {
 	COORD origin, end;
 	origin.X = origin_x;
@@ -74,7 +74,7 @@ void MapMaker::Render(SHORT origin_x, SHORT origin_y, SHORT end_x, SHORT end_y, 
 	end.X = end_x;
 	end.Y = end_y;
 
-	Render(origin, end, g_Console);
+	Render(origin, end);
 }
 
 char MapMaker::getFromCoord(COORD c)
