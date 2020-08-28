@@ -178,6 +178,7 @@ void Level::Update()
 			if (entity_list[i]->get_timer() > 0) {
 				entity_list[i]->move(rand() % K_COUNT);
 				entity_list[i]->set_timer(0);
+
 			}
 			break;
 

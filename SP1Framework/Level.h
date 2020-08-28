@@ -4,9 +4,15 @@
 #include "guard.h"
 #include "MapMaker.h"
 
+extern Console g_Console;
+
 class Level
 {
+	
+
+
 private:
+
 	string filepath;
 	
 	//Loads everything up
@@ -36,6 +42,8 @@ public:
 	void Update();
 	void Render(Console &gConsole);
 	void FOG();
+
+	
 
 };
 
