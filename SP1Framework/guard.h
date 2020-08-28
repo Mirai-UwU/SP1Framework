@@ -5,6 +5,9 @@
 
 class Guard : public Entity
 {
+protected:
+	Entity* g;
+
 private:
 
 public:
