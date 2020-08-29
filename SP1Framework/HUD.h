@@ -6,12 +6,23 @@ extern Console g_Console;
 class HUD :public Entity
 {
 private:
-	char heldbomb();
-	char heldteleport();
+
+	static int lives;
+	static bool bombheld;
+	static bool teleportheld;
+
 public:
 	HUD();
 	~HUD();
 	void Load(string filepath);
+
 	void render();
 	// hud needs to show 1.torchlight time left 2. held bomb 3. held teleporter 4.money left (lives)
-};
+
+	//Get Static Variables
+	int getLives();
+	bool holdingbomb();
+	bool holdingteleporter();
+	void setLives(int i);
+	void togglebomb();
+	void toggleteleporter();

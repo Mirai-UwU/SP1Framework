@@ -12,9 +12,7 @@ Player::Player(COORD c_pos, MapMaker* map)
     timer = 0;
     isActive = true;
 
-    lives = 900;
-    bombheld = false;
-    teleportheld = false;
+
 }
 
 Player::Player(int y_pos, int x_pos, MapMaker* map)
@@ -27,10 +25,6 @@ Player::Player(int y_pos, int x_pos, MapMaker* map)
     colour = 0x0d;
     timer = 0;
     isActive = true;
-
-    lives = 900;
-    bombheld = false;
-    teleportheld = false;
 }
 
 Player::~Player()
@@ -38,11 +32,6 @@ Player::~Player()
 }
 
 
-int Player::get_lives()
-{
-    lives--;
-    return lives;
-}
 
 void Player::move(int button_pressed)
 {
@@ -74,15 +63,7 @@ void Player::DoEntityTask(Entity* player)
 {
 }
 
-bool Player::holdingbomb()
-{
-    return bombheld;    
-}
 
-bool Player::holdingteleporter()
-{
-    return teleportheld;
-}
 
 
 

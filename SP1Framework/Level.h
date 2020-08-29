@@ -50,6 +50,8 @@ public:
 	//Sets All Individual Entity's timers
 	void SetTimers(double t);
 	void ResetTimers();
+
+	
 	
 	//Sets FogState based on number
 	void setFog(int i);
@@ -62,7 +64,6 @@ public:
 	Entity* FindGuard(int which); 
 	Entity* FindExit();
 	
-
 
 	void Update();
 	void Render();
