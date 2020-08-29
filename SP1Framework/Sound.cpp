@@ -11,7 +11,7 @@ void Sound::BackgroudMusic()
 {
 		if (active == false)
 		{
-			engine->play2D("background_music.wav", true);
+			engine->play2D("background_music.mp3", true);
 			active = true;
 		}
 		else{}
@@ -30,9 +30,24 @@ void Sound::Playsound(int i)
 	6. Text to speech to explain story (level class for identifying which level the player is on)
 	7. when player moves (player class for movement)
 	*/
-//	switch(i)
-//		case 1:
-
+	switch (i)
+	{
+		case 1: engine->play2D("whereisit.wav");
+			break;
+		case 2: engine->play2D("itemget.wav");
+			break;
+		case 3: engine->play2D("use_bomb.wav");
+			break;
+		case 4: engine->play2D("use_teleport.wav");
+			break;
+		case 5: engine->play2D("exit.wav");
+			break;
+		case 6: engine->play2D("");
+			break;
+		case 7: engine->play2D("footstep.mp3");
+			break;
+	}
+		
 }
 
  ISoundEngine* Sound::Engine()
