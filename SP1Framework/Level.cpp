@@ -22,27 +22,21 @@ void Level::FindEntities()
 			char entity = this_map.getFromCoord(coord);
 
 
-			/*switch (entity) {
+			switch (entity) {
 			case 'P':
-				entity_list[count] = new Player(coord, &this_map);
-				count += 1;
+				entity_list[count++] = new Player(coord, &this_map);
 				break;
 			case 'G':
-				entity_list[count] = new Guard(coord, &this_map);
-				count += 1;
+				entity_list[count++] = new Guard(coord, &this_map);
+				break;
+			case 'E':
+				entity_list[count++] = new Exit(coord, &this_map);
 				break;
 			default:
 				break;
-			}*/
-
-			if (entity == 'P') {
-				entity_list[count++] = new Player(coord, &this_map);
-				//this_map.setToCoord(coord, ' ');
-			} 
-			if (entity == 'G') {
-				entity_list[count++] = new Guard(coord, &this_map);
-				//this_map.setToCoord(coord, ' ');
 			}
+
+		
 		}
 	}
 	
@@ -60,10 +54,12 @@ Level::Level(string filename)
 {
 	ifstream f(filename);
 	if (f.good()) {
+		
 		filepath = filename;
 		Build();
 	}
 	else {
+		
 		filepath = ".Txt/Map Template.txt";
 		entity_list = NULL;
 	}
@@ -89,10 +85,6 @@ void Level::Load(string filename)
 		filepath = ".Txt/Map Template.txt";
 		entity_list = NULL;
 	}
-}
-
-void Level::DoEntityTask()
-{
 }
 
 void Level::SetTimers(double t)
@@ -138,6 +130,15 @@ Entity* Level::FindGuard(int which)
 	}
 }
 
+Entity* Level::FindExit()
+{
+	for (int i = 0; i < entitycount; i++) {
+		if (entity_list[i]->get_display() == static_cast<char>(233)) {
+			return entity_list[i];
+		}
+	}
+}
+
 
 
 
@@ -156,6 +157,9 @@ void Level::Update()
 
 		case '@':
 			entity_list[i]->move(getPlayerInput());
+			if (FindExit()->get_x_pos() == entity_list[i]->get_x_pos() && FindExit()->get_y_pos() == entity_list[i]->get_y_pos() ){
+				FindExit()->DoEntityTask();
+			}
 			break;
 		default:
 			break;
@@ -177,7 +181,7 @@ void Level::Render()
 
 void Level::RenderFog()
 {
-	int ren = 1;
+	int ren = 2;
 	if (ren == 1)//Flashlight Fog
 	{
 		for (int x = 0; x < 102; x++) {

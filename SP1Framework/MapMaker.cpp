@@ -114,6 +114,7 @@ int MapMaker::getEntityCount()
 			switch (getFromCoord(col, row)) {
 			case 'P':
 			case 'G':
+			case 'E':
 			//case ']':
 			//case '[':
 			//case '&':

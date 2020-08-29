@@ -40,7 +40,7 @@ EGAMESTATES g_eGameState = S_SPLASHSCREEN; // initial state
 
 MapMaker map1;
 MapMaker hud;
-Level lvl;
+Level* lvl[S_GAMEOVER];
 Sound sound;
 
 // Start IrrKlang Sound Engine
@@ -81,7 +81,12 @@ void init(void)
 
 
     //map1.Load(".Txt/D1.txt"); 
-    lvl.Load(".Txt/D01.txt");
+    //lvl.Load(".Txt/D01.txt");
+
+    for (int gamestate = 0; gamestate < S_GAMEOVER; gamestate++) {
+        string file = ".Txt/D" + to_string((gamestate - (gamestate % 10)) / 10) + to_string(gamestate % 10) + ".txt";
+        lvl[gamestate] = new Level(file);
+    }
 
     hud.Load(".Txt/HUD Template.txt");
 
@@ -111,6 +116,9 @@ void shutdown( void )
     colour(FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED);
     delete p;
     delete g;
+    for (int gamestate = 0; gamestate < S_GAMEOVER; gamestate++) {
+        delete lvl[gamestate];
+    }
     g_Console.clearBuffer();
 }
 
@@ -154,7 +162,7 @@ void keyboardHandler(const KEY_EVENT_RECORD& keyboardEvent)
     {
     case S_SPLASHSCREEN: // don't handle anything for the splash screen
         break;
-    case S_GAME: 
+    default: 
         gameplayKBHandler(keyboardEvent); // handle gameplay keyboard event 
         break;
     }
@@ -182,7 +190,7 @@ void mouseHandler(const MOUSE_EVENT_RECORD& mouseEvent)
     {
     case S_SPLASHSCREEN: // don't handle anything for the splash screen
         break;
-    case S_GAME: 
+    default: 
         gameplayMouseHandler(mouseEvent); // handle gameplay mouse event
         break;
     }
@@ -294,16 +302,19 @@ void update(double dt)
     // get the delta time
     g_dElapsedTime += dt;
     g_dDeltaTime = dt;
-    lvl.SetTimers(g_dElapsedTime);
 
+    //Set Timers when Gamestate in Levels
+    if (g_eGameState < S_GAMEOVER) {
+        lvl[g_eGameState]->SetTimers(g_dElapsedTime);
+    }
     // *-- PUT LEVELS HERE --*   //
     switch (g_eGameState)
     {
         case S_SPLASHSCREEN : 
             splashScreenWait(); // game logic for the splash screen
             break;
-        case S_GAME: 
-            lvl.Update(); // gameplay logic when we are in the game
+        default: 
+            lvl[g_eGameState]->Update(); // gameplay logic when we are in the game
             sound.BackgroudMusic();
          // updateGame(); // gameplay logic when we are in the game
             break;
@@ -314,7 +325,7 @@ void update(double dt)
 void splashScreenWait()    // waits for time to pass in splash screen
 {
     if (g_dElapsedTime > 3.0) // wait for 3 seconds to switch to game mode, else do nothing
-        g_eGameState = S_GAME;
+        g_eGameState = S_LVL00;
 }
 
 
@@ -355,7 +366,7 @@ void render()
     case S_SPLASHSCREEN: 
         renderSplashScreen();
         break;
-    case S_GAME: 
+    default: 
         renderGame();
         break;
     }
@@ -394,7 +405,7 @@ void renderSplashScreen()  // renders the splash screen
 
 void renderGame()
 {
-    lvl.Render();
+    lvl[g_eGameState]->Render();
     hud.Render(0,20,102,25);
 }
 

@@ -1,6 +1,7 @@
 #pragma once
 #include "Entity.h"
 #include "Player.h"
+#include "Exit.h"
 #include "guard.h"
 #include "MapMaker.h"
 
@@ -35,6 +36,7 @@ public:
 	Entity* FindPlayer();
 	Entity* FindGuard(); //Finds the first guard in the list
 	Entity* FindGuard(int which); //Finds the guard depending on number which
+	Entity* FindExit();
 
 	//Important Functions
 	void Update();
