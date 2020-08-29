@@ -12,6 +12,7 @@ protected:
 	WORD colour;
 	char display;
 	double timer;
+	bool isActive;
 public:
 
 

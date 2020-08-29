@@ -6,6 +6,7 @@
 #include "MapMaker.h"
 
 extern Console g_Console;
+extern double g_dElapsedTime;
 
 class Level
 {

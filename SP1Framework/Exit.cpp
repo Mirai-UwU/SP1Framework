@@ -7,6 +7,7 @@ Exit::Exit(COORD _c, MapMaker* map)
 	entity_map = map;
 	colour = 0x6B;
 	timer = 0;
+	isActive = true;
 }
 
 Exit::Exit(int y_pos, int x_pos, MapMaker* map)
@@ -17,6 +18,7 @@ Exit::Exit(int y_pos, int x_pos, MapMaker* map)
 	entity_map = map;
 	colour = 0x6B;
 	timer = 0;
+	isActive = true;
 }
 
 Exit::~Exit()

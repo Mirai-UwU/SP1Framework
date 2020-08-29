@@ -10,6 +10,7 @@ Player::Player(COORD c_pos, MapMaker* map)
     entity_map = map;
     colour = 0x0d;
     timer = 0;
+    isActive = true;
 }
 
 Player::Player(int y_pos, int x_pos, MapMaker* map)
@@ -21,6 +22,7 @@ Player::Player(int y_pos, int x_pos, MapMaker* map)
     entity_map = map;
     colour = 0x0d;
     timer = 0;
+    isActive = true;
 }
 
 Player::~Player()

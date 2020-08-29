@@ -8,6 +8,7 @@ Rope::Rope(int y_pos, int x_pos, MapMaker* map)
 	set_display('&');
 	entity_map = map;
 	p = NULL;
+	isActive = true;
 }
 
 void Rope::DoEntityTask(char button)

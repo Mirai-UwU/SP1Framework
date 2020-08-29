@@ -8,6 +8,7 @@ Entity::Entity()
 	entity_map = NULL;
 	colour = 0x00;
 	timer = 0;
+	isActive = false;
 }
 
 Entity::Entity(COORD _c, char _display, MapMaker* map)
@@ -17,6 +18,7 @@ Entity::Entity(COORD _c, char _display, MapMaker* map)
 	entity_map = map;
 	colour = 0x00;
 	timer = 0;
+	isActive = false;
 }
 
 Entity::Entity(int _y_pos, int _x_pos, char _display, MapMaker* map)
@@ -27,6 +29,7 @@ Entity::Entity(int _y_pos, int _x_pos, char _display, MapMaker* map)
 	entity_map = map;
 	colour = 0x00;
 	timer = 0;
+	isActive = false;
 }
 
 Entity::~Entity()

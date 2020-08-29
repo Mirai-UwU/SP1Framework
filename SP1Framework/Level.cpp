@@ -157,8 +157,14 @@ void Level::Update()
 
 		case '@':
 			entity_list[i]->move(getPlayerInput());
+
+			if (entity_list[i]->get_timer() > 5) {
+				entity_list[i]->set_colour(0x0c);
+			}
+
 			if (FindExit()->get_x_pos() == entity_list[i]->get_x_pos() && FindExit()->get_y_pos() == entity_list[i]->get_y_pos() ){
 				FindExit()->DoEntityTask();
+				g_dElapsedTime = 0;
 			}
 			break;
 		default:

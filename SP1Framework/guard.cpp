@@ -11,6 +11,7 @@ Guard::Guard(COORD c_pos, MapMaker* map)
     entity_map = map;
     colour = 0xfc;
     timer = 0;
+    isActive = true;
 }
 
 
@@ -22,6 +23,7 @@ Guard::Guard(int y_pos, int x_pos, MapMaker* map)
     entity_map = map;
     colour = 0xfc;
     timer = 0;
+    isActive = true;
 }
 
 Guard::~Guard()
