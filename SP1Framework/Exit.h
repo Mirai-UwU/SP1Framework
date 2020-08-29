@@ -15,7 +15,7 @@ public:
 	bool collide(int entity_xpos, int entity_ypos);
 
 	void move(int button_pressed);
-	void DoEntityTask();
+	void DoEntityTask(Entity* player = NULL);
 
 };
 

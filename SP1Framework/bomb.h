@@ -4,12 +4,16 @@
 #include "MapMaker.h"
 #include <iostream>
 
-class bomb : public Entity
+class Bomb : public Entity
 {
 private:
-	Guard* g;
 
 public:
-	bomb(int y_pos, int x_pos, MapMaker* map);
-	void DoEntityTask(char input);
+	Bomb(COORD pos, MapMaker* map);
+	Bomb(int y_pos, int x_pos, MapMaker* map);
+	using Entity::collide;
+	bool collide(COORD entity_pos);
+	bool collide(int entity_xpos, int entity_ypos);
+	void move(int button_pressed);
+	void DoEntityTask(Entity* player = NULL);
 };

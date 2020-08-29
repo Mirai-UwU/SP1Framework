@@ -46,7 +46,7 @@ void Exit::move(int button_pressed)
 	//Does not move
 }
 
-void Exit::DoEntityTask()
+void Exit::DoEntityTask(Entity* player)
 {
 	se.Playsound(5);
 	g_eGameState = (EGAMESTATES)((int)(g_eGameState) + 1); //Increment Gamestate by 1

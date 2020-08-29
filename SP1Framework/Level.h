@@ -3,8 +3,11 @@
 #include "Player.h"
 #include "Exit.h"
 #include "guard.h"
+#include "Bomb.h"
+#include "Teleporter.h"
 #include "MapMaker.h"
 #include "Sound.h"
+#include "Bomb.h"
 
 extern Console g_Console;
 extern double g_dElapsedTime;
