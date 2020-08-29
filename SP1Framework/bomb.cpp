@@ -7,6 +7,8 @@ bomb::bomb(int y_pos, int x_pos, MapMaker* map)
 	set_ypos(y_pos);
 	set_display('B');
 	entity_map = map;
+	timer = 0;
+	isActive = true;
 }
 
 void bomb::DoEntityTask(char input)
