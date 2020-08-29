@@ -11,7 +11,7 @@ void Sound::BackgroudMusic()
 {
 		if (active == false)
 		{
-			engine->play2D("backgroud_music.mp3", true);
+			engine->play2D("background_music.mp3", true);
 			active = true;
 		}
 		else{}
