@@ -116,6 +116,10 @@ void Level::ResetTimers()
 	}
 }
 
+
+
+
+
 void Level::setFog(int i)
 {
 	render_fogstate = static_cast<FogState>(i % (int)FogState::STATE_COUNT);
@@ -163,6 +167,8 @@ Entity* Level::FindExit()
 		}
 	}
 }
+
+
 
 
 

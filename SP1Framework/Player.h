@@ -7,20 +7,14 @@ class Player : public Entity
 {              
 
 private:
-	int lives;
-	bool bombheld;
-	bool teleportheld;
 public:
 	
 	Player(COORD c_pos, MapMaker* map);
 	Player(int y_pos, int x_pos, MapMaker* map);
 	~Player();
 	
-	int get_lives();
 	void move(int button_pressed);
 	void DoEntityTask(Entity* player = NULL);
-	bool holdingbomb();
-	bool holdingteleporter();
 	bool collide(COORD entity_pos);
 	bool collide(int entity_xpos, int entity_ypos);
 };
