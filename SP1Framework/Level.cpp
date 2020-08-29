@@ -187,12 +187,12 @@ void Level::Render()
 
 void Level::RenderFog()
 {
-	int ren = 2;
+	int ren = 1;
 	if (ren == 1)//Flashlight Fog
 	{
 		for (int x = 0; x < 102; x++) {
 			for (int y = 0; y < 20; y++) {
-				if (!(x >= FindPlayer()->get_x_pos() - 6 && x <= FindPlayer()->get_x_pos() + 6 && y >= FindPlayer()->get_y_pos() - 4 && y <= FindPlayer()->get_y_pos() + 4)) {
+				if (!(x >= FindPlayer()->get_x_pos() - 5 && x <= FindPlayer()->get_x_pos() + 5 && y >= FindPlayer()->get_y_pos() - 3 && y <= FindPlayer()->get_y_pos() + 3)) {
 					g_Console.writeToBuffer(x, y, ' ', 0x00);
 				}
 			}
