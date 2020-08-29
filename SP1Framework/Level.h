@@ -12,16 +12,26 @@ extern double g_dElapsedTime;
 class Level
 {
 private:
+	//file for level
 	string filepath;
+	enum class FogState {
+		STATE_NONE,
+		STATE_MIN,
+		STATE_MAX
+	};
+
+	FogState render_fogstate;
+
 	//Loads everything up
 	void Build();
 	//Finds and Puts Entities into entity_list
 	void FindEntities();
 	COORD* initial_pos;
-
+	
 protected:
 	
 	MapMaker this_map;
+	//Dynamic Array of Entities
 	Entity** entity_list;
 	int entitycount;
 public:
@@ -48,6 +58,7 @@ public:
 	void Reset();
 
 	//Level functions
+	void RenderRadius(int x_rad, int y_rad);
 	void RenderFog();
 	void EntityCollision(Entity& entityptr);
 

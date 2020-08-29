@@ -148,10 +148,6 @@ Entity* Level::FindExit()
 	}
 }
 
-void Level::Playsound()
-{
-	
-}
 
 
 
@@ -213,33 +209,31 @@ void Level::Reset()
 	}
 }
 
+void Level::RenderRadius(int x_rad, int y_rad)
+{
+	for (int x = 0; x < 102; x++) {
+		for (int y = 0; y < 20; y++) {
+			if (!(x >= FindPlayer()->get_x_pos() - x_rad && x <= FindPlayer()->get_x_pos() + x_rad && y >= FindPlayer()->get_y_pos() - y_rad && y <= FindPlayer()->get_y_pos() + y_rad)) {
+				g_Console.writeToBuffer(x, y, ' ', 0x00);
+			}
+		}
+	}
+}
+
 void Level::RenderFog()
 {
-	int ren = 2;
-	if (ren == 1)//Flashlight Fog
+	if (render_fogstate == FogState::STATE_MAX)//Flashlight Fog
 	{
-		for (int x = 0; x < 102; x++) {
-			for (int y = 0; y < 20; y++) {
-				if (!(x >= FindPlayer()->get_x_pos() - 5 && x <= FindPlayer()->get_x_pos() + 5 && y >= FindPlayer()->get_y_pos() - 3 && y <= FindPlayer()->get_y_pos() + 3)) {
-					g_Console.writeToBuffer(x, y, ' ', 0x00);
-				}
-			}
-		}
+		RenderRadius(5, 3);
 	}
-	if (ren == 2) //No Fog
+	if (render_fogstate == FogState::STATE_NONE) //No Fog
 	{
 
 
 	}
-	if (ren == 3)//No Flashlight fog
+	if (render_fogstate == FogState::STATE_MIN)//No Flashlight fog
 	{
-		for (int x = 0; x < 102; x++) {
-			for (int y = 0; y < 20; y++) {
-				if (!(x >= FindPlayer()->get_x_pos() - 1 && x <= FindPlayer()->get_x_pos() + 1 && y >= FindPlayer()->get_y_pos() - 1 && y <= FindPlayer()->get_y_pos() + 1)) {
-					g_Console.writeToBuffer(x, y, ' ', 0x00);
-				}
-			}
-		}
+		RenderRadius(1, 1);
 	}
 }
 
