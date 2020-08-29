@@ -312,6 +312,10 @@ void update(double dt)
         case S_GAMEOVER:
             g_bQuitGame = true;
             break;
+        case S_LVL00:
+            lvl[S_LVL00]->Update();
+            lvl[S_LVL00]->setFog(0);
+            break;
         default: 
             lvl[g_eGameState]->Update(); // gameplay logic when we are in the game
             sound.BackgroudMusic();
