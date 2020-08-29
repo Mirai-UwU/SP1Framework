@@ -8,6 +8,7 @@ Teleporter::Teleporter(int y_pos, int x_pos, MapMaker* map)
 	entity_map = map;
 	p = NULL;
     map1 = NULL;
+    timer = 0;
     isActive = true;
 }
 

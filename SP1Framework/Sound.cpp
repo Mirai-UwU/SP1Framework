@@ -11,7 +11,7 @@ void Sound::BackgroudMusic()
 {
 		if (active == false)
 		{
-			engine->play2D("background_music.mp3", true);
+			engine->play2D("Sounds/background_music.mp3", true);
 			active = true;
 		}
 		else{}
@@ -32,19 +32,19 @@ void Sound::Playsound(int i)
 	*/
 	switch (i)
 	{
-		case 1: engine->play2D("whereisit.wav");
+		case 1: engine->play2D("Sounds/whereisit.wav");
 			break;
-		case 2: engine->play2D("itemget.wav");
+		case 2: engine->play2D("Sounds/itemget.wav");
 			break;
-		case 3: engine->play2D("use_bomb.wav");
+		case 3: engine->play2D("Sounds/use_bomb.wav");
 			break;
-		case 4: engine->play2D("use_teleport.wav");
+		case 4: engine->play2D("Sounds/use_teleport.wav");
 			break;
-		case 5: engine->play2D("exit.wav");
+		case 5: engine->play2D("Sounds/exit.wav");
 			break;
 		case 6: engine->play2D("");
 			break;
-		case 7: engine->play2D("footstep.mp3");
+		case 7: engine->play2D("Sounds/footstep.mp3");
 			break;
 	}
 		
