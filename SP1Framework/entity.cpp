@@ -79,10 +79,10 @@ bool Entity::active()
 void Entity::toggle()
 {
 	if (isActive) {
-		isActive = true;
+		isActive = false;
 	}
 	else {
-		isActive = false;
+		isActive = true;
 	}
 }
 
