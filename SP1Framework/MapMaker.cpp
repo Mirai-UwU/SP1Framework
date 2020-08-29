@@ -112,9 +112,9 @@ int MapMaker::getEntityCount()
 	for (int row = 0; row < no_of_rows; row++) {
 		for (int col = 0; col < no_of_col; col++) {
 			switch (getFromCoord(col, row)) {
-			case 'P':
-			case 'G':
-			case 'E':
+			case '@':
+			case '!':
+			case '&':
 			//case ']':
 			//case '[':
 			//case '&':

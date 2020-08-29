@@ -223,5 +223,13 @@ void Level::RenderFog()
 
 void Level::EntityCollision()
 {
+	for (int ientity = 0; ientity < entitycount; ientity++) {
+		Entity& ent = *entity_list[ientity]; 
+		Entity& player = *FindPlayer();
+		//Checks for collision with each entity. Checks only if the entity is not the player.
+		if (player.collide(ent.get_pos()) && ent.get_display() != player.get_display()) {
+			ent.DoEntityTask();
+		}
 
+	}
 }
