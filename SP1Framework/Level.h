@@ -30,7 +30,6 @@ public:
 	void Load(string filename); 
 
 	void SetTimers(double t);
-
 	void ResetTimers();
 
 	//Returns the Entity you are looking for

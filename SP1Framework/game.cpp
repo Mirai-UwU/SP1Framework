@@ -19,7 +19,7 @@
 #include <irrKlang.h>
 #include <stdio.h>
 #include <conio.h>
-#include "Dependencies/irrKlang-1.6.0/include/irrKlang.h"
+//#include "Dependencies/irrKlang-1.6.0/include/irrKlang.h"
 #include "Sound.h"
 
 // Irrklang linker
