@@ -38,21 +38,15 @@ Sound bg;
 SGameChar   g_sChar;
 EGAMESTATES g_eGameState = S_SPLASHSCREEN; // initial state
 
-MapMaker map1;
 MapMaker hud;
 Level* lvl[S_GAMEOVER];
 Sound sound;
 
-// Start IrrKlang Sound Engine
-//ISoundEngine* engine = createIrrKlangDevice();
+
 
 
 // Console object
 Console g_Console(102, 25, "A Way Out");
-
-
-Player* p=new Player(1, 2, &map1);
-Guard* g=new Guard(3, 67, &map1);
 
 
 //--------------------------------------------------------------
@@ -77,11 +71,8 @@ void init(void)
     g_sChar.m_cLocation.X = 1;
     g_sChar.m_cLocation.Y = 11;
   
+  
     
-
-
-    //map1.Load(".Txt/D1.txt"); 
-    //lvl.Load(".Txt/D01.txt");
 
     for (int gamestate = 0; gamestate < S_GAMEOVER; gamestate++) {
         string file = ".Txt/D" + to_string((gamestate - (gamestate % 10)) / 10) + to_string(gamestate % 10) + ".txt";
@@ -114,8 +105,6 @@ void shutdown( void )
 {
     // Reset to white text on black background
     colour(FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED);
-    delete p;
-    delete g;
     for (int gamestate = 0; gamestate < S_GAMEOVER; gamestate++) {
         delete lvl[gamestate];
     }
@@ -268,6 +257,9 @@ int getPlayerInput()
     if (g_skKeyEvent[K_RIGHT].keyDown) {
         return K_RIGHT;
     }
+
+    
+
     if (g_skKeyEvent[K_ROPE].keyReleased)
     {
         return K_ROPE;

@@ -3,7 +3,8 @@
 #include "game.h"
 #include "MapMaker.h"
 #include <windows.h>
-
+extern EGAMESTATES g_eGameState;
+extern double g_dElapsedTime;
 class Entity
 {
 protected:

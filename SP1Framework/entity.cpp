@@ -82,7 +82,7 @@ void Entity::set_timer(double t)
 }
 void Entity::reset_timer()
 {
-	timer += 0;
+	timer = 0;
 }
 
 
