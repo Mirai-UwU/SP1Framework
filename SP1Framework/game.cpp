@@ -356,7 +356,6 @@ void render()
         renderSplashScreen();
         break;
     case S_GAME: 
-        sound.Engine()->play2D("backgroup_music.mp3", true);
         renderGame();
         break;
     }
