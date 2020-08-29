@@ -221,7 +221,5 @@ void Level::RenderFog()
 	}
 }
 
-void Level::EntityCollision()
-{
+//void Level::EntityCollision()
 
-}
