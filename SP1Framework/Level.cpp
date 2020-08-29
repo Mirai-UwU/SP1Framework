@@ -23,13 +23,13 @@ void Level::FindEntities()
 
 
 			switch (entity) {
-			case 'P':
+			case '@':
 				entity_list[count++] = new Player(coord, &this_map);
 				break;
-			case 'G':
+			case '!':
 				entity_list[count++] = new Guard(coord, &this_map);
 				break;
-			case 'E':
+			case '&':
 				entity_list[count++] = new Exit(coord, &this_map);
 				break;
 			default:
@@ -153,23 +153,22 @@ void Level::Update()
 {
 	processUserInput();
 	for (int i = 0; i < entitycount; ++i) {
+		Entity& ent = *entity_list[i];
 		char theEntity = entity_list[i]->get_display();
 		switch (theEntity) {
 		case (char)2:
-				if (entity_list[i]->get_timer() > 0.5) {
-					entity_list[i]->move(rand() % K_COUNT);
-					entity_list[i]->set_timer(-entity_list[i]->get_timer());
+			if ((int)ent.get_timer() % 2) {
+				if (ent.get_timer() > 0.02) {
+					ent.move(rand() % K_COUNT);
+					ent.reset_timer();
 				}
+			}
 			break;
 
 		case '@':
-			entity_list[i]->move(getPlayerInput());
+			ent.move(getPlayerInput());
 
-			if (entity_list[i]->get_timer() > 5) {
-				entity_list[i]->set_colour(0x0c);
-			}
-
-			if (FindExit()->get_x_pos() == entity_list[i]->get_x_pos() && FindExit()->get_y_pos() == entity_list[i]->get_y_pos() ){
+			if (FindExit()->get_x_pos() == ent.get_x_pos() && FindExit()->get_y_pos() == ent.get_y_pos() ){
 				FindExit()->DoEntityTask();
 				ResetTimers();
 			}
@@ -220,4 +219,9 @@ void Level::RenderFog()
 			}
 		}
 	}
+}
+
+void Level::EntityCollision()
+{
+
 }
