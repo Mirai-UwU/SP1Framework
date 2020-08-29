@@ -172,7 +172,6 @@
     <ClCompile Include="MapMaker.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Sound.cpp" />
-    <ClCompile Include="rope.cpp" />
     <ClCompile Include="teleporter.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -188,7 +187,6 @@
     <ClInclude Include="MapMaker.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Sound.h" />
-    <ClInclude Include="Rope.h" />
     <ClInclude Include="Teleporter.h" />
   </ItemGroup>
   <ItemGroup>
