@@ -46,6 +46,7 @@ void Sound::Playsound(int i)
 			break;
 		case 7: engine->play2D("Sounds/footstep.mp3");
 			break;
+		case 8: engine->play2D("Sounds/power_down.wav");
 	}
 		
 }
