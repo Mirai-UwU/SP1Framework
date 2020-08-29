@@ -58,15 +58,12 @@ void Guard::move(int button_pressed)
 
 void Guard::DoEntityTask()
 {
-     g_eGameState = S_SPLASHSCREEN;
-     g_dElapsedTime = 0;
-
+    isActive = false;
 }
 
 bool Guard::collide(COORD entity_pos)
 {
 	return collide(entity_pos.X, entity_pos.Y);
-	
 }
 
 bool Guard::collide(int entity_xpos, int entity_ypos)

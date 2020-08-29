@@ -33,14 +33,16 @@ public:
 
 	void SetTimers(double t);
 	void ResetTimers();
-
-	//Returns the Entity you are looking for
+	
+	///Returns the Entity you are looking for
 	Entity* FindPlayer();
-	Entity* FindGuard(); //Finds the first guard in the list
-	Entity* FindGuard(int which); //Finds the guard depending on number which
+	//Finds the first guard in the list
+	Entity* FindGuard();
+	//Finds the guard depending on number which
+	Entity* FindGuard(int which); 
 	Entity* FindExit();
-
-	//Important Functions
+	
+	///Important Functions
 	void Update();
 	void Render();
 	void Reset();
@@ -49,5 +51,7 @@ public:
 	void RenderFog();
 	void EntityCollision(Entity& entityptr);
 
+
+	
 };
 
