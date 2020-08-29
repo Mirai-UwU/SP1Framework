@@ -32,7 +32,7 @@ double  g_dElapsedTime;
 double  g_dDeltaTime;
 SKeyEvent g_skKeyEvent[K_COUNT];
 SMouseEvent g_mouseEvent;
-Sound bg;
+Sound sound;
 
 // Game specific variables here
 SGameChar   g_sChar;
@@ -40,7 +40,7 @@ EGAMESTATES g_eGameState = S_SPLASHSCREEN; // initial state
 
 MapMaker hud;
 Level* lvl[S_GAMEOVER];
-Sound sound;
+
 
 
 
