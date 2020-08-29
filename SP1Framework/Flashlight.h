@@ -7,6 +7,7 @@
 class Flashlight : public Entity
 {
 private:
+	Player* p;
 	
 public:
 	Flashlight(int y_pos, int x_pos, MapMaker* map);

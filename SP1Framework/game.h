@@ -34,6 +34,7 @@ enum EKEYS
     K_ESCAPE,
     K_SPACE,
     K_ROPE,
+    K_FLASHLIGHT,
     K_TELEPORTER,
     K_BOMB,
     K_COUNT
