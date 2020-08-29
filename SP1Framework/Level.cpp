@@ -148,6 +148,11 @@ Entity* Level::FindExit()
 	}
 }
 
+void Level::Playsound()
+{
+	
+}
+
 
 
 
@@ -182,6 +187,8 @@ void Level::Update()
 	
 
 }
+
+
 
 void Level::Render()
 {

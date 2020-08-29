@@ -19,6 +19,29 @@ void Sound::BackgroudMusic()
 	
 }
 
+void Sound::PlaySound(int i)
+{
+	switch (i) {
+		case 1:
+			engine->play2D("");
+			break;
+		case 2:
+			engine->play2D("");
+			break;
+		case 3:
+			engine->play2D("");
+			break;
+		case 4:
+			engine->play2D("");
+			break;
+		case 5:
+			engine->play2D("");
+			break;
+
+	}
+	
+}
+
 
  ISoundEngine* Sound::Engine()
 {
