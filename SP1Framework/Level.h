@@ -18,7 +18,7 @@ private:
 	//Finds and Puts Entities into entity_list
 	void FindEntities();
 	COORD* initial_pos;
-
+	Sound se;
 protected:
 	
 	MapMaker this_map;
@@ -42,6 +42,7 @@ public:
 	//Finds the guard depending on number which
 	Entity* FindGuard(int which); 
 	Entity* FindExit();
+
 
 	void Update();
 	void Render();

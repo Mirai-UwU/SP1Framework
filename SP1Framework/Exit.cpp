@@ -1,5 +1,6 @@
 #include "Exit.h"
 
+
 Exit::Exit(COORD _c, MapMaker* map)
 {
 	c = _c;
@@ -47,5 +48,6 @@ void Exit::move(int button_pressed)
 
 void Exit::DoEntityTask()
 {
+	se.Playsound(5);
 	g_eGameState = (EGAMESTATES)((int)(g_eGameState) + 1); //Increment Gamestate by 1
 }

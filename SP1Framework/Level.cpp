@@ -1,5 +1,8 @@
 #include "Level.h"
 
+
+
+
 void Level::Build()
 {
 	this_map.Load(filepath);
@@ -148,12 +151,6 @@ Entity* Level::FindExit()
 	}
 }
 
-void Level::Playsound()
-{
-	
-}
-
-
 
 
 void Level::Update()
@@ -161,6 +158,8 @@ void Level::Update()
 	processUserInput();
 	for (int i = 0; i < entitycount; ++i) {
 		Entity& ent = *entity_list[i];
+		COORD oldpos = ent.get_pos();
+		
 		if (ent.active()) {
 			char theEntity = entity_list[i]->get_display();
 			switch (theEntity) {
@@ -175,8 +174,16 @@ void Level::Update()
 				break;
 
 			case '@':
-				ent.move(getPlayerInput());
-
+				if (ent.get_timer() > 0.5)
+				{
+					ent.move(getPlayerInput());
+				}
+					
+				if ((oldpos.X != ent.get_x_pos()) || (oldpos.Y != ent.get_y_pos()))
+				{
+					se.Playsound(7);
+				}
+					
 
 				break;
 			default:

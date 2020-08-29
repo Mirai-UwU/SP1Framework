@@ -4,6 +4,8 @@
 #include "game.h"
 #include "MapMaker.h"
 
+
+
 Guard::Guard(COORD c_pos, MapMaker* map)
 {
 	set_pos(c_pos);
@@ -58,6 +60,7 @@ void Guard::move(int button_pressed)
 
 void Guard::DoEntityTask()
 {
+    se.Playsound(1);
     isActive = false;
 }
 

@@ -266,10 +266,12 @@ int getPlayerInput()
     }
     if (g_skKeyEvent[K_BOMB].keyReleased)
     {
+        sound.Playsound(3);
         return K_BOMB;
     }
     if (g_skKeyEvent[K_TELEPORTER].keyReleased)
     {
+        sound.Playsound(4);
         return K_TELEPORTER;
     
     }
