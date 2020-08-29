@@ -26,3 +26,4 @@ public:
 	void setLives(int i);
 	void togglebomb();
 	void toggleteleporter();
+};
