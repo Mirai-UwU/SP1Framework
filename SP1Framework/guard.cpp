@@ -58,7 +58,8 @@ void Guard::move(int button_pressed)
 
 void Guard::DoEntityTask()
 {
-     g_bQuitGame = true;
+     g_eGameState = S_SPLASHSCREEN;
+     g_dElapsedTime = 0;
 
 }
 

@@ -5,9 +5,11 @@ void Level::Build()
 	this_map.Load(filepath);
 	entitycount = this_map.getEntityCount();
 	entity_list = new Entity* [entitycount];
+	initial_pos = new COORD[entitycount];
 	FindEntities();
 	for (int i = 0; i < entitycount; i++) {
 		this_map.setToCoord(entity_list[i]->get_pos(), ' ');
+		initial_pos[i] = entity_list[i]->get_pos();
 	}
 }
 
@@ -48,6 +50,7 @@ Level::Level()
 	entitycount = 0;
 	filepath = ".Txt/Map Template.txt";
 	entity_list = NULL;
+	initial_pos = NULL;
 }
 
 Level::Level(string filename)
@@ -62,6 +65,7 @@ Level::Level(string filename)
 		
 		filepath = ".Txt/Map Template.txt";
 		entity_list = NULL;
+		initial_pos = NULL;
 	}
 
 }
@@ -72,6 +76,7 @@ Level::~Level()
 		delete entity_list[i];
 	}
 	delete[] entity_list;
+	delete[] initial_pos;
 }
 
 void Level::Load(string filename)
@@ -155,7 +160,7 @@ void Level::Update()
 		switch (theEntity) {
 		case (char)2:
 			if ((int)ent.get_timer() % 2) {
-				if (ent.get_timer() > 0.02) {
+				if (ent.get_timer() > 0.5) {
 					ent.move(rand() % K_COUNT);
 					ent.reset_timer();
 				}
@@ -164,7 +169,6 @@ void Level::Update()
 
 		case '@':
 			ent.move(getPlayerInput());
-			
 
 			
 			break;
@@ -187,6 +191,15 @@ void Level::Render()
 		g_Console.writeToBuffer(ent.get_pos(), ent.get_display(), ent.get_colour());	
 	}
 	RenderFog();
+}
+
+void Level::Reset()
+{
+	for (int i = 0; i < entitycount; i++) {
+		Entity& ent = *entity_list[i];
+		ent.set_pos(initial_pos[i]);
+		ResetTimers();
+	}
 }
 
 void Level::RenderFog()

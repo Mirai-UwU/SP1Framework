@@ -1,7 +1,7 @@
 #pragma once
 #include "Entity.h"
 
-extern EGAMESTATES g_eGameState;
+
 
 class Exit : public Entity
 {

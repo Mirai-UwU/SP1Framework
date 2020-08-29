@@ -16,6 +16,8 @@ private:
 	void Build();
 	//Finds and Puts Entities into entity_list
 	void FindEntities();
+	COORD* initial_pos;
+
 protected:
 	
 	MapMaker this_map;
@@ -41,6 +43,7 @@ public:
 	//Important Functions
 	void Update();
 	void Render();
+	void Reset();
 
 	//Level functions
 	void RenderFog();
