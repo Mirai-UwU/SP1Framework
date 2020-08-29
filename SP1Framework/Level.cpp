@@ -107,9 +107,6 @@ Entity* Level::FindPlayer()
 		if (entity_list[i]->get_display() == '@') {
 			return entity_list[i];
 		}
-		else {
-			return NULL;
-		}
 	}
 }
 
@@ -167,16 +164,17 @@ void Level::Update()
 
 		case '@':
 			ent.move(getPlayerInput());
+			
 
-			if (FindExit()->get_x_pos() == ent.get_x_pos() && FindExit()->get_y_pos() == ent.get_y_pos() ){
-				FindExit()->DoEntityTask();
-				ResetTimers();
-			}
+			
 			break;
 		default:
 			break;
 		}
+		EntityCollision(ent);
+
 	}
+	
 	
 
 }
@@ -221,16 +219,14 @@ void Level::RenderFog()
 	}
 }
 
-void Level::EntityCollision()
+void Level::EntityCollision(Entity& entityptr)
 {
-	for (int ientity = 0; ientity < entitycount; ientity++) {
-		Entity& ent = *entity_list[ientity]; 
-		Entity& player = *FindPlayer();
-		//Checks for collision with each entity. Checks only if the entity is not the player.
-		if (player.collide(ent.get_pos()) && ent.get_display() != player.get_display()) {
-			ent.DoEntityTask();
-		}
-
+	Entity& player = *FindPlayer();
+	//Checks for collision with each entity. Checks only if the entity is not the player.
+	if ((player.get_x_pos() == entityptr.get_x_pos() && player.get_y_pos() == entityptr.get_y_pos() )&& entityptr.get_display() != player.get_display()) {
+		entityptr.DoEntityTask();
 	}
+
+	
 }
 

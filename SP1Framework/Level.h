@@ -44,7 +44,7 @@ public:
 
 	//Level functions
 	void RenderFog();
-	void EntityCollision();
+	void EntityCollision(Entity& entityptr);
 
 };
 
