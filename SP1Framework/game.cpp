@@ -307,7 +307,7 @@ void update(double dt)
 
     //Set Timers when Gamestate in Levels
     if (g_eGameState < S_GAMEOVER) {
-        lvl[g_eGameState]->SetTimers(g_dElapsedTime);
+        lvl[g_eGameState]->SetTimers(dt);
     }
     // *-- PUT LEVELS HERE --*   //
     switch (g_eGameState)
@@ -376,7 +376,7 @@ void render()
         renderGame();
         break;
     }
-    //renderFramerate();      // renders debug information, frame rate, elapsed time, etc
+    renderFramerate();      // renders debug information, frame rate, elapsed time, etc
     //renderInputEvents();    // renders status of input events
     renderToScreen();       // dump the contents of the buffer to the screen, one frame worth of game
 }

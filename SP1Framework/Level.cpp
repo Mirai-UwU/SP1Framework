@@ -93,6 +93,13 @@ void Level::SetTimers(double t)
 		entity_list[i]->set_timer(t);
 	}
 }
+void Level::ResetTimers()
+{
+	for (int i = 0; i < entitycount; ++i) {
+		entity_list[i]->reset_timer();
+	}
+}
+
 
 Entity* Level::FindPlayer()
 {
@@ -149,10 +156,10 @@ void Level::Update()
 		char theEntity = entity_list[i]->get_display();
 		switch (theEntity) {
 		case (char)2:
-			if (entity_list[i]->get_timer() > 0) {
-				entity_list[i]->move(rand() % K_COUNT);
-				entity_list[i]->set_timer(0);
-			}
+				if (entity_list[i]->get_timer() > 0.5) {
+					entity_list[i]->move(rand() % K_COUNT);
+					entity_list[i]->set_timer(-entity_list[i]->get_timer());
+				}
 			break;
 
 		case '@':
@@ -164,7 +171,7 @@ void Level::Update()
 
 			if (FindExit()->get_x_pos() == entity_list[i]->get_x_pos() && FindExit()->get_y_pos() == entity_list[i]->get_y_pos() ){
 				FindExit()->DoEntityTask();
-				g_dElapsedTime = 0;
+				ResetTimers();
 			}
 			break;
 		default:
@@ -187,7 +194,7 @@ void Level::Render()
 
 void Level::RenderFog()
 {
-	int ren = 1;
+	int ren = 2;
 	if (ren == 1)//Flashlight Fog
 	{
 		for (int x = 0; x < 102; x++) {

@@ -12,7 +12,6 @@ class Level
 {
 private:
 	string filepath;
-	
 	//Loads everything up
 	void Build();
 	//Finds and Puts Entities into entity_list
@@ -29,9 +28,10 @@ public:
 
 	//use if cannot initialise at start
 	void Load(string filename); 
-	void DoEntityTask();
 
 	void SetTimers(double t);
+
+	void ResetTimers();
 
 	//Returns the Entity you are looking for
 	Entity* FindPlayer();

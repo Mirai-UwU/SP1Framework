@@ -42,6 +42,7 @@ public:
 	//Get/Set Entity's timer
 	double get_timer();
 	void set_timer(double t);
+	void reset_timer();
 
 	//check if collision with COORD.
 	//does collision code.

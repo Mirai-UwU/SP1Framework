@@ -78,9 +78,12 @@ double Entity::get_timer()
 
 void Entity::set_timer(double t)
 {
-	timer = t;
+	timer += t;
 }
-
+void Entity::reset_timer()
+{
+	timer += 0;
+}
 
 
 void Entity::set_pos(COORD _c)
