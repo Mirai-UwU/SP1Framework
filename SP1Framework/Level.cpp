@@ -161,27 +161,29 @@ void Level::Update()
 	processUserInput();
 	for (int i = 0; i < entitycount; ++i) {
 		Entity& ent = *entity_list[i];
-		char theEntity = entity_list[i]->get_display();
-		switch (theEntity) {
-		case (char)2:
-			if ((int)ent.get_timer() % 2) {
-				if (ent.get_timer() > 0.5) {
-					ent.move(rand() % K_COUNT);
-					ent.reset_timer();
+		if (ent.active()) {
+			char theEntity = entity_list[i]->get_display();
+			switch (theEntity) {
+			case (char)2:
+				if ((int)g_dElapsedTime % 2) {
+					if (ent.get_timer() > 0.02) {
+						ent.move(rand() % K_COUNT);
+						ent.reset_timer();
+					}
+					
 				}
+				break;
+
+			case '@':
+				ent.move(getPlayerInput());
+
+
+				break;
+			default:
+				break;
 			}
-			break;
-
-		case '@':
-			ent.move(getPlayerInput());
-
-			
-			break;
-		default:
-			break;
+			EntityCollision(ent);
 		}
-		EntityCollision(ent);
-
 	}
 	
 	
@@ -195,7 +197,9 @@ void Level::Render()
 	this_map.Render(0, 0, 102, 20);
 	for (int i = 0; i < entitycount; ++i) {
 		Entity& ent = *entity_list[i];
-		g_Console.writeToBuffer(ent.get_pos(), ent.get_display(), ent.get_colour());	
+		if (ent.active()) {
+			g_Console.writeToBuffer(ent.get_pos(), ent.get_display(), ent.get_colour());
+		}
 	}
 	RenderFog();
 }

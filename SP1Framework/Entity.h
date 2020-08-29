@@ -40,6 +40,10 @@ public:
 	WORD get_colour();
 	void set_colour(WORD color);
 
+	//Get/Set isActive
+	bool active();
+	void toggle();
+
 	//Get/Set Entity's timer
 	double get_timer();
 	void set_timer(double t);

@@ -71,6 +71,21 @@ void Entity::set_colour(WORD color)
 	colour = color;
 }
 
+bool Entity::active()
+{
+	return isActive;
+}
+
+void Entity::toggle()
+{
+	if (isActive) {
+		isActive = true;
+	}
+	else {
+		isActive = false;
+	}
+}
+
 double Entity::get_timer()
 {
 	return timer;
