@@ -161,6 +161,7 @@ void keyboardHandler(const KEY_EVENT_RECORD& keyboardEvent)
     switch (g_eGameState)
     {
     case S_SPLASHSCREEN: // don't handle anything for the splash screen
+    case S_GAMEOVER:
         break;
     default: 
         gameplayKBHandler(keyboardEvent); // handle gameplay keyboard event 
@@ -189,6 +190,7 @@ void mouseHandler(const MOUSE_EVENT_RECORD& mouseEvent)
     switch (g_eGameState)
     {
     case S_SPLASHSCREEN: // don't handle anything for the splash screen
+    case S_GAMEOVER:
         break;
     default: 
         gameplayMouseHandler(mouseEvent); // handle gameplay mouse event
@@ -313,6 +315,9 @@ void update(double dt)
         case S_SPLASHSCREEN : 
             splashScreenWait(); // game logic for the splash screen
             break;
+        case S_GAMEOVER:
+            g_bQuitGame = true;
+            break;
         default: 
             lvl[g_eGameState]->Update(); // gameplay logic when we are in the game
             sound.BackgroudMusic();
@@ -365,6 +370,7 @@ void render()
     {
     case S_SPLASHSCREEN: 
         renderSplashScreen();
+    case S_GAMEOVER:
         break;
     default: 
         renderGame();
