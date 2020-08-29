@@ -16,6 +16,7 @@
     <ClCompile Include="hud.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Exit.cpp" />
+    <ClCompile Include="teleporter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -53,6 +54,7 @@
     <ClInclude Include="MapMaker.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Exit.h" />
+    <ClInclude Include="Teleporter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bomb.h" />
