@@ -11,7 +11,7 @@ Flashlight::Flashlight(int y_pos, int x_pos, MapMaker* map)
 	entity_map = map;
 }
 
-void Flashlight::DoEntityTask(char input)
+void Flashlight::DoEntityTask()
 {
 	
 }
