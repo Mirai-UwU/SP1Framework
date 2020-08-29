@@ -58,10 +58,10 @@ void Guard::move(int button_pressed)
 
 }
 
-void Guard::DoEntityTask()
+void Guard::DoEntityTask(Entity* player)
 {
     se.Playsound(1);
-    isActive = false;
+    toggle();
 }
 
 bool Guard::collide(COORD entity_pos)

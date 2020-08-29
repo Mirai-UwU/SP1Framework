@@ -1,28 +1,56 @@
 #include "Teleporter.h"
 
-Teleporter::Teleporter(int y_pos, int x_pos, MapMaker* map)
+Teleporter::Teleporter(COORD pos, MapMaker* map)
 {
-	set_xpos(x_pos);
-	set_ypos(y_pos);
-	set_display('%');
-	entity_map = map;
-	p = NULL;
-    map1 = NULL;
+    set_xpos(pos.X);
+    set_ypos(pos.Y);
+    set_display((char)4);
+    colour = 0x8A;
+    entity_map = map;
     timer = 0;
     isActive = true;
 }
 
-void Teleporter::DoEntityTask(char input)
+Teleporter::Teleporter(int y_pos, int x_pos, MapMaker* map)
 {
-    getPlayerInput();
-        if (input == K_TELEPORTER)
+	set_xpos(x_pos);
+	set_ypos(y_pos);
+	set_display((char)4);
+    colour = 0x8A;
+	entity_map = map;
+    timer = 0;
+    isActive = true;
+}
+
+bool Teleporter::collide(COORD entity_pos)
+{
+    return collide(entity_pos.X, entity_pos.Y);;
+}
+
+bool Teleporter::collide(int entity_xpos, int entity_ypos)
+{
+    if (get_x_pos() == entity_xpos && get_y_pos() == entity_ypos) {
+
+        return true;
+    }
+    return false;
+}
+
+void Teleporter::move(int button_pressed)
+{
+
+}
+
+void Teleporter::DoEntityTask(Entity* player)
+{
+        if (getPlayerInput() == K_TELEPORTER)
         {
-            p->set_xpos(rand() % 100);
-            p->set_ypos(rand() % 20);
-            while (map1->getFromCoord(p->get_x_pos(), p->get_y_pos()) != ' ')
+            player->set_xpos(rand() % 100);
+            player->set_ypos(rand() % 20);
+            while (entity_map->getFromCoord(player->get_x_pos(), player->get_y_pos()) != ' ' && !active())
             {
-                p->set_xpos(rand() % 100);
-                p->set_ypos(rand() % 20);
+                player->set_xpos(rand() % 100);
+                player->set_ypos(rand() % 20);
             }
         }
 

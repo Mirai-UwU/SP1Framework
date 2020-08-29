@@ -159,7 +159,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="bomb.cpp" />
+    <ClCompile Include="Bomb.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Exit.cpp" />
     <ClCompile Include="Framework\console.cpp" />
@@ -172,10 +172,15 @@
     <ClCompile Include="MapMaker.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Sound.cpp" />
-    <ClCompile Include="teleporter.cpp" />
+
+
+
+
+    <ClCompile Include="Teleporter.cpp" />
+
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="bomb.h" />
+    <ClInclude Include="Bomb.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Exit.h" />
     <ClInclude Include="Framework\console.h" />

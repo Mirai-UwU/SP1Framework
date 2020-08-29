@@ -62,7 +62,7 @@ void Player::move(int button_pressed)
 
 }
 
-void Player::DoEntityTask()
+void Player::DoEntityTask(Entity* player)
 {
 }
 

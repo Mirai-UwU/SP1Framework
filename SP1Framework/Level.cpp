@@ -37,6 +37,12 @@ void Level::FindEntities()
 			case '&':
 				entity_list[count++] = new Exit(coord, &this_map);
 				break;
+			case '%':
+				entity_list[count++] = new Bomb(coord, &this_map);
+				break;
+			case '$':
+				entity_list[count++] = new Teleporter(coord, &this_map);
+				break;
 			default:
 				break;
 			}
@@ -263,7 +269,17 @@ void Level::EntityCollision(Entity& entityptr)
 	Entity& player = *FindPlayer();
 	//Checks for collision with each entity. Checks only if the entity is not the player.
 	if ((player.get_x_pos() == entityptr.get_x_pos() && player.get_y_pos() == entityptr.get_y_pos() )&& entityptr.get_display() != player.get_display()) {
-		entityptr.DoEntityTask();
+		switch (entityptr.get_display()) {
+		case (char)235:
+			entityptr.DoEntityTask(FindGuard());
+			break;
+		case (char)4:
+			entityptr.DoEntityTask(&player);
+			break;
+		default:
+			entityptr.DoEntityTask();
+		}
+		
 	}
 
 	

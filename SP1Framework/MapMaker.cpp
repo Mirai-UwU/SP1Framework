@@ -118,8 +118,8 @@ int MapMaker::getEntityCount()
 			//case ']':
 			//case '[':
 			//case '&':
-			//case '%':
-			//case '$':
+			case '%':
+			case '$':
 				count++;
 				break;
 			default:
