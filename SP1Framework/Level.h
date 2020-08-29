@@ -61,6 +61,7 @@ public:
 	//Finds the guard depending on number which
 	Entity* FindGuard(int which); 
 	Entity* FindExit();
+	
 
 
 	void Update();

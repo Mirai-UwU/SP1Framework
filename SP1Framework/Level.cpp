@@ -164,6 +164,11 @@ Entity* Level::FindExit()
 	}
 }
 
+Player* Level::LocatePlayer()
+{
+	return FindPlayer();
+}
+
 
 
 void Level::Update()
