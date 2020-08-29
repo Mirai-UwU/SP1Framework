@@ -52,6 +52,7 @@ Level::Level()
 {
 	entitycount = 0;
 	filepath = ".Txt/Map Template.txt";
+	render_fogstate = FogState::STATE_MAX;
 	entity_list = NULL;
 	initial_pos = NULL;
 }
@@ -70,6 +71,7 @@ Level::Level(string filename)
 		entity_list = NULL;
 		initial_pos = NULL;
 	}
+	render_fogstate = FogState::STATE_MAX;
 
 }
 
@@ -106,6 +108,11 @@ void Level::ResetTimers()
 	for (int i = 0; i < entitycount; ++i) {
 		entity_list[i]->reset_timer();
 	}
+}
+
+void Level::setFog(int i)
+{
+	render_fogstate = static_cast<FogState>(i % (int)FogState::STATE_COUNT);
 }
 
 
@@ -174,16 +181,20 @@ void Level::Update()
 				break;
 
 			case '@':
-				if (ent.get_timer() > 0.5)
-				{
+				
 					ent.move(getPlayerInput());
-				}
-					
-				if ((oldpos.X != ent.get_x_pos()) || (oldpos.Y != ent.get_y_pos()))
-				{
-					se.Playsound(7);
-				}
-					
+				
+					if (ent.get_timer() > 0.5)
+					{
+						if ((oldpos.X != ent.get_x_pos()) || (oldpos.Y != ent.get_y_pos()))
+						{
+							se.Playsound(7);
+						}
+					}
+
+					if (ent.get_timer() > 120) {
+						setFog(1);
+					}
 
 				break;
 			default:
@@ -239,7 +250,6 @@ void Level::RenderFog()
 	}
 	if (render_fogstate == FogState::STATE_NONE) //No Fog
 	{
-
 
 	}
 	if (render_fogstate == FogState::STATE_MIN)//No Flashlight fog

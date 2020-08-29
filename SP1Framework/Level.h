@@ -17,7 +17,8 @@ private:
 	enum class FogState {
 		STATE_NONE,
 		STATE_MIN,
-		STATE_MAX
+		STATE_MAX,
+		STATE_COUNT
 	};
 
 	FogState render_fogstate;
@@ -43,9 +44,13 @@ public:
 	//use if cannot initialise at start
 	void Load(string filename); 
 
+	//Sets All Individual Entity's timers
 	void SetTimers(double t);
 	void ResetTimers();
 	
+	//Sets FogState based on number
+	void setFog(int i);
+
 	///Returns the Entity you are looking for
 	Entity* FindPlayer();
 	//Finds the first guard in the list
