@@ -2,7 +2,9 @@
 #include "Framework/console.h"
 #include "game.h"
 #include "MapMaker.h"
+#include "Sound.h"
 #include <windows.h>
+
 extern EGAMESTATES g_eGameState;
 extern double g_dElapsedTime;
 class Entity
@@ -14,6 +16,7 @@ protected:
 	char display;
 	double timer;
 	bool isActive;
+	Sound se;
 public:
 
 
