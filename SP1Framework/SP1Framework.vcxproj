@@ -161,6 +161,7 @@
   <ItemGroup>
     <ClCompile Include="bomb.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="Exit.cpp" />
     <ClCompile Include="Flashlight.cpp" />
     <ClCompile Include="Framework\console.cpp" />
     <ClCompile Include="Framework\timer.cpp" />
@@ -177,16 +178,14 @@
   <ItemGroup>
     <ClInclude Include="bomb.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="Exit.h" />
     <ClInclude Include="Flashlight.h" />
     <ClInclude Include="Framework\console.h" />
     <ClInclude Include="Framework\timer.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="guard.h" />
-
     <ClInclude Include="Level.h" />
-
     <ClInclude Include="HUD.h" />
-
     <ClInclude Include="MapMaker.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Sound.h" />

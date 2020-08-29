@@ -85,7 +85,7 @@ void init(void)
 
     for (int gamestate = 0; gamestate < S_GAMEOVER; gamestate++) {
         string file = ".Txt/D" + to_string((gamestate - (gamestate % 10)) / 10) + to_string(gamestate % 10) + ".txt";
-        lvl[gamestate] = new Level(".Txt/D00.txt");
+        lvl[gamestate] = new Level(file);
     }
 
     hud.Load(".Txt/HUD Template.txt");
@@ -373,7 +373,6 @@ void render()
         renderSplashScreen();
         break;
     default: 
-        sound.Engine()->play2D("backgroup_music.mp3", true);
         renderGame();
         break;
     }

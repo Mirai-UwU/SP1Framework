@@ -3,7 +3,7 @@
 Exit::Exit(COORD _c, MapMaker* map)
 {
 	c = _c;
-	display = 233;
+	set_display(233);
 	entity_map = map;
 	colour = 0x6B;
 	timer = 0;
@@ -13,7 +13,7 @@ Exit::Exit(int y_pos, int x_pos, MapMaker* map)
 {
 	c.X = x_pos;
 	c.Y = y_pos;
-	display = 233;
+	set_display(233);
 	entity_map = map;
 	colour = 0x6B;
 	timer = 0;
@@ -31,10 +31,10 @@ bool Exit::collide(COORD entity_pos)
 bool Exit::collide(int entity_xpos, int entity_ypos)
 {
 	if (this->get_x_pos() == entity_xpos && this->get_y_pos() == entity_ypos) {
-		return false;
+		return true;
 	}
 	else {
-		return true;
+		return false;
 	}
 }
 

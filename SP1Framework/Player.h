@@ -7,7 +7,6 @@ class Player : public Entity
 {              
 
 private:
-	Player p;
 	int lives = 3;
 	Sound sound;
 public:
