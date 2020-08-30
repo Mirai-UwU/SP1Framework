@@ -159,6 +159,19 @@ Entity* Level::FindGuard(int which)
 	}
 }
 
+Entity* Level::FindBombed(int which)
+{
+	if (which < 0 || which >= entitycount) {
+		which = entitycount;
+	}
+
+	for (int i = which; i < entitycount; i++) {
+		if (entity_list[i]->get_display() == (char)3) {
+			return entity_list[i];
+		}
+	}
+}
+
 Entity* Level::FindExit()
 {
 	for (int i = 0; i < entitycount; i++) {
@@ -196,7 +209,18 @@ void Level::Update()
 					}
 				}
 				else {
-					ent.set_display((char)3);
+					for (int i = 0; i < entitycount; i++) {
+						FindGuard(i)->set_display((char)3);
+						FindGuard(i)->reset_timer();
+					}
+				}
+				break;
+			case (char)3:
+				if (ent.get_timer() > 5) {
+					for (int i = 0; i < entitycount; i++) {
+						FindBombed(i)->set_display((char)2);
+						FindBombed(i)->reset_timer();
+					}
 				}
 				break;
 			case (char)233:
