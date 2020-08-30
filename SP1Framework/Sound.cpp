@@ -9,6 +9,11 @@ Sound::Sound()
 	
 }
 
+Sound::~Sound()
+{
+	engine->drop();
+}
+
 void Sound::BackgroudMusic()
 {
 		if (active == false)

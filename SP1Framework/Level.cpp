@@ -139,7 +139,9 @@ Entity* Level::FindGuard()
 {
 	for (int i = 0; i < entitycount; i++) {
 		if (entity_list[i]->get_display() == (char)2) {
-			return entity_list[i];
+			if (entity_list[i]->active()) {
+				return entity_list[i];
+			}
 		}
 	}
 }
@@ -154,7 +156,9 @@ Entity* Level::FindGuard(int which)
 
 	for (int i = which; i < entitycount; i++) {
 		if (entity_list[i]->get_display() == (char)2) {
-			return entity_list[i];
+			if (entity_list[i]->active()) {
+				return entity_list[i];
+			}
 		}
 	}
 }
@@ -167,7 +171,9 @@ Entity* Level::FindBombed(int which)
 
 	for (int i = which; i < entitycount; i++) {
 		if (entity_list[i]->get_display() == (char)3) {
-			return entity_list[i];
+			if (entity_list[i]->active()) {
+				return entity_list[i];
+			}
 		}
 	}
 }

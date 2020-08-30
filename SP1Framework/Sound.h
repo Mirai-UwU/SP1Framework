@@ -15,6 +15,7 @@ private:
 	
 public:
 	Sound();
+	~Sound();
 	void BackgroudMusic();
 	void ToggleBG();
 	void EnableBG();
