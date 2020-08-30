@@ -22,7 +22,11 @@ public:
 	~HUD();
 	void Load(std::string filepath);
 
-	void render();
+	void render_HUD();
+	void render_HUD_bomb();
+	void render_HUD_teleport();
+	void render_HUD_money();
+	void render_HUD_battery();
 	// hud needs to show 1.torchlight time left 2. held bomb 3. held teleporter 4.money left (lives)
 
 	//Get Static Variables

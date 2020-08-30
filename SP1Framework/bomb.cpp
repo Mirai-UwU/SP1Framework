@@ -45,6 +45,7 @@ void Bomb::move(int button_pressed)
 void Bomb::DoEntityTask(Entity* player)
 {
 	toggle();
+	hud.togglebomb();
 	if (getPlayerInput() == K_BOMB /*&& !active()*/)
 	{
 		player->toggle();

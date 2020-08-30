@@ -2,7 +2,7 @@
 
 
 int HUD::lives = 900;
-bool HUD::bombheld = false;
+bool HUD::bombheld = true;
 bool HUD::teleportheld = false;
 
 HUD::HUD()
@@ -31,8 +31,18 @@ void HUD::render_HUD()
 void HUD::render_HUD_bomb()
 {
 
+	if (holdingbomb() == true)
+	{
+		g_Console.writeToBuffer(35, 23, "Ready!");
+		g_Console.writeToBuffer(32, 24, "Press B to use");
+	}
+	else
+	{
+	//	g_Console.writeToBuffer(35, 23, "Ready!");
+	//	g_Console.writeToBuffer(32, 24, "Press B to use");
+	}
+	
 }
-
 void HUD::render_HUD_teleport()
 {
 }
@@ -66,7 +76,7 @@ void HUD::setLives(int i)
 
 void HUD::togglebomb()
 {
-	if (bombheld) {
+	if (bombheld == true) {
 		bombheld = false;
 	}
 	else {
@@ -101,7 +111,7 @@ bool HUD::bombhandler()
 {
 	if ((bombheld == true) && (getPlayerInput() == K_BOMB))
 	{//activate ZA WARUDO
-		se.Playsound(9);
+		se.Playsound(3);
 		bombheld = false;
 		return true;
 	}
