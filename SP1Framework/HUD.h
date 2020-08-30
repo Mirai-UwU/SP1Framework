@@ -31,6 +31,7 @@ public:
 	void setLives(int i);
 	void togglebomb();
 	void toggleteleporter();
+	bool teleporthandler();
 	bool bombhandler();
 	int get_flashlight_time(); //1.torchlight time left in seconds
 	void set_flashlight_time(int i);
