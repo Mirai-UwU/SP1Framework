@@ -9,6 +9,7 @@ HUD::HUD()
 {
 	flashlight_time = 120;
 	updatedlives = 0;
+	renderhud.Load(".Txt/HUD Template.txt");
 }
 
 HUD::~HUD()
@@ -23,6 +24,7 @@ void HUD::Load(std::string filepath) {
 
 void HUD::render_HUD()
 {
+	renderhud.Render(0, 20, 102, 25);
 	render_HUD_battery();
 	render_HUD_bomb();
 	render_HUD_teleport();

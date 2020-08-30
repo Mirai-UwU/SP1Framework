@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "Framework/console.h"
+#include "MapMaker.h"
 #include "game.h"
 #include "Sound.h"
 
@@ -15,6 +16,7 @@ private:
 	static bool bombheld;
 	static bool teleportheld;
 	int flashlight_time;
+	MapMaker renderhud;
 	Sound se;
 	int updatedlives;
 public:
