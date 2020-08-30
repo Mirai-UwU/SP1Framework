@@ -254,6 +254,7 @@ void Level::Render()
 		}
 	}
 	RenderFog();
+	hud.render_HUD();
 }
 
 void Level::Reset()
