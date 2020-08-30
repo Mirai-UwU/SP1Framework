@@ -317,6 +317,7 @@ void update(double dt)
             lvl[S_LVL00]->setFog(0);
             break;
         case S_DEATH:
+            sound.Stop_sounds();
             scrn.UpdateDeath();
             break;
         default: 

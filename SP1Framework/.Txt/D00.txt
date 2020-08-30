@@ -6,15 +6,15 @@
 |                     #                    !                                 !                       |
 |               ###   #                                                                              |
 | Bomb       =  #%#   #                                                                              |
-|               ###   #                                                                              |
+|               ###   #
 |                     #                                                                              |
 |               ###   #                                                                              |
-| Teleporter =  #$#   ############-Use-WASD-To-Move-#################################################|
+| Teleporter =  #$#   ##-Use-Arrow-Keys-to-move#############################Exit-tutorial-to-start-##|
 |               ###   #                                                                              |
 |                     #      @                                                                       |
-|               ###   #                                    %     $                              &    |
+|               ###   #                                                                         &    |
 | Level Exit =  #&#   #                                                                              |
 |               ###   ####################-Walk-Over-Items-To-Pick-Them-Up-##########################|
-|                     #           Mask                Bomb                      Teleporter           |
-|                     #            M                    %                           $                |
+|                     #   Mask     Bombs will stun enemies      Teleports you to a random location   |
+|                     #     M                    %                            $                      |
 #---------------------------------------------TUTORIAL-----------------------------------------------#

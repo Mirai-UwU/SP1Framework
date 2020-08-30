@@ -16,6 +16,7 @@ private:
 public:
 	Sound();
 	void BackgroudMusic();
+	void Stop_sounds();
 	//Plays back the sound based on which number entered as parameter
 	void Playsound(int i);
 	ISoundEngine* Engine();

@@ -2,7 +2,7 @@
 
 
 int HUD::lives = 900;
-bool HUD::bombheld = true;
+bool HUD::bombheld = false;
 bool HUD::teleportheld = false;
 
 HUD::HUD()

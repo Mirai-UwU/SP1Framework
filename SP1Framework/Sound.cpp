@@ -19,6 +19,12 @@ void Sound::BackgroudMusic()
 	
 }
 
+void Sound::Stop_sounds()
+{
+	engine->removeSoundSource("Sounds/background_music.mp3");
+	active = false;
+}
+
 void Sound::Playsound(int i)
 {
 	/*
