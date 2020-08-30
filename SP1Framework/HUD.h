@@ -1,8 +1,10 @@
 #pragma once
-#include "Entity.h"
+#include <string>
 #include "Framework/console.h"
 #include "game.h"
 #include "Sound.h"
+
+
 extern Console g_Console;
 
 class HUD
@@ -18,7 +20,7 @@ private:
 public:
 	HUD();
 	~HUD();
-	void Load(string filepath);
+	void Load(std::string filepath);
 
 	void render();
 	// hud needs to show 1.torchlight time left 2. held bomb 3. held teleporter 4.money left (lives)

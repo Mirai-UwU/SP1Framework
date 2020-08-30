@@ -6,6 +6,8 @@
 #include "guard.h"
 #include "Entity.h"
 #include "MapMaker.h"
+#include "Screen.h"
+#include "Level.h"
 #include "Framework\console.h"
 #include <iostream>
 #include <iomanip>
@@ -15,11 +17,9 @@
 #include <stdlib.h>
 #include <time.h>
 #include <Windows.h>
-#include "Level.h"
 #include <irrKlang.h>
 #include <stdio.h>
 #include <conio.h>
-//#include "Dependencies/irrKlang-1.6.0/include/irrKlang.h"
 #include "Sound.h"
 
 // Irrklang linker
@@ -38,6 +38,7 @@ Sound sound;
 SGameChar   g_sChar;
 EGAMESTATES g_eGameState = S_SPLASHSCREEN; // initial state
 
+Screen scrn;
 MapMaker hud;
 Level* lvl[S_GAMEOVER];
 
@@ -151,7 +152,6 @@ void keyboardHandler(const KEY_EVENT_RECORD& keyboardEvent)
     {
     case S_SPLASHSCREEN: // don't handle anything for the splash screen
     case S_GAMEOVER:
-        break;
     default: 
         gameplayKBHandler(keyboardEvent); // handle gameplay keyboard event 
         break;
@@ -208,9 +208,8 @@ void gameplayKBHandler(const KEY_EVENT_RECORD& keyboardEvent)
     case VK_RIGHT: key = K_RIGHT; break; 
     case VK_SPACE: key = K_SPACE; break;
     case VK_ESCAPE: key = K_ESCAPE; break; 
-    case VK_F1: key = K_BOMB; break;
-    case VK_F2: key = K_TELEPORTER; break;
-    case VK_F3: key = K_ROPE; break;
+    case 0x42: key = K_BOMB; break;
+    case 0x54: key = K_TELEPORTER; break;
     }
     // a key pressed event would be one with bKeyDown == true
     // a key released event would be one with bKeyDown == false
@@ -257,7 +256,9 @@ int getPlayerInput()
     if (g_skKeyEvent[K_RIGHT].keyDown) {
         return K_RIGHT;
     }
-
+    if (g_skKeyEvent[K_SPACE].keyDown) {
+        return K_SPACE;
+    }
     
 
     if (g_skKeyEvent[K_ROPE].keyReleased)
@@ -271,6 +272,7 @@ int getPlayerInput()
     }
     if (g_skKeyEvent[K_TELEPORTER].keyReleased)
     {
+
         sound.Playsound(4);
         return K_TELEPORTER;
     
@@ -307,14 +309,19 @@ void update(double dt)
     switch (g_eGameState)
     {
         case S_SPLASHSCREEN : 
-            splashScreenWait(); // game logic for the splash screen
+            scrn.UpdateStart();
+            //splashScreenWait(); // game logic for the splash screen
             break;
         case S_GAMEOVER:
             g_bQuitGame = true;
             break;
         case S_LVL00:
             lvl[S_LVL00]->Update();
+            //if (g_eGameState == S_LVL00) {
             lvl[S_LVL00]->setFog(0);
+            break;
+        case S_DEATH:
+            scrn.UpdateDeath();
             break;
         default: 
             lvl[g_eGameState]->Update(); // gameplay logic when we are in the game
@@ -328,6 +335,7 @@ void update(double dt)
 void splashScreenWait()    // waits for time to pass in splash screen
 {
     if (g_dElapsedTime > 3.0) // wait for 3 seconds to switch to game mode, else do nothing
+        
         g_eGameState = S_LVL00;
 }
 
@@ -367,8 +375,13 @@ void render()
     switch (g_eGameState)
     {
     case S_SPLASHSCREEN: 
-        renderSplashScreen();
+        //renderSplashScreen();
+        scrn.RenderStart();
     case S_GAMEOVER:
+        break;
+    case S_DEATH:
+        scrn.RenderDeath();
+        //renderSplashScreen();
         break;
     default: 
         renderGame();

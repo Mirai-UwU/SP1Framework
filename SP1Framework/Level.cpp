@@ -185,7 +185,7 @@ void Level::Update()
 			char theEntity = entity_list[i]->get_display();
 			switch (theEntity) {
 			case (char)2:
-				if ((int)g_dElapsedTime % 2) {
+				if ((int)g_dElapsedTime % 2 ) {
 					if (ent.get_timer() > 0.02) {
 						ent.move(rand() % K_COUNT);
 						ent.reset_timer();
@@ -193,29 +193,43 @@ void Level::Update()
 					
 				}
 				break;
-
+			case (char)233:
+				if (ent.get_timer() > 1) {
+					hud.set_flashlight_time(hud.get_flashlight_time() - 1);
+					ent.reset_timer();
+				}
 			case '@':
 				
 					ent.move(getPlayerInput());
 				
-					if (ent.get_timer() > 0.5)
+					if (ent.get_timer() > 0.1)
 					{
 						if ((oldpos.X != ent.get_x_pos()) || (oldpos.Y != ent.get_y_pos()))
 						{
 							se.Playsound(7);
+							ent.reset_timer();
 						}
+						
 					}
 
-					if (ent.get_timer() > 120) {
-						setFog(1);
-					}
+					
 
 				break;
 			default:
 				break;
 			}
 			EntityCollision(ent);
+			if (hud.get_flashlight_time() < 0) {
+				setFog(1);
+			}
 		}
+	}
+	if (hud.getLives() < 0) {
+		hud.setLives(300);
+		hud.set_flashlight_time(120);
+		Reset();
+		g_eGameState = S_DEATH;
+
 	}
 	
 	
@@ -240,6 +254,9 @@ void Level::Reset()
 {
 	for (int i = 0; i < entitycount; i++) {
 		Entity& ent = *entity_list[i];
+		if (!ent.active()) {
+			ent.toggle();
+		}
 		ent.set_pos(initial_pos[i]);
 		ResetTimers();
 	}

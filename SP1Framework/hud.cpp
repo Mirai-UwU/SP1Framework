@@ -7,7 +7,7 @@ bool HUD::teleportheld = false;
 
 HUD::HUD()
 {
-	flashlight_time = 120;
+	flashlight_time = 12;
 	updatedlives = 0;
 }
 
@@ -15,8 +15,8 @@ HUD::~HUD()
 {
 }
 
-void HUD::Load(string filepath)
-{
+void HUD::Load(std::string filepath) {
+
 }
 
 

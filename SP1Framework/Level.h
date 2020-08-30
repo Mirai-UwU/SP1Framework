@@ -8,6 +8,7 @@
 #include "MapMaker.h"
 #include "Sound.h"
 #include "Bomb.h"
+#include "HUD.h"
 
 extern Console g_Console;
 extern double g_dElapsedTime;
@@ -31,6 +32,7 @@ private:
 	//Finds and Puts Entities into entity_list
 	void FindEntities();
 	COORD* initial_pos;
+	HUD hud;
 	Sound se;
 
 protected:

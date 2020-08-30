@@ -49,5 +49,6 @@ void Exit::move(int button_pressed)
 void Exit::DoEntityTask(Entity* player)
 {
 	se.Playsound(5);
+	hud.set_flashlight_time(12);
 	g_eGameState = (EGAMESTATES)((int)(g_eGameState) + 1); //Increment Gamestate by 1
 }

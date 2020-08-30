@@ -3,10 +3,12 @@
 #include "game.h"
 #include "MapMaker.h"
 #include "Sound.h"
+#include "HUD.h"
 #include <windows.h>
 
 extern EGAMESTATES g_eGameState;
 extern double g_dElapsedTime;
+
 class Entity
 {
 protected:
@@ -16,6 +18,7 @@ protected:
 	char display;
 	double timer;
 	bool isActive;
+	HUD hud;
 	Sound se;
 public:
 
