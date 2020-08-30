@@ -36,8 +36,8 @@ void HUD::render_HUD_bomb()
 
 	if (holdingbomb() == true)
 	{
-		g_Console.writeToBuffer(35, 23, "Ready!");
-		g_Console.writeToBuffer(32, 24, "Press B to use");
+		g_Console.writeToBuffer(35, 22, "Ready!");
+		g_Console.writeToBuffer(32, 23, "Press B to use");
 	}
 	else
 	{
@@ -50,8 +50,8 @@ void HUD::render_HUD_teleport()
 {
 	if (holdingteleporter() == true)
 	{
-		g_Console.writeToBuffer(60, 23, "Ready!");
-		g_Console.writeToBuffer(57, 24, "Press T to use");
+		g_Console.writeToBuffer(60, 22, "Ready!");
+		g_Console.writeToBuffer(57, 23, "Press T to use");
 	}
 	else {
 
@@ -60,13 +60,13 @@ void HUD::render_HUD_teleport()
 
 void HUD::render_HUD_money()
 {
-	g_Console.writeToBuffer(68, 23, "$ " + std::to_string(getLives()));
+	g_Console.writeToBuffer(85, 22, "$ " + std::to_string(getLives()));
 }
 
 void HUD::render_HUD_battery()
 {
-	g_Console.writeToBuffer(6, 23, std::to_string(convert_FL_to_percent()) + " % Batterylife");
-	g_Console.writeToBuffer(11, 24, "left");
+	g_Console.writeToBuffer(6, 22, std::to_string(convert_FL_to_percent()) + " % Batterylife");
+	g_Console.writeToBuffer(11, 23, "left");
 }
 
 int HUD::getLives()
