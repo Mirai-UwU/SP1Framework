@@ -5,7 +5,7 @@
 #include "Sound.h"
 extern Console g_Console;
 
-class HUD :public Entity
+class HUD
 {
 private:
 
