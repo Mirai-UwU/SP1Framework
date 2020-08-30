@@ -46,6 +46,7 @@ void Bomb::DoEntityTask(Entity* player)
 {
 	if (!hud.holdingbomb()) {
 		toggle();
+		se.Playsound(2);
 		hud.togglebomb();
 	}
 }
