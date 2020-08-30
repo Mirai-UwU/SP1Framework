@@ -1,7 +1,6 @@
 #pragma once
 #include "Entity.h"
 #include <iostream>
-#include "Sound.h"
 
 class Player : public Entity
 {              

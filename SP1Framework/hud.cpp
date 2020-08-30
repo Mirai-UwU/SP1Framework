@@ -4,9 +4,10 @@
 int HUD::lives = 900;
 bool HUD::bombheld = false;
 bool HUD::teleportheld = false;
+
 HUD::HUD()
 {
-	
+	flashlight_time = 120;+
 }
 
 HUD::~HUD()
@@ -60,5 +61,23 @@ void HUD::toggleteleporter()
 	else {
 		teleportheld = true;
 	}
+}
+
+bool HUD::bombhandler()
+{
+	if ((bombheld == true) && (getPlayerInput() == K_BOMB))
+	{//activate ZA WARUDO
+		se.Playsound(9);
+		bombheld = false;
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+int HUD::get_flashlight_time()
+{	
+	return flashlight_time;
 }
 
