@@ -15,6 +15,7 @@
     <ClCompile Include="Exit.cpp" />
     <ClCompile Include="Teleporter.cpp" />
     <ClCompile Include="Bomb.cpp" />
+    <ClCompile Include="Screen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -54,6 +55,7 @@
     <ClInclude Include="Exit.h" />
     <ClInclude Include="Teleporter.h" />
     <ClInclude Include="Bomb.h" />
+    <ClInclude Include="Screen.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.h" />

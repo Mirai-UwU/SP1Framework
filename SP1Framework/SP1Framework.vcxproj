@@ -171,13 +171,9 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MapMaker.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Screen.cpp" />
     <ClCompile Include="Sound.cpp" />
-
-
-
-
     <ClCompile Include="Teleporter.cpp" />
-
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bomb.h" />
@@ -191,6 +187,7 @@
     <ClInclude Include="HUD.h" />
     <ClInclude Include="MapMaker.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Screen.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="Teleporter.h" />
   </ItemGroup>
