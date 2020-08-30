@@ -225,7 +225,7 @@ void Level::Update()
 		}
 	}
 	if (hud.getLives() < 0) {
-		hud.setLives(300);
+		hud.setLives(900);
 		hud.set_flashlight_time(120);
 		Reset();
 		g_eGameState = S_DEATH;
