@@ -1,10 +1,12 @@
 
 #include "Sound.h"
 
+bool Sound::active = false;
+
 Sound::Sound()
 {
 	engine = createIrrKlangDevice();
-	active = false;
+	
 }
 
 void Sound::BackgroudMusic()
@@ -17,6 +19,26 @@ void Sound::BackgroudMusic()
 		else{}
 
 	
+}
+
+void Sound::ToggleBG()
+{
+	if (active) {
+		DisableBG();
+	}
+	else {
+		EnableBG();
+	}
+}
+
+void Sound::EnableBG()
+{
+	active = true;
+}
+
+void Sound::DisableBG()
+{
+	active = false;
 }
 
 void Sound::Playsound(int i)

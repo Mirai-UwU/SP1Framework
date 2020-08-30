@@ -304,6 +304,7 @@ void Level::Reset()
 		ent.set_pos(initial_pos[i]);
 		ResetTimers();
 	}
+	hud.set_flashlight_time(120);
 }
 
 void Level::RenderRadius(int x_rad, int y_rad)

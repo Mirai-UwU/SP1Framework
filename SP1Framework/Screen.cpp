@@ -6,6 +6,7 @@ Screen::Screen()
 	origin.Y = 0;
 	start.Load(".Txt/StartScreen.txt");
 	death.Load(".Txt/EndScreen.txt");
+	win.Load(".Txt/WinScreen.txt");
 }
 
 Screen::~Screen()
@@ -49,5 +50,5 @@ void Screen::RenderDeath()
 
 void Screen::RenderWin()
 {
-	RenderDeath();
+	win.Render(origin, g_Console.getMaxConsoleSize());
 }

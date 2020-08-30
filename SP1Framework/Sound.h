@@ -11,11 +11,14 @@ class Sound
 {
 private:
 	ISoundEngine* engine;
-	bool active;
+	static bool active;
 	
 public:
 	Sound();
 	void BackgroudMusic();
+	void ToggleBG();
+	void EnableBG();
+	void DisableBG();
 	//Plays back the sound based on which number entered as parameter
 	void Playsound(int i);
 	ISoundEngine* Engine();
