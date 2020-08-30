@@ -309,7 +309,7 @@ void update(double dt)
             //splashScreenWait(); // game logic for the splash screen
             break;
         case S_GAMEOVER:
-            g_bQuitGame = true;
+            scrn.UpdateWin();
             break;
         case S_LVL00:
             lvl[S_LVL00]->Update();
@@ -374,9 +374,12 @@ void render()
     case S_SPLASHSCREEN: 
         //renderSplashScreen();
         scrn.RenderStart();
+        break;
     case S_GAMEOVER:
+        scrn.RenderWin();
         break;
     case S_DEATH:
+        
         scrn.RenderDeath();
         //renderSplashScreen();
         break;
