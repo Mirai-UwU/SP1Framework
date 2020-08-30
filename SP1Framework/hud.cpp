@@ -7,7 +7,7 @@ bool HUD::teleportheld = false;
 
 HUD::HUD()
 {
-	flashlight_time = 12;
+	flashlight_time = 120;
 	updatedlives = 0;
 }
 
@@ -149,6 +149,14 @@ void HUD::lose_life()
 
 int HUD::convert_FL_to_percent()
 {
-	return(((get_flashlight_time() / 120) * 100));	
+	int percentage = (int)(((float)get_flashlight_time() / 120.0) * 100);
+	if (percentage > 0){
+		return(percentage);
+	}
+	else {
+		return 0;
+	}
+		
+		
 }
 
