@@ -208,9 +208,8 @@ void gameplayKBHandler(const KEY_EVENT_RECORD& keyboardEvent)
     case VK_RIGHT: key = K_RIGHT; break; 
     case VK_SPACE: key = K_SPACE; break;
     case VK_ESCAPE: key = K_ESCAPE; break; 
-    case VK_F1: key = K_BOMB; break;
-    case VK_F2: key = K_TELEPORTER; break;
-    case VK_F3: key = K_ROPE; break;
+    case 0x42: key = K_BOMB; break;
+    case 0x54: key = K_TELEPORTER; break;
     }
     // a key pressed event would be one with bKeyDown == true
     // a key released event would be one with bKeyDown == false

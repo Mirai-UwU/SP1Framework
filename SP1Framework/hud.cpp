@@ -15,8 +15,8 @@ HUD::~HUD()
 {
 }
 
-void HUD::Load(string filepath)
-{
+void HUD::Load(std::string filepath) {
+
 }
 
 
