@@ -14,6 +14,7 @@ Screen::~Screen()
 
 void Screen::UpdateStart()
 {
+	processUserInput();
 	if (getPlayerInput() == K_SPACE) {
 		g_eGameState = S_LVL00;
 	}
