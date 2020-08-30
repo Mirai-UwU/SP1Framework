@@ -20,9 +20,29 @@ void HUD::Load(std::string filepath) {
 }
 
 
-void HUD::render()
+void HUD::render_HUD()
+{
+	render_HUD_battery();
+	render_HUD_bomb();
+	render_HUD_teleport();
+	render_HUD_money();
+}
+
+void HUD::render_HUD_bomb()
 {
 
+}
+
+void HUD::render_HUD_teleport()
+{
+}
+
+void HUD::render_HUD_money()
+{
+}
+
+void HUD::render_HUD_battery()
+{
 }
 
 int HUD::getLives()
