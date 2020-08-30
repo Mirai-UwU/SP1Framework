@@ -45,6 +45,7 @@ void Teleporter::DoEntityTask(Entity* player)
 {
     if (!hud.holdingteleporter()) {
         toggle();
+        se.Playsound(2);
         hud.toggleteleporter();
     }
 
