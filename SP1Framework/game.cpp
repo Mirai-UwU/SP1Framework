@@ -374,7 +374,7 @@ void render()
         renderGame();
         break;
     }
-    renderFramerate();      // renders debug information, frame rate, elapsed time, etc
+    //renderFramerate();      // renders debug information, frame rate, elapsed time, etc
     //renderInputEvents();    // renders status of input events
     renderToScreen();       // dump the contents of the buffer to the screen, one frame worth of game
 }
@@ -440,7 +440,7 @@ void renderFramerate()
     g_Console.writeToBuffer(c, ss.str(), 0x59);
 }
 
-// this is an example of how you would use the input events
+/* this is an example of how you would use the input events
 void renderInputEvents()
 {
     // keyboard events
@@ -521,5 +521,6 @@ void renderInputEvents()
     }
     
 }
+*/
 
 
