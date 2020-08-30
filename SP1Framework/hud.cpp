@@ -64,6 +64,19 @@ void HUD::toggleteleporter()
 	}
 }
 
+bool HUD::teleporthandler()
+{
+	if ((teleportheld == true) && (getPlayerInput() == K_TELEPORTER))
+	{//activate teleporter
+		se.Playsound(4);
+		bombheld = false;
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
 bool HUD::bombhandler()
 {
 	if ((bombheld == true) && (getPlayerInput() == K_BOMB))
