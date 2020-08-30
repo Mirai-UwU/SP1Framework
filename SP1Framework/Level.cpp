@@ -249,6 +249,19 @@ void Level::Update()
 				break;
 			}
 			EntityCollision(ent);
+			if (hud.teleporthandler()) {
+				if (getPlayerInput() == K_TELEPORTER)
+				{
+					FindPlayer()->set_xpos(rand() % 100);
+					FindPlayer()->set_ypos(rand() % 20);
+					while (FindPlayer()->collide(FindPlayer()->get_pos()) )
+					{
+						FindPlayer()->set_xpos(rand() % 100);
+						FindPlayer()->set_ypos(rand() % 20);
+					}
+				}
+			}
+
 			if (hud.get_flashlight_time() < 0) {
 				setFog(1);
 			}

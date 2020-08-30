@@ -43,16 +43,9 @@ void Teleporter::move(int button_pressed)
 
 void Teleporter::DoEntityTask(Entity* player)
 {
-        if (getPlayerInput() == K_TELEPORTER)
-        {
-            player->set_xpos(rand() % 100);
-            player->set_ypos(rand() % 20);
-            while (entity_map->getFromCoord(player->get_x_pos(), player->get_y_pos()) != ' ' && !active())
-            {
-                player->set_xpos(rand() % 100);
-                player->set_ypos(rand() % 20);
-            }
-        }
-
+    if (!hud.holdingteleporter()) {
+        toggle();
+        hud.toggleteleporter();
+    }
 
 }

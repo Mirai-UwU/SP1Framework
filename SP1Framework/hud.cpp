@@ -100,7 +100,7 @@ bool HUD::teleporthandler()
 	if ((teleportheld == true) && (getPlayerInput() == K_TELEPORTER))
 	{//activate teleporter
 		se.Playsound(4);
-		bombheld = false;
+		teleportheld = false;
 		return true;
 	}
 	else {
