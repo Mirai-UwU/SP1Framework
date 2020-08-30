@@ -49,6 +49,7 @@ enum EGAMESTATES
     S_LVL03,
     S_LVL04,
     S_LVL05,
+    S_FINAL,
     S_GAMEOVER,
     S_SPLASHSCREEN,
     S_DEATH,

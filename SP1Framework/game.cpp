@@ -320,6 +320,11 @@ void update(double dt)
             sound.Stop_sounds();
             scrn.UpdateDeath();
             break;
+        case S_FINAL:
+            sound.Stop_sounds();
+            lvl[S_FINAL]->Update();
+            lvl[S_FINAL]->setFog(0);
+            break;
         default: 
             lvl[g_eGameState]->Update(); // gameplay logic when we are in the game
             sound.BackgroudMusic();
