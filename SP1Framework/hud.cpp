@@ -45,14 +45,25 @@ void HUD::render_HUD_bomb()
 }
 void HUD::render_HUD_teleport()
 {
+	if (holdingteleporter() == true)
+	{
+		g_Console.writeToBuffer(60, 23, "Ready!");
+		g_Console.writeToBuffer(57, 24, "Press T to use");
+	}
+	else {
+
+	}
 }
 
 void HUD::render_HUD_money()
 {
+	g_Console.writeToBuffer(68, 23, "$ " + std::to_string(getLives()));
 }
 
 void HUD::render_HUD_battery()
 {
+	g_Console.writeToBuffer(6, 23, std::to_string(convert_FL_to_percent()) + " % Batterylife");
+	g_Console.writeToBuffer(11, 24, "left");
 }
 
 int HUD::getLives()
