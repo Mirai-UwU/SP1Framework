@@ -13,6 +13,7 @@ HUD::HUD()
 
 HUD::~HUD()
 {
+
 }
 
 void HUD::Load(std::string filepath) {

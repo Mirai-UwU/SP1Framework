@@ -185,12 +185,18 @@ void Level::Update()
 			char theEntity = entity_list[i]->get_display();
 			switch (theEntity) {
 			case (char)2:
-				if ((int)g_dElapsedTime % 2 ) {
-					if (ent.get_timer() > 0.02) {
-						ent.move(rand() % K_COUNT);
-						ent.reset_timer();
+				if (!(hud.bombhandler())) {
+
+					if ((int)g_dElapsedTime % 2) {
+						if (ent.get_timer() > 0.02) {
+							ent.move(rand() % K_COUNT);
+							ent.reset_timer();
+						}
+
 					}
-					
+				}
+				else {
+					ent.set_display((char)3);
 				}
 				break;
 			case (char)233:
