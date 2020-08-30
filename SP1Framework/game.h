@@ -51,7 +51,7 @@ enum EGAMESTATES
     S_LVL05,
     S_GAMEOVER,
     S_SPLASHSCREEN,
-    S_GAME,
+    S_DEATH,
     S_COUNT
 };
 

@@ -193,7 +193,11 @@ void Level::Update()
 					
 				}
 				break;
-
+			case (char)233:
+				if (ent.get_timer() > 1) {
+					hud.set_flashlight_time(hud.get_flashlight_time() - 1);
+					ent.reset_timer();
+				}
 			case '@':
 				
 					ent.move(getPlayerInput());
@@ -208,21 +212,26 @@ void Level::Update()
 						
 					}
 
-					if (hud.get_flashlight_time() > 3) {
-						setFog(1);
-					}
+					
 
 				break;
 			default:
 				break;
 			}
 			EntityCollision(ent);
+			if (hud.get_flashlight_time() < 0) {
+				setFog(1);
+			}
 		}
 	}
 	if (hud.getLives() < 0) {
-		
+		hud.setLives(300);
+		hud.set_flashlight_time(120);
+		Reset();
+		g_eGameState = S_DEATH;
 
 	}
+	
 	
 
 }
@@ -245,6 +254,9 @@ void Level::Reset()
 {
 	for (int i = 0; i < entitycount; i++) {
 		Entity& ent = *entity_list[i];
+		if (!ent.active()) {
+			ent.toggle();
+		}
 		ent.set_pos(initial_pos[i]);
 		ResetTimers();
 	}

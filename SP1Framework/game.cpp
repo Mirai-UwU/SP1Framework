@@ -313,7 +313,11 @@ void update(double dt)
             break;
         case S_LVL00:
             lvl[S_LVL00]->Update();
-            lvl[S_LVL00]->setFog(0);
+            //if (g_eGameState == S_LVL00) {
+            //lvl[S_LVL00]->setFog(0);
+            break;
+        case S_DEATH:
+            g_bQuitGame = true;
             break;
         default: 
             lvl[g_eGameState]->Update(); // gameplay logic when we are in the game
@@ -327,6 +331,7 @@ void update(double dt)
 void splashScreenWait()    // waits for time to pass in splash screen
 {
     if (g_dElapsedTime > 3.0) // wait for 3 seconds to switch to game mode, else do nothing
+        
         g_eGameState = S_LVL00;
 }
 
@@ -368,6 +373,9 @@ void render()
     case S_SPLASHSCREEN: 
         renderSplashScreen();
     case S_GAMEOVER:
+        break;
+    case S_DEATH:
+        //renderSplashScreen();
         break;
     default: 
         renderGame();

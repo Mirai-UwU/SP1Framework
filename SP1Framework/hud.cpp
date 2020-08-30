@@ -7,7 +7,7 @@ bool HUD::teleportheld = false;
 
 HUD::HUD()
 {
-	flashlight_time = 120;
+	flashlight_time = 12;
 	updatedlives = 0;
 }
 
