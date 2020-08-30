@@ -39,7 +39,6 @@ SGameChar   g_sChar;
 EGAMESTATES g_eGameState = S_SPLASHSCREEN; // initial state
 
 Screen scrn;
-MapMaker hud;
 Level* lvl[S_GAMEOVER];
 
 
@@ -80,7 +79,6 @@ void init(void)
         lvl[gamestate] = new Level(file);
     }
 
-    hud.Load(".Txt/HUD Template.txt");
 
 
 
@@ -421,7 +419,6 @@ void renderSplashScreen()  // renders the splash screen
 void renderGame()
 {
     lvl[g_eGameState]->Render();
-    hud.Render(0,20,102,25);
 }
 
 

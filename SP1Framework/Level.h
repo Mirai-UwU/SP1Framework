@@ -64,6 +64,8 @@ public:
 	Entity* FindGuard();
 	//Finds the guard depending on number which
 	Entity* FindGuard(int which); 
+	//Finds the guards that were bombed
+	Entity* FindBombed(int which);
 	Entity* FindExit();
 	
 
