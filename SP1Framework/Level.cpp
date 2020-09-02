@@ -10,6 +10,7 @@ void Level::Build()
 	entity_list = new Entity* [entitycount];
 	initial_pos = new COORD[entitycount];
 	FindEntities();
+	//Removes the entity from the Map
 	for (int i = 0; i < entitycount; i++) {
 		this_map.setToCoord(entity_list[i]->get_pos(), ' ');
 		initial_pos[i] = entity_list[i]->get_pos();
@@ -26,7 +27,7 @@ void Level::FindEntities()
 			coord.X = col;
 			char entity = this_map.getFromCoord(coord);
 
-
+			//Creates entities according to symbol on the txt file.
 			switch (entity) {
 			case '@':
 				entity_list[count++] = new Player(coord, &this_map);
@@ -49,6 +50,8 @@ void Level::FindEntities()
 			default:
 				break;
 			}
+
+		
 		}
 	}
 	
@@ -57,6 +60,7 @@ void Level::FindEntities()
 
 Level::Level()
 {
+	//Default Parameters
 	entitycount = 0;
 	filepath = ".Txt/Map Template.txt";
 	render_fogstate = FogState::STATE_MAX;
@@ -200,7 +204,8 @@ void Level::Update()
 	for (int i = 0; i < entitycount; ++i) {
 		Entity& ent = *entity_list[i];
 		COORD oldpos = ent.get_pos();
-		
+
+		//Only Updates entity If entity is Active
 		if (ent.active()) {
 			char theEntity = entity_list[i]->get_display();
 			switch (theEntity) {
@@ -215,6 +220,7 @@ void Level::Update()
 
 					}
 				}
+				/// Stuns the guard
 				else {
 					for (int i = 0; i < entitycount; i++) {
 						FindGuard(i)->set_display((char)3);
@@ -223,6 +229,7 @@ void Level::Update()
 				}
 				break;
 			case (char)3:
+				//Turns guard back after bombed.
 				if (ent.get_timer() > 5) {
 					for (int i = 0; i < entitycount; i++) {
 						FindBombed(i)->set_display((char)2);
@@ -256,7 +263,8 @@ void Level::Update()
 				break;
 			}
 			EntityCollision(ent);
-			if (hud.teleporthandler()) {
+
+			if (hud.teleporthandler()) { //If Teleporter is held and K_TELEPORTER is pressed
 				if (getPlayerInput() == K_TELEPORTER)
 				{
 					FindPlayer()->set_xpos(rand() % 100);
@@ -274,6 +282,8 @@ void Level::Update()
 			}
 		}
 	}
+
+	//Resets hud values when lives < 0
 	if (hud.getLives() < 0) {
 		hud.setLives(900);
 		hud.set_flashlight_time(120);
@@ -281,6 +291,9 @@ void Level::Update()
 		g_eGameState = S_DEATH;
 
 	}
+	
+	
+
 }
 
 
@@ -290,6 +303,7 @@ void Level::Render()
 	this_map.Render(0, 0, 102, 20);
 	for (int i = 0; i < entitycount; ++i) {
 		Entity& ent = *entity_list[i];
+		//Only renders if entity is active
 		if (ent.active()) {
 			g_Console.writeToBuffer(ent.get_pos(), ent.get_display(), ent.get_colour());
 		}
