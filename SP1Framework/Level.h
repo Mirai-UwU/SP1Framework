@@ -10,6 +10,7 @@
 #include "Bomb.h"
 #include "HUD.h"
 #include "Door.h"
+#include "Pow.h"
 
 
 extern Console g_Console;
@@ -60,6 +61,7 @@ public:
 	//Sets FogState based on number
 	void setFog(int i);
 
+	void Pow();
 	///Returns the Entity you are looking for
 	Entity* FindPlayer();
 	//Finds the first guard in the list

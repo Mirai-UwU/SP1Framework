@@ -4,6 +4,7 @@
 #include "MapMaker.h"
 #include "game.h"
 #include "Sound.h"
+#include "Level.h"
 
 
 
@@ -16,10 +17,12 @@ private:
 	static int lives;
 	static bool bombheld;
 	static bool teleportheld;
+	static bool f;
 	int flashlight_time;
 	MapMaker renderhud;
 	Sound se;
 	int updatedlives;
+
 public:
 	HUD();
 	~HUD();
@@ -47,5 +50,5 @@ public:
 	void lose_life();
 	int convert_FL_to_percent(); //torchlight time left in percentage
 	void Door_open();
-	void find_and_replace(string& source, string find, string replace);
+	void powerUp();
 };

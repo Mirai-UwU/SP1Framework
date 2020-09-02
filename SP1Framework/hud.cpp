@@ -1,10 +1,13 @@
 #include "HUD.h"
 #include "Level.h"
+#include "Door.h"
+#include "Pow.h"
 
 
 int HUD::lives = 900;
 bool HUD::bombheld = false;
 bool HUD::teleportheld = false;
+bool HUD::f = false;
 
 HUD::HUD()
 {
@@ -163,6 +166,10 @@ int HUD::convert_FL_to_percent()
 
 void HUD::Door_open()
 {
-
+	
 }
 
+void HUD::powerUp()
+{
+	
+}

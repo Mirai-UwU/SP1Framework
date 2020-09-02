@@ -17,6 +17,7 @@
     <ClCompile Include="Bomb.cpp" />
     <ClCompile Include="Screen.cpp" />
     <ClCompile Include="Door.cpp" />
+    <ClCompile Include="Pow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -58,6 +59,7 @@
     <ClInclude Include="Bomb.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="Door.h" />
+    <ClInclude Include="Pow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.h" />

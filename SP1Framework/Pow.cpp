@@ -1,53 +1,49 @@
-#include "Door.h"
+#include "Pow.h"
 #include "HUD.h"
 
-
-
-
-
-Door::Door(COORD c_pos, MapMaker* map)
+Pow::Pow(COORD c_pos, MapMaker* map)
 {
     set_pos(c_pos);
-    set_display((char)93);
+    set_display((char)168);
     entity_map = map;
-    colour = 0x2;
+    colour = 0x2b;
     timer = 0;
     isActive = true;
 }
 
 
-Door::Door(int y_pos, int x_pos, MapMaker* map)
+Pow::Pow(int y_pos, int x_pos, MapMaker* map)
 {
     set_xpos(x_pos);
     set_ypos(y_pos);
-    set_display((char)93);
+    set_display((char)168);
     entity_map = map;
-    colour = 0x2;
+    colour = 0x2b;
     timer = 0;
     isActive = true;
 }
 
-Door::~Door()
+Pow::~Pow()
 {
 }
 
 
-void Door::move(int button_pressed)
+void Pow::move(int button_pressed)
 {
 }
 
-void Door::DoEntityTask(Entity* player)
+void Pow::DoEntityTask(Entity* player)
 {
-    hud.Door_open();
+    hud.powerUp();
     toggle();
 }
 
-bool Door::collide(COORD entity_pos)
+bool Pow::collide(COORD entity_pos)
 {
     return collide(entity_pos.X, entity_pos.Y);;
 }
 
-bool Door::collide(int entity_xpos, int entity_ypos)
+bool Pow::collide(int entity_xpos, int entity_ypos)
 {
     COORD pos;
     pos.X = entity_xpos;

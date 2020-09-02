@@ -1,3 +1,6 @@
+-change existing level
+
+
 - Escape Rope
 - Hud Symbols
 - Life Symbols
@@ -5,3 +8,102 @@
 - Add Levels?
 - New Entity?
 - Door or smthing
+
+
+case '`':
+	entity_list[count++] = new otd (coord, &this_map);
+	break;
+
+__.cpp__
+#include "OTD.h"
+
+
+otd::otd(COORD c_pos, MapMaker* map)
+{
+    set_pos(c_pos);
+    set_display((char)235);
+    entity_map = map;
+    colour = 0;
+    timer = 0;
+    isActive = true;
+}
+
+
+otd::otd(int y_pos, int x_pos, MapMaker* map)
+{
+    set_xpos(x_pos);
+    set_ypos(y_pos);
+    set_display((char)235);
+    entity_map = map;
+    colour = 0;
+    timer = 0;
+    isActive = true;
+}
+
+otd::~otd()
+{
+}
+
+
+void otd::move(int button_pressed)
+{
+}
+
+void otd::DoEntityTask(Entity* player)
+{
+
+    toggle();
+}
+
+bool otd::collide(COORD entity_pos)
+{
+    return collide(entity_pos.X, entity_pos.Y);;
+}
+
+bool otd::collide(int entity_xpos, int entity_ypos)
+{
+    COORD pos;
+    pos.X = entity_xpos;
+    pos.Y = entity_ypos;
+    if (entity_map->getMapArray()[entity_ypos][entity_xpos] == ' ') {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
+__.h__
+#pragma once
+#include "Entity.h"
+#include "MapMaker.h"
+#include "Player.h"
+#include <iostream>
+
+class otd : public Entity
+{
+private:
+
+public:
+	otd(COORD c_pos, MapMaker* map);
+	otd(int y_pos, int x_pos, MapMaker* map);
+	~otd();
+
+
+	void move(int button_pressed);
+	void DoEntityTask(Entity* player = NULL);
+
+	bool collide(COORD entity_pos);
+	bool collide(int entity_xpos, int entity_ypos);
+};
+
+___________________________________
+		case (char)235:
+			entityptr.DoEntityTask(FindGuard());
+			break;
+		case (char)4:
+			entityptr.DoEntityTask(&player);
+			break;
+		default:
+			entityptr.DoEntityTask();
+		}

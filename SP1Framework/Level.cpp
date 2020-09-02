@@ -1,7 +1,5 @@
 #include "Level.h"
-
-
-
+#include "HUD.h"
 
 void Level::Build()
 {
@@ -45,6 +43,9 @@ void Level::FindEntities()
 				break;
 			case ']':
 				entity_list[count++] = new Door(coord, &this_map);
+				break;
+			case '?':
+				entity_list[count++] = new Pow(coord, &this_map);
 				break;
 			default:
 				break;
@@ -118,9 +119,6 @@ void Level::ResetTimers()
 }
 
 
-
-
-
 void Level::setFog(int i)
 {
 	render_fogstate = static_cast<FogState>(i % (int)FogState::STATE_COUNT);
@@ -187,11 +185,6 @@ Entity* Level::FindExit()
 		}
 	}
 }
-
-
-
-
-
 
 
 void Level::Update()
@@ -342,8 +335,35 @@ void Level::EntityCollision(Entity& entityptr)
 {
 	Entity& player = *FindPlayer();
 	//Checks for collision with each entity. Checks only if the entity is not the player.
-	if ((player.get_x_pos() == entityptr.get_x_pos() && player.get_y_pos() == entityptr.get_y_pos() )&& entityptr.get_display() != player.get_display()) {
-		switch (entityptr.get_display()) {
+	if ((player.get_x_pos() == entityptr.get_x_pos() && player.get_y_pos() == entityptr.get_y_pos()) && entityptr.get_display() != player.get_display())
+	{
+		switch (entityptr.get_display())
+		{
+
+		case (char)93:
+		{
+			entityptr.DoEntityTask();
+			COORD coord;
+			int count = 0;
+			for (int row = 0; row < this_map.get_row(); row++)
+			{
+				coord.Y = row;
+				for (int col = 0; col < this_map.get_col(); col++)
+				{
+					coord.X = col;
+					char entity = this_map.getFromCoord(coord);
+					if (this_map.getFromCoord(82, 13) == '`')
+					{
+						this_map.setToCoord(82, 13, ' ');
+					}
+					if (this_map.getFromCoord(82, 14) == '`')
+					{
+						this_map.setToCoord(82, 14, ' ');
+					}
+				}
+			}
+		}
+		break;
 		case (char)235:
 			entityptr.DoEntityTask(FindGuard());
 			break;
@@ -355,7 +375,5 @@ void Level::EntityCollision(Entity& entityptr)
 		}
 		
 	}
-
-	
 }
 
