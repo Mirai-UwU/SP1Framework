@@ -1,19 +1,19 @@
 #---------------------------------------------TUTORIAL-----------------------------------------------#
-|       Legend        #       Don't-let-the-Social-Distancing-Officers-catch-you-or-get-fined        |
+|       Legend        #            Don't-let-the-Social-Distancing-Officers-Catch-You                |
 |               ###   #                                                                              |
 | Enemy      =  #!#   #                                                                              |
 |               ###   #                                                                              |
 |                     #                    !                                 !                       |
 |               ###   #                                                                              |
 | Bomb       =  #%#   #                                                                              |
-|               ###   #
+|               ###   #                                                                              |
 |                     #                                                                              |
 |               ###   #                                                                              |
 | Teleporter =  #$#   ##-Use-Arrow-Keys-to-move#############################Exit-tutorial-to-start-##|
-|               ###   #                                                                              |
-|                     #      @                                                                       |
-|               ###   #                                                                         &    |
-| Level Exit =  #&#   #                                                                              |
+|               ###   #                                                          ##                  |
+|                     #      @                                                   ]`                  |
+|               ###   #                                                          ]`             &    |
+| Level Exit =  #&#   #                                                          ##                  |
 |               ###   ####################-Walk-Over-Items-To-Pick-Them-Up-##########################|
 |                     #   Mask     Bombs will stun enemies      Teleports you to a random location   |
 |                     #     M                    %                            $                      |

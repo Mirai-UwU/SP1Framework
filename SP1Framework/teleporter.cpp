@@ -48,5 +48,4 @@ void Teleporter::DoEntityTask(Entity* player)
         se.Playsound(2);
         hud.toggleteleporter();
     }
-
 }

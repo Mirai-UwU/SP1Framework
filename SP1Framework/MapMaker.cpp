@@ -115,7 +115,7 @@ int MapMaker::getEntityCount()
 			case '@':
 			case '!':
 			case '&':
-			//case ']':
+			case ']':
 			//case '[':
 			//case '&':
 			case '%':

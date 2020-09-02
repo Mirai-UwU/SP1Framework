@@ -43,11 +43,15 @@ void Level::FindEntities()
 			case '$':
 				entity_list[count++] = new Teleporter(coord, &this_map);
 				break;
+			case ']':
+				entity_list[count++] = new Door(coord, &this_map);
+				break;
+			case '`':
+				entity_list[count++] = new otd(coord, &this_map);
+				break;
 			default:
 				break;
 			}
-
-		
 		}
 	}
 	
@@ -280,9 +284,6 @@ void Level::Update()
 		g_eGameState = S_DEATH;
 
 	}
-	
-	
-
 }
 
 

@@ -4,6 +4,7 @@
 #include "MapMaker.h"
 #include "game.h"
 #include "Sound.h"
+#include "otd.h"
 
 
 extern Console g_Console;
@@ -45,4 +46,5 @@ public:
 	void set_flashlight_time(int i);
 	void lose_life();
 	int convert_FL_to_percent(); //torchlight time left in percentage
+	void Door_open();
 };

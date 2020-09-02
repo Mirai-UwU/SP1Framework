@@ -16,6 +16,7 @@
     <ClCompile Include="Teleporter.cpp" />
     <ClCompile Include="Bomb.cpp" />
     <ClCompile Include="Screen.cpp" />
+    <ClCompile Include="Door.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -56,6 +57,7 @@
     <ClInclude Include="Teleporter.h" />
     <ClInclude Include="Bomb.h" />
     <ClInclude Include="Screen.h" />
+    <ClInclude Include="Door.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.h" />

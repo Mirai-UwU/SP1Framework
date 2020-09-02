@@ -9,6 +9,8 @@
 #include "Sound.h"
 #include "Bomb.h"
 #include "HUD.h"
+#include "Door.h"
+#include "otd.h"
 
 extern Console g_Console;
 extern double g_dElapsedTime;

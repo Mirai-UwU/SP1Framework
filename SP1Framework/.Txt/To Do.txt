@@ -1,0 +1,7 @@
+- Escape Rope
+- Hud Symbols
+- Life Symbols
+- Change Hud Money to life
+- Add Levels?
+- New Entity?
+- Door or smthing
