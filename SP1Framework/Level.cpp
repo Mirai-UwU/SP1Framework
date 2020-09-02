@@ -389,5 +389,10 @@ void Level::EntityCollision(Entity& entityptr)
 		}
 		
 	}
+
 }
 
+void Level::powerUp()
+{
+	setFog(1);
+}

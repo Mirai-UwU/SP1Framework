@@ -171,5 +171,5 @@ void HUD::Door_open()
 
 void HUD::powerUp()
 {
-	
+
 }

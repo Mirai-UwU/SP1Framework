@@ -1,5 +1,8 @@
 #include "Pow.h"
 #include "HUD.h"
+#include "Level.h"
+
+Level lvl;
 
 Power::Power(COORD c_pos, MapMaker* map)
 {
@@ -34,7 +37,7 @@ void Power::move(int button_pressed)
 
 void Power::DoEntityTask(Entity* player)
 {
-    hud.powerUp();
+    lvl.powerUp();
     toggle();
 }
 

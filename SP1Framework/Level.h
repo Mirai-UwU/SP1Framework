@@ -44,6 +44,7 @@ protected:
 	//Dynamic Array of Entities
 	Entity** entity_list;
 	int entitycount;
+
 public:
 	Level();
 	Level(string filename);
@@ -82,7 +83,7 @@ public:
 	void RenderFog();
 	void EntityCollision(Entity& entityptr);
 
-
+	void powerUp();
 	
 };
 
