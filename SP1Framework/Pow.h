@@ -1,18 +1,18 @@
 #pragma once
 #include "Entity.h"
-#include "MapMaker.h"
 #include "Player.h"
+#include "MapMaker.h"
 #include <iostream>
 
 
-class Pow : public Entity
+class Power : public Entity
 {
 private:
 
 public:
-	Pow(COORD c_pos, MapMaker* map);
-	Pow(int y_pos, int x_pos, MapMaker* map);
-	~Pow();
+	Power(COORD c_pos, MapMaker* map);
+	Power(int y_pos, int x_pos, MapMaker* map);
+	~Power();
 
 	void move(int button_pressed);
 	void DoEntityTask(Entity* player = NULL);

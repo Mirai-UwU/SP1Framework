@@ -1,7 +1,7 @@
 #include "Pow.h"
 #include "HUD.h"
 
-Pow::Pow(COORD c_pos, MapMaker* map)
+Power::Power(COORD c_pos, MapMaker* map)
 {
     set_pos(c_pos);
     set_display((char)168);
@@ -12,7 +12,7 @@ Pow::Pow(COORD c_pos, MapMaker* map)
 }
 
 
-Pow::Pow(int y_pos, int x_pos, MapMaker* map)
+Power::Power(int y_pos, int x_pos, MapMaker* map)
 {
     set_xpos(x_pos);
     set_ypos(y_pos);
@@ -23,27 +23,27 @@ Pow::Pow(int y_pos, int x_pos, MapMaker* map)
     isActive = true;
 }
 
-Pow::~Pow()
+Power::~Power()
 {
 }
 
 
-void Pow::move(int button_pressed)
+void Power::move(int button_pressed)
 {
 }
 
-void Pow::DoEntityTask(Entity* player)
+void Power::DoEntityTask(Entity* player)
 {
     hud.powerUp();
     toggle();
 }
 
-bool Pow::collide(COORD entity_pos)
+bool Power::collide(COORD entity_pos)
 {
     return collide(entity_pos.X, entity_pos.Y);;
 }
 
-bool Pow::collide(int entity_xpos, int entity_ypos)
+bool Power::collide(int entity_xpos, int entity_ypos)
 {
     COORD pos;
     pos.X = entity_xpos;

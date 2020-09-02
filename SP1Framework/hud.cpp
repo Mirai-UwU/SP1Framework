@@ -1,7 +1,7 @@
 #include "HUD.h"
 #include "Level.h"
 #include "Door.h"
-#include "Pow.h"
+
 
 
 int HUD::lives = 900;

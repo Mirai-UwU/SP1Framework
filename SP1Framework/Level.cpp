@@ -46,7 +46,7 @@ void Level::FindEntities()
 				entity_list[count++] = new Door(coord, &this_map);
 				break;
 			case '?':
-				entity_list[count++] = new Pow(coord, &this_map);
+				entity_list[count++] = new Power(coord, &this_map);
 				break;
 			default:
 				break;

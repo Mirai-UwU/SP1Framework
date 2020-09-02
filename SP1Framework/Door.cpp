@@ -1,10 +1,6 @@
 #include "Door.h"
 #include "HUD.h"
 
-
-
-
-
 Door::Door(COORD c_pos, MapMaker* map)
 {
     set_pos(c_pos);
