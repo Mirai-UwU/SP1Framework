@@ -161,51 +161,8 @@ int HUD::convert_FL_to_percent()
 	}	
 }
 
-ifstream myfile_in(".Txt/D00.txt");
-ofstream myfile_out("output.txt");
-string line;
-
-void find_and_replace(string& source, string find, string replace)
-{
-
-	size_t j;
-
-	for (; (j = source.find(find)) != string::npos; ) {
-		source.replace(j, find.length(), replace);
-	}
-
-	myfile_out << source << endl;
-	cout << source << endl;
-}
-
 void HUD::Door_open()
 {
-	ifstream myfile_in(".Txt/D00.txt");
-	string line;
 
-
-	if (myfile_in.is_open())
-	{
-		int i = 0, j;
-		//string strcomma ; 
-		  // string strspace ; 
-
-		while (!myfile_in.eof())
-		{
-
-			getline(myfile_in, line);
-
-			string strfind = "`";
-			string strreplacewith = " ";
-
-			find_and_replace(line, strfind, strreplacewith);
-
-
-			i++;
-
-		}
-
-		myfile_in.close();
-	}
 }
 

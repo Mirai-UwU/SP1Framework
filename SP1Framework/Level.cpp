@@ -46,9 +46,6 @@ void Level::FindEntities()
 			case ']':
 				entity_list[count++] = new Door(coord, &this_map);
 				break;
-			case '`':
-				entity_list[count++] = new otd(coord, &this_map);
-				break;
 			default:
 				break;
 			}
