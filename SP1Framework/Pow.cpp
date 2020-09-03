@@ -1,6 +1,7 @@
 #include "Pow.h"
 #include "HUD.h"
 #include "Level.h"
+#include "Entity.h"
 
 Level lvl;
 
@@ -12,6 +13,7 @@ Power::Power(COORD c_pos, MapMaker* map)
     colour = 0x2b;
     timer = 0;
     isActive = true;
+    isApower = true;
 }
 
 
@@ -24,6 +26,7 @@ Power::Power(int y_pos, int x_pos, MapMaker* map)
     colour = 0x2b;
     timer = 0;
     isActive = true;
+    isApower = true;
 }
 
 Power::~Power()
@@ -37,8 +40,8 @@ void Power::move(int button_pressed)
 
 void Power::DoEntityTask(Entity* player)
 {
-    lvl.powerUp();
-    toggle();
+    hud.set_powertime(6);
+    toggle2();
 }
 
 bool Power::collide(COORD entity_pos)

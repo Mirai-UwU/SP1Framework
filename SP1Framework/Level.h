@@ -76,6 +76,7 @@ public:
 	
 
 	void Update();
+	void update2();
 	void Render();
 	void Reset();
 

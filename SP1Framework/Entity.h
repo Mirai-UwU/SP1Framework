@@ -18,6 +18,7 @@ protected:
 	char display;
 	double timer;
 	bool isActive;
+	bool isApower;
 	HUD hud;
 	Sound se;
 public:
@@ -48,7 +49,9 @@ public:
 
 	//Get/Set isActive
 	bool active();
+	bool active2();
 	void toggle();
+	void toggle2();
 
 	//Get/Set Entity's timer
 	double get_timer();

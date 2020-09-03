@@ -9,6 +9,7 @@ Teleporter::Teleporter(COORD pos, MapMaker* map)
     entity_map = map;
     timer = 0;
     isActive = true;
+    isApower = true;
 }
 
 Teleporter::Teleporter(int y_pos, int x_pos, MapMaker* map)
@@ -20,6 +21,7 @@ Teleporter::Teleporter(int y_pos, int x_pos, MapMaker* map)
 	entity_map = map;
     timer = 0;
     isActive = true;
+    isApower = true;
 }
 
 bool Teleporter::collide(COORD entity_pos)
@@ -44,6 +46,7 @@ void Teleporter::move(int button_pressed)
 void Teleporter::DoEntityTask(Entity* player)
 {
     if (!hud.holdingteleporter()) {
+        toggle2();
         toggle();
         se.Playsound(2);
         hud.toggleteleporter();

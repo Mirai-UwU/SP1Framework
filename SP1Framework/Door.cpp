@@ -9,6 +9,7 @@ Door::Door(COORD c_pos, MapMaker* map)
     colour = 0x2;
     timer = 0;
     isActive = true;
+    isApower = true;
 }
 
 
@@ -21,6 +22,7 @@ Door::Door(int y_pos, int x_pos, MapMaker* map)
     colour = 0x2;
     timer = 0;
     isActive = true;
+    isApower = true;
 }
 
 Door::~Door()
@@ -36,6 +38,7 @@ void Door::DoEntityTask(Entity* player)
 {
     hud.Door_open();
     toggle();
+    toggle2();
 }
 
 bool Door::collide(COORD entity_pos)

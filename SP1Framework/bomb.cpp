@@ -10,6 +10,7 @@ Bomb::Bomb(COORD pos, MapMaker* map)
 	entity_map = map;
 	timer = 0;
 	isActive = true;
+	isApower = true;
 }
 
 Bomb::Bomb(int y_pos, int x_pos, MapMaker* map)
@@ -21,6 +22,7 @@ Bomb::Bomb(int y_pos, int x_pos, MapMaker* map)
 	entity_map = map;
 	timer = 0;
 	isActive = true;
+	isApower = true;
 }
 
 bool Bomb::collide(COORD entity_pos)
@@ -45,6 +47,7 @@ void Bomb::move(int button_pressed)
 void Bomb::DoEntityTask(Entity* player)
 {
 	if (!hud.holdingbomb()) {
+		toggle2();
 		toggle();
 		se.Playsound(2);
 		hud.togglebomb();

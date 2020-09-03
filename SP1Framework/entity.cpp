@@ -9,6 +9,7 @@ Entity::Entity()
 	colour = 0x00;
 	timer = 0;
 	isActive = false;
+	isApower = false;
 }
 
 Entity::Entity(COORD _c, char _display, MapMaker* map)
@@ -19,6 +20,7 @@ Entity::Entity(COORD _c, char _display, MapMaker* map)
 	colour = 0x00;
 	timer = 0;
 	isActive = false;
+	isApower = false;
 }
 
 Entity::Entity(int _y_pos, int _x_pos, char _display, MapMaker* map)
@@ -30,6 +32,7 @@ Entity::Entity(int _y_pos, int _x_pos, char _display, MapMaker* map)
 	colour = 0x00;
 	timer = 0;
 	isActive = false;
+	isApower = false;
 }
 
 Entity::~Entity()
@@ -76,6 +79,11 @@ bool Entity::active()
 	return isActive;
 }
 
+bool Entity::active2()
+{
+	return isApower;
+}
+
 void Entity::toggle()
 {
 	if (isActive) {
@@ -83,6 +91,16 @@ void Entity::toggle()
 	}
 	else {
 		isActive = true;
+	}
+}
+
+void Entity::toggle2()
+{
+	if (isApower) {
+		isApower = false;
+	}
+	else {
+		isApower = true;
 	}
 }
 

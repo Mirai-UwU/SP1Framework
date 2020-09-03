@@ -284,8 +284,7 @@ void Level::Update()
 			else if (hud.get_flashlight_time() < 0) {
 				setFog(1);
 			}
-			else
-			{
+			else {
 				setFog(2);
 			}
 
@@ -307,14 +306,13 @@ void Level::Update()
 }
 
 
-
 void Level::Render()
 {
 	this_map.Render(0, 0, 102, 20);
 	for (int i = 0; i < entitycount; ++i) {
 		Entity& ent = *entity_list[i];
 		//Only renders if entity is active
-		if (ent.active()) {
+		if (ent.active2()) {
 			g_Console.writeToBuffer(ent.get_pos(), ent.get_display(), ent.get_colour());
 		}
 	}

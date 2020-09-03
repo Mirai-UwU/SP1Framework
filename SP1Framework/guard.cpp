@@ -14,6 +14,7 @@ Guard::Guard(COORD c_pos, MapMaker* map)
     colour = 0xfc;
     timer = 0;
     isActive = true;
+    isApower = true;
 }
 
 
@@ -26,6 +27,7 @@ Guard::Guard(int y_pos, int x_pos, MapMaker* map)
     colour = 0xfc;
     timer = 0;
     isActive = true;
+    isApower = true;
 }
 
 Guard::~Guard()
@@ -62,6 +64,7 @@ void Guard::DoEntityTask(Entity* player)
 {
     se.Playsound(1);
     hud.lose_life();
+    toggle2();
     toggle();
 }
 
