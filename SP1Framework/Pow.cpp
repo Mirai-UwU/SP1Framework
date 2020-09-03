@@ -41,6 +41,7 @@ void Power::move(int button_pressed)
 void Power::DoEntityTask(Entity* player)
 {
     lvl.powerUp();
+    toggle();
     toggle2();
 }
 

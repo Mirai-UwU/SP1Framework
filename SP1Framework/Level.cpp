@@ -234,15 +234,16 @@ void Level::Update()
 			case (char)233:
 				if (ent.get_timer() > 1) {
 					hud.set_flashlight_time(hud.get_flashlight_time() - 1);
+					hud.set_powertime(hud.get_powertime() - 1);
 					ent.reset_timer();
 				}
 				break;
-			case (char)168:
-					if (ent.get_timer() > 1) {
-						hud.set_powertime(hud.get_powertime() - 1);
-						ent.reset_timer();
-					}
-				break;
+//			case (char)168:
+//					if (ent.get_timer() > 1) {
+//						hud.set_powertime(hud.get_powertime() - 1);
+//						ent.reset_timer();
+//					}
+//				break;
 			case '@':
 				
 					ent.move(getPlayerInput());
