@@ -13,6 +13,7 @@ class HUD
 private:
 
 	static int lives;
+	static int powertime;
 	static bool bombheld;
 	static bool teleportheld;
 	static bool f;
@@ -45,8 +46,11 @@ public:
 	bool bombhandler();
 	int get_flashlight_time(); //1.torchlight time left in seconds
 	void set_flashlight_time(int i);
+	float get_powertime(); //1.torchlight time left in seconds
+	void set_powertime(int i);
 	void lose_life();
 	int convert_FL_to_percent(); //torchlight time left in percentage
+	int convert_powToP();
 	void Door_open();
 	void powerUp();
 };

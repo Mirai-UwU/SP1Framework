@@ -25,6 +25,7 @@ private:
 		STATE_NONE,
 		STATE_MIN,
 		STATE_MAX,
+		STATE_POW,
 		STATE_COUNT
 	};
 

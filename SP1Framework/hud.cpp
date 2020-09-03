@@ -2,9 +2,8 @@
 #include "Level.h"
 #include "Door.h"
 
-
-
 int HUD::lives = 900;
+int HUD::powertime = 0;
 bool HUD::bombheld = false;
 bool HUD::teleportheld = false;
 bool HUD::f = false;
@@ -69,8 +68,9 @@ void HUD::render_HUD_money()
 
 void HUD::render_HUD_battery()
 {
-	g_Console.writeToBuffer(6, 22, std::to_string(convert_FL_to_percent()) + " % Batterylife");
+	g_Console.writeToBuffer(6, 22, std::to_string(convert_FL_to_percent()) + " %Batterylife");
 	g_Console.writeToBuffer(11, 23, "left");
+	g_Console.writeToBuffer(2, 24, "Time left for pUp: " + std::to_string(convert_powToP()));
 }
 
 int HUD::getLives()
@@ -148,6 +148,16 @@ void HUD::set_flashlight_time(int i)
 	flashlight_time = i;
 }
 
+float HUD::get_powertime()
+{
+	return powertime;
+}
+
+void HUD::set_powertime(int i)
+{
+	powertime = i;
+}
+
 void HUD::lose_life()
 {
 	setLives(getLives() - 300);
@@ -155,13 +165,24 @@ void HUD::lose_life()
 
 int HUD::convert_FL_to_percent()
 {
-	int percentage = (int)(((float)get_flashlight_time() / 120.0) * 100);
+	int percentage = (((float)get_flashlight_time() / 120.0) * 100);
 	if (percentage > 0){
 		return(percentage);
 	}
 	else {
 		return 0;
 	}	
+}
+
+int HUD::convert_powToP()
+{
+	int percentage = (((float)get_powertime() / 120.0) * 100);
+	if (percentage > 0) {
+		return(percentage);
+	}
+	else {
+		return 0;
+	}
 }
 
 void HUD::Door_open()

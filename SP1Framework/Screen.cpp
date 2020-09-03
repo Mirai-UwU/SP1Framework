@@ -38,8 +38,7 @@ void Screen::UpdateWin()
 }
 
 void Screen::RenderStart()
-{
-	
+{	
 	start.Render(origin, g_Console.getMaxConsoleSize());
 }
 

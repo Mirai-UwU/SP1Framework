@@ -115,6 +115,7 @@ void Level::SetTimers(double t)
 		entity_list[i]->set_timer(t);
 	}
 }
+
 void Level::ResetTimers()
 {
 	for (int i = 0; i < entitycount; ++i) {
@@ -235,6 +236,13 @@ void Level::Update()
 					hud.set_flashlight_time(hud.get_flashlight_time() - 1);
 					ent.reset_timer();
 				}
+				break;
+			case (char)168:
+					if (ent.get_timer() > 1) {
+						hud.set_powertime(hud.get_powertime() - 1);
+						ent.reset_timer();
+					}
+				break;
 			case '@':
 				
 					ent.move(getPlayerInput());
@@ -270,9 +278,17 @@ void Level::Update()
 				}
 			}
 
-			if (hud.get_flashlight_time() < 0) {
+			if (hud.get_powertime() > 0) {
+				setFog(3);
+			}
+			else if (hud.get_flashlight_time() < 0) {
 				setFog(1);
 			}
+			else
+			{
+				setFog(2);
+			}
+
 		}
 	}
 
@@ -280,6 +296,7 @@ void Level::Update()
 	if (hud.getLives() < 0) {
 		hud.setLives(900);
 		hud.set_flashlight_time(120);
+		hud.set_powertime(0);
 		Reset();
 		g_eGameState = S_DEATH;
 
@@ -316,6 +333,7 @@ void Level::Reset()
 		ResetTimers();
 	}
 	hud.set_flashlight_time(120);
+	hud.set_powertime(0);
 }
 
 void Level::RenderRadius(int x_rad, int y_rad)
@@ -338,6 +356,10 @@ void Level::RenderFog()
 	if (render_fogstate == FogState::STATE_NONE) //No Fog
 	{
 
+	}
+	if (render_fogstate == FogState::STATE_POW)//Power up Fog
+	{
+		RenderRadius(15, 6);
 	}
 	if (render_fogstate == FogState::STATE_MIN)//No Flashlight fog
 	{
@@ -394,5 +416,5 @@ void Level::EntityCollision(Entity& entityptr)
 
 void Level::powerUp()
 {
-	setFog(1);
+	hud.set_powertime(6);
 }
