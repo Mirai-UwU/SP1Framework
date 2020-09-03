@@ -40,7 +40,7 @@ void Power::move(int button_pressed)
 
 void Power::DoEntityTask(Entity* player)
 {
-    hud.set_powertime(6);
+    lvl.powerUp();
     toggle2();
 }
 
